@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% form_theme teacher_add 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Teachers{% endblock %}
+{% block body %}
+
+    <h1>Formulaire de recherche </h1>
+    {{form_start(teacher_add)}}
+
+    {{ form_row(teacher_add.firstName, {'attr' : { 'placeholder': "First Name"}, 'label': 'First Name' } ) }}
+
+    {{ form_row(teacher_add.lastName, {'attr' : { 'placeholder': "Last Name"},  'label': 'Last Name'} ) }}
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(teacher_add)}}
+
+{% endblock %}

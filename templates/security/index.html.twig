@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Administration{% endblock %}
+{% block body %}
+
+    <h1>Login</h1>
+    {{form_start(form)}}
+
+    {{ form_row(form.username, {'attr' : { 'placeholder': "Username"}, 'label': 'Username' } ) }}
+
+    {{ form_row(form.password, {'attr' : { 'placeholder': "Password"},  'label': 'Password'} ) }}
+
+    <pre><button type="submit" class ="btn">Go</button>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(form)}}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Teacher {% endblock %}
+{% block body %}
+
+    <h1 class='resa_recap'>Teacher</h1>
+        <pre class='recap'>
+ 			First Name: {{ fn }} <br>
+ 			Last Name: {{ ln }}
+
+ 			<a href="{{path('teachers')}}" class ="btn">Back</a>
+
+		</pre>
+		<br><br> 
+	
+{%  endblock %}
