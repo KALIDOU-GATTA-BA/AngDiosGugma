@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+
 use App\Form\StudentsType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,6 +10,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Repository\StudentsRepository;
 use App\Services\StudentsManager;
 use App\Handlers\Form\StudentsFormHandler;
+
 class StudentsController extends AbstractController
 {
     private $formHandler;
@@ -26,9 +28,9 @@ class StudentsController extends AbstractController
     {
         $form = $this->createForm(StudentsType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-             if ($sm->findStudent()==1) {
+            if ($sm->findStudent()==1) {
                 return $this->redirectToRoute('found_student');
-            }else{
+            } else {
                 return $this->redirectToRoute('not_found_student');
             }
         }

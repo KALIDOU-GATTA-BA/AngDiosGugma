@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% form_theme cominc 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Community INC{% endblock %}
+{% block body %}
+
+    <h1>Community inc </h1>
+    {{form_start(cominc)}}
+
+    {{ form_row(cominc.AddArticleComInc, {'attr' : { 'placeholder': "New Article"}, 'label': 'New Article' } ) }}
+
+
+    <pre> <a href="{{path('community_inc')}}" class ="btn">Add</a><br><br></pre>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(cominc)}}
+
+{% endblock %}

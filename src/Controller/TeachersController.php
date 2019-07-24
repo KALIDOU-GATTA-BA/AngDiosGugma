@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+
 use App\Form\TeachersType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,7 +30,7 @@ class TeachersController extends AbstractController
         if ($this->formHandler->handle($form)) {
             if ($tm->findTeacher()==1) {
                 return $this->redirectToRoute('found');
-            }else{
+            } else {
                 return $this->redirectToRoute('not_found');
             }
         }

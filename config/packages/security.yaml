@@ -22,6 +22,7 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
+                target_path_parameter: path 
             logout:
                 path: security_logout
                 target: home

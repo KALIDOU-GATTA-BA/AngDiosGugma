@@ -2,27 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\StudentAdd;
+use App\Entity\CommunityInc;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class StudentAddType extends AbstractType
+class CommunityIncType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('city')
-            ->add('level')
-            ->add('birthDate');
+            ->add('AddArticleComInc')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => StudentAdd::class,
+            'data_class' => CommunityInc::class,  
         ]);
     }
 }

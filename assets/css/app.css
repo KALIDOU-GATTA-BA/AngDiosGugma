@@ -1,15 +1,22 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body{
-background: url('../../public/images/adg.jpeg');
+background: url('../../public/images/36295287_2025187550833951_675333532272295936_n.jpg');
 		 background-repeat: no-repeat;
-  		  background-size: 500px 600px;
+  		  background-size: 200px 200px;
 
   		background-position: center;
 }
 .container{
 	background-color: #2C3E50;
 	opacity: 0.9;
+}
+.social_media_img img{
+	height: 25px;
+	width: 25px;
+	text-align: left;
+	margin-left: 1350px;
+	margin-top: -69px;
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -20,6 +27,10 @@ background: url('../../public/images/adg.jpeg');
 	background-color: #503a2c;
 	cursor: pointer;
 
+}
+.social_media{
+	background-color: #2C3E50;
+	width: 10px;
 }
  pre .remove a{
 	color: white;
@@ -200,9 +211,16 @@ input#add_reservation_tickets_0_name.form-control, #tickets-fields-list,input#ad
 	color: white;
 }
 .foot{
+	background-color: #503a2c;
 	text-align: center;
-	margin-top: 550px;
-	color: darkblue;	
+	margin-top: 450px;
+	color: white;	
+	height: 100px;
+}
+.about_us{
+	padding-top: 13px;
+	text-align: left;
+	padding-left: 12px;
 }
 .resa_recap{
 	text-decoration: underline;

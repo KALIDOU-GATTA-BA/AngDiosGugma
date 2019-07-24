@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class TeacherAddFormHandler
+class CommunityIncFormHandler
 {
     private $entityManager;
 
@@ -19,7 +19,7 @@ class TeacherAddFormHandler
     {
         if ($form->isSubmitted() && $form->isValid()) {
             $form = $form->getData();
-
+            
             $this->entityManager->persist($form);
             $this->entityManager->flush();
             

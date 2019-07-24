@@ -7,7 +7,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-
 class TeachersManager
 {
     private $request;
@@ -26,8 +25,8 @@ class TeachersManager
         return $session->get('teacher');
     }
     public function getAllTeacherData()
-    { 
-     $fn = $this->getTeacher()->getFirstName();
+    {
+        $fn = $this->getTeacher()->getFirstName();
 
         if ($this->findTeacher()==1) {
             $res1 = $this->entityManager->createQuery(" SELECT r FROM App\Entity\TeacherAdd r where r.FirstName =  '$fn' ")->getResult();
@@ -35,32 +34,25 @@ class TeachersManager
             $b=$res1[0]->getLastName();
 
             return [$a, $b];
-
-                
         }
-
-
     }
 
     public function findTeacher()
-
     {
-        
         $res = $this->entityManager->createQuery('SELECT r FROM App\Entity\TeacherAdd r ')->getResult();
 
-        $i=''; 
+        $i='';
         $j='';
         $buffer=0;
       
         foreach ($res as $_res) {
-            
-                $i=$this->getTeacher()->getFirstName();
-                $j=$this->getTeacher()->getLastName();
+            $i=$this->getTeacher()->getFirstName();
+            $j=$this->getTeacher()->getLastName();
 
-                    if ($_res->getFirstName()==$i && $_res->getLastName()==$j) {
-                        $buffer=1;
-                    }
+            if ($_res->getFirstName()==$i && $_res->getLastName()==$j) {
+                $buffer=1;
             }
+        }
         return $buffer;
     }
 }
