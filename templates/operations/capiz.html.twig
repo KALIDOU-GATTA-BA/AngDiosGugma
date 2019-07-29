@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% form_theme capiz 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Capiz{% endblock %}
+{% block body %}
+
+    <h1 style="text-decoration:underline">Capiz</h1>
+    {{form_start(capiz)}}
+
+
+    {{ form_row(capiz.title, {'attr' : { 'placeholder': "Title"},  'label': 'Title'} ) }}
+    {{ form_row(capiz.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(capiz)}}
+
+{% endblock %}

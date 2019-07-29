@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class ="articles">
+{% for article in articles %}
+	<article>
+	
+	 <h1 class='resa_recap'>{{article.title}}</h1>
+        <pre class='recap'>
+        		{{article.AddArticleComInc}}
+		</pre>
+			
+	</article>
+{% endfor %}
+</section>
+{% endblock %}

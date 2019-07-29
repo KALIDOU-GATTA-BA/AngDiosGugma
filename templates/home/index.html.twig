@@ -1,7 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Ang Dios Gugma{% endblock %}
-
+	
 {% block body %}
+<style>.container{
+	background-color:white;
+}</style>
+<div class="w3-content w3-section" style="max-width:100%; background-color:white; margin-top:50px;margin-left:100px;margin-right:100px">
+	  <img class="mySlides" src="https://www.belightsoft.com/products/imagetricks/img/core-image-filters@2x.jpg" style="width:100%">
+	  <img class="mySlides" src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style="width:100%">
+	  <img class="mySlides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTydsW1J4p_1XAiJMivT_yLKdMhBvd2O_DbvsgH_VNAqsQwnU0c" style="width:100%">
+	  <img class="mySlides" src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" style="width:100%">
+	  <img class="mySlides" src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" style="width:100%">
+	  <img class="mySlides" src="https://tinypng.com/images/social/website.jpg">
+</div>
 
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
 {% endblock %}

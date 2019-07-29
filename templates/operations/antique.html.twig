@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% form_theme antique 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Antique{% endblock %}
+{% block body %}
+
+    <h1 style="text-decoration:underline">Antique</h1>
+    {{form_start(antique)}}
+
+
+    {{ form_row(antique.title, {'attr' : { 'placeholder': "Title"},  'label': 'Title'} ) }}
+    {{ form_row(antique.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(antique)}}
+
+{% endblock %}

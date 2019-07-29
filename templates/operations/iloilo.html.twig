@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% form_theme iloilo 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Iloilo{% endblock %}
+{% block body %}
+
+    <h1 style="text-decoration:underline">Iloilo</h1>
+    {{form_start(iloilo)}}
+
+
+    {{ form_row(iloilo.title, {'attr' : { 'placeholder': "Title"},  'label': 'Title'} ) }}
+    {{ form_row(iloilo.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(iloilo)}}
+
+{% endblock %}

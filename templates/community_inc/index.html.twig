@@ -6,10 +6,13 @@
     <h1>Community inc </h1>
     {{form_start(cominc)}}
 
-    {{ form_row(cominc.AddArticleComInc, {'attr' : { 'placeholder': "New Article"}, 'label': 'New Article' } ) }}
+    {{ form_row(cominc.title, {'attr' : { 'placeholder': "Title"}, 'label': 'Title' } ) }}
+
+    {{ form_row(cominc.AddArticleComInc, {'attr' : { 'placeholder': "Content"}, 'label': 'Content' } ) }}
 
 
-    <pre> <a href="{{path('community_inc')}}" class ="btn">Add</a><br><br></pre>
+    <pre> <button type="submit" class ="btn">ADD</button><br><br></pre>
+
 
     {% block javascript %}
     <script src={{ asset("build/app.js") }}></script>

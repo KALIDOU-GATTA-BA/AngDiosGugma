@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class CommunityIncFormHandler
+class CapizFormHandler
 {
     private $entityManager;
 
@@ -23,7 +23,7 @@ class CommunityIncFormHandler
             $this->entityManager->persist($form);
             $this->entityManager->flush();
             
-            return true;
+            return true; 
         }
     }
 }

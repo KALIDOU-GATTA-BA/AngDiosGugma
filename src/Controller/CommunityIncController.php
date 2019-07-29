@@ -14,7 +14,7 @@ use App\Repository\CommunityIncRepository;
 
 class CommunityIncController extends AbstractController
 {
-
+ 
 	private $formHandler;
     /**
      * @var ContactFormHandler
@@ -28,10 +28,11 @@ class CommunityIncController extends AbstractController
      */
     public function index(Request $request)
     {
-        
+       
         $form = $this->createForm(CommunityIncType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-            return $this->redirectToRoute('home');
+
+            return $this->redirectToRoute('recap_com_inc');
         }
         return $this->render('community_inc/index.html.twig', [
                            'cominc' => $form->createView(),

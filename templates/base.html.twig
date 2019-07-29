@@ -10,38 +10,7 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-            <!--************************** !-->
-                  
-
-            <!--************************** 
-
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                    
-                    {% if not app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('security_login')}}">ADGCINC</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('security_login')}}">LogIn</a>
-                    </li>
-                    
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/teachers">Teachers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/students">Students</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{path('security_logout')}}">Logout</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        ************************** !-->
-
+    <body>                  
 <style>
   .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
     color:red;
@@ -50,79 +19,98 @@
 </style>
   <ul class="nav nav-tabs" style="background-color:#503a2c">
   <li class="dropdown">
-          <a href="{{path('students')}}" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">HOME<span class="caret"></span></a>
+          <a href="{{path('home')}}" class="nav-link"  style="color:white">HOME<span class="caret"></span></a>
   </li>
 
   <li class="dropdown">
           <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">ANG DIOS GUGMA <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{{path('community_inc')}}">COMMUNITY INC</a></li>
-            <li><a href="#">CATHOLIC SHCOOL INC</a></li>
-            <li><a href="#">CATHOLIC MINISTRIES FOUNDATION INC</a></li>
-            <li><a href="#">CATHOLIC MEDIA PHILIPPINES></a></li>
-            <li><a href="#">DEVELOPPEMENT COOPERATIVE</a></li>
+          <ul class="dropdown-menu" style="width:400px" role="menu">
+            <li><a href="{{path('community_inc')}}" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">COMMUNITY INC</a></li>
           </ul>
         </li>
   </li>
 
   <li class="dropdown">
-          <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">CHAPTERS <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+          <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">OPERATIONS <span class="caret"></span></a>
+          <ul class="dropdown-menu" style="width:400px" role="menu">
+            <li><a href="{{path('iloilo')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c"  onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ILOILO</a></li>
+            <li><a href="{{path('capiz')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">CAPIZ</a></li>
+            <li><a href="{{path('antique')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">ANTIQUE</a></li>
+            <li><a href="{{path('aklan')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">AKLAN</a></li>
+            <li><a href="{{path('guimaras')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">GUIMARAS</a></li>
+            <li><a href="{{path('negros')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">NEGROS</a></li>
+            <li><a href="{{path('mindanao')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">MINDANAO</a></li>
+            <li><a href="{{path('metroManila')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">METRO MANILA</a></li>
+            <li><a href="{{path('international')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">INTERNATIONAL</a></li>
+          </ul>
+        </li>
+  </li>
+   <li class="dropdown">
+          <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">SUPPORT MINISTRIES <span class="caret"></span></a>
+          <ul class="dropdown-menu" style="width:450px" role="menu">
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA MEDIA PHILIPPINES</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA CATHOLIC MINISTRIES FOUNDATION</a></li>
+            <li><a href="#" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA DEVELOPPEMENT COOPERATIVE</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c"
+           onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA CATHOLIC SCHOOL</a></li>
           </ul>
         </li>
   </li>
   <li class="dropdown">
-          <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">MINISTRIES <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+          <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">SPECIAL MINISTRIES <span class="caret"></span></a>
+          <ul class="dropdown-menu" style="width:400px" role="menu">
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">PRAYER WARRIORS</a></li>
+            <li><a href="#" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">HEALING AND DELIVERANCE</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">MUSIC MINISTRY</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">YOUTH MINISTRY</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">LITTLE AND JUNIOR SERVANTS</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">SENIORS AND RETIREES</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">COMMUNITY SERVICES AND PROFESSIONALS</a></li>
+            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+   onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">LITURGY</a></li>
           </ul>
         </li>
   </li>
-  
   <li class="dropdown">
           <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">DONATION <span class="caret"></span></a>  
   </li>
   </li>
   
 </ul>
-<div id="myTabContent" class="tab-content">
-  <div class="tab-pane fade" id="home">
-    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-  </div>
-  <div class="tab-pane fade active show" id="profile">
-    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-  </div>
-  <div class="tab-pane fade" id="dropdown1">
-    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-  </div>
-  <div class="tab-pane fade" id="dropdown2">
-    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-  </div>
-</div>
         <div class="container">
             {% block body %}{% endblock %}
         </div>
         <div class="foot">
           <div class='about_us'>
-                <p>About us</p>
-                <p>Contact us</p>
+                <a href="" style="color:white">About us</a><br>
+                <a href="" style="color:white">Contact us</a>
           </div>
           <div class='social_media_img'>
-              <img src="https://cdn.pixabay.com/photo/2017/08/20/10/30/facebook-2661207_960_720.jpg"> 
-              <img src="{{asset('images/im.jpg')}}"> 
+              <a href="" style="margin-right:50px"><img src="https://cdn.pixabay.com/photo/2017/08/20/10/30/facebook-2661207_960_720.jpg"> </a>
+              <a href="" style="margin-right:50px"><img src="https://www.stickpng.com/assets/thumbs/580b57fcd9996e24bc43c545.png"> </a>
           </div>
           Copyright 2019<br>Kalidou Gatta BA<br>Tous droits réservés</div>
         </body>

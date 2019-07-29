@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class CommunityIncFormHandler
+class IloiloFormHandler
 {
     private $entityManager;
 
