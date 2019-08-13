@@ -13,4 +13,12 @@
 	</article>
 {% endfor %}
 </section>
+<pre>
+{% if not app.user %}
+
+	<a href="{{path('community_inc')}}"><span style="color:white;align:left; font-style:italic; font-weight:bold;background-color:#503a2c;"><mark>EDIT</mark></span></a>
+
+{% endif %}
+
+</pre>
 {% endblock %}

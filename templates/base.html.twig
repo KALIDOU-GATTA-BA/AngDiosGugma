@@ -11,12 +11,7 @@
         {% endblock %}
     </head>
     <body>                  
-<style>
-  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
-    color:red;
-  }
-  
-</style>
+
   <ul class="nav nav-tabs" style="background-color:#503a2c">
   <li class="dropdown">
           <a href="{{path('home')}}" class="nav-link"  style="color:white">HOME<span class="caret"></span></a>
@@ -25,7 +20,7 @@
   <li class="dropdown">
           <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">ANG DIOS GUGMA <span class="caret"></span></a>
           <ul class="dropdown-menu" style="width:400px" role="menu">
-            <li><a href="{{path('community_inc')}}" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_iloilo')}}" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">COMMUNITY INC</a></li>
           </ul>
         </li>
@@ -58,38 +53,38 @@
         </li>
   </li>
    <li class="dropdown">
-          <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">SUPPORT MINISTRIES <span class="caret"></span></a>
+          <a href="{{path('support_ministries')}}" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">SUPPORT MINISTRIES <span class="caret"></span></a>
           <ul class="dropdown-menu" style="width:450px" role="menu">
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('media_phil')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA MEDIA PHILIPPINES</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('catholic_ministries_foundation')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA CATHOLIC MINISTRIES FOUNDATION</a></li>
-            <li><a href="#" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('dev_cooperative')}}" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA DEVELOPPEMENT COOPERATIVE</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c"
+            <li><a href="{{('connexion')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c"
            onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ANG DIOS GUGMA CATHOLIC SCHOOL</a></li>
           </ul>
         </li>
   </li>
   <li class="dropdown">
-          <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">SPECIAL MINISTRIES <span class="caret"></span></a>
+          <a href="{{path('media_phil')}}" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">SPECIAL MINISTRIES <span class="caret"></span></a>
           <ul class="dropdown-menu" style="width:400px" role="menu">
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('youth_warriors')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">PRAYER WARRIORS</a></li>
-            <li><a href="#" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('healing_delivrance')}}" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">HEALING AND DELIVERANCE</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('music_ministry')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">MUSIC MINISTRY</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('home')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">YOUTH MINISTRY</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('little_junior_servants')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">LITTLE AND JUNIOR SERVANTS</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('seniors_retirees')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">SENIORS AND RETIREES</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('community_services_professionals')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">COMMUNITY SERVICES AND PROFESSIONALS</a></li>
-            <li><a href="#"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('liturgy')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">LITURGY</a></li>
           </ul>
         </li>
@@ -111,10 +106,10 @@
           <div class='social_media_img'>
               <a href="" style="margin-right:50px"><img src="https://cdn.pixabay.com/photo/2017/08/20/10/30/facebook-2661207_960_720.jpg"> </a>
               <a href="" style="margin-right:50px"><img src="https://www.stickpng.com/assets/thumbs/580b57fcd9996e24bc43c545.png"> </a>
-              <img src="{{ asset('/images/im.jpg') }}"/>
+              <img src="{{  asset ('Louvre-LOGO.png') }}"/>
 
           </div>
-          <div class="footer" style="margin-top:-90px;text-align:center">
+          <div class="footer" style="fpamargin-top:-90px;text-align:center">
             Copyright 2019<br>Kalidou Gatta BA<br>Tous droits réservés
           </div>
           </div>

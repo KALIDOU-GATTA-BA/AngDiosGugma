@@ -10,12 +10,10 @@
 
     {{ form_row(students.lastName, {'attr' : { 'placeholder': "Last Name"},  'label': 'Last Name'} ) }}
 
-    <pre><button type="submit" class ="btn">Find</button> <a href="{{path('student_add')}}" class ="btn">Add</a><br><br></pre>
-
+  	<pre><button type="submit" class ="btn">Find</button> <a href="{{path('student_add')}}" class ="btn">Add</a> <a href="{{path('teachers')}}" class ="btn">Find a teacher</a>
+  	</pre>
     {% block javascript %}
     <script src={{ asset("build/app.js") }}></script>
 	{% endblock %}
-
     {{form_end(students)}}
-
 {% endblock %}
