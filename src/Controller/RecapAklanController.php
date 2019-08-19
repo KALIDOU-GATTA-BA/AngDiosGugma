@@ -4,16 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Iloilo;
+use App\Entity\Aklan;
 
-class RecapIloiloController extends AbstractController
+
+class RecapAklanController extends AbstractController
 {
     /**
-     * @Route("/recap/iloilo", name="recap_iloilo")
+     * @Route("/recap/aklan", name="recap_aklan")
      */
     public function index()
     {
-    	$repo = $this->getDoctrine()->getRepository(Iloilo::class);
+        $repo = $this->getDoctrine()->getRepository(Aklan::class);
         $articles = $repo ->findAll() ;
         $articles1=$articles[0];
         $articles2=$articles[1];
@@ -22,14 +23,13 @@ class RecapIloiloController extends AbstractController
         $articles5=$articles[4];
         $articles6=$articles[5];
 
-        return $this->render('recap_iloilo/index.html.twig', [
+        return $this->render('recap_aklan/index.html.twig', [
             'article1' => $articles1,
             'article2' => $articles2,
             'article3' => $articles3,
             'article4' => $articles4,
             'article5' => $articles5,
             'article6' => $articles6,
-            
-        ]);  
+            ]);
     }
 }

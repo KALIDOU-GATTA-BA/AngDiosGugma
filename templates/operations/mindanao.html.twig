@@ -1,15 +1,23 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello OperationsController!{% endblock %}
-
+{% form_theme mindanao 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Mindanao{% endblock %}
 {% block body %}
-<style>
 
-</style>
+    <h1 style="text-decoration:underline">Mindanao</h1>
+    {{form_start(mindanao)}}
 
-<div class="example-wrapper">
-    <h1 style="text-decoration:underline">MINDANAO</h1>
-    <p>
-    </p>
-</div>
+
+    {{ form_row(mindanao.title, {'attr' : { 'placeholder': "Title"},  'label': 'Title'} ) }}
+    {{ form_row(mindanao.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(mindanao)}}
+
 {% endblock %}

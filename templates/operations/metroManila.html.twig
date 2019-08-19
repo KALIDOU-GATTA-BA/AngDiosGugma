@@ -1,15 +1,23 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello OperationsController!{% endblock %}
-
+{% form_theme metroManila 'bootstrap_4_layout.html.twig'  %}
+{% block title %}International{% endblock %}
 {% block body %}
-<style>
 
-</style>
+    <h1 style="text-decoration:underline">Metro Manila</h1>
+    {{form_start(metroManila)}}
 
-<div class="example-wrapper">
-    <h1 style="text-decoration:underline">METRO MANILA</h1>
-    <p>
-    </p>
-</div>
+
+    {{ form_row(metroManila.title, {'attr' : { 'placeholder': "Title"},  'label': 'Title'} ) }}
+    {{ form_row(metroManila.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(metroManila)}}
+
 {% endblock %}

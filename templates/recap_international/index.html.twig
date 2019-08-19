@@ -1,20 +1,211 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RecapInternationalController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/adgs/src/Controller/RecapInternationalController.php'|file_link(0) }}">src/Controller/RecapInternationalController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/adgs/templates/recap_international/index.html.twig'|file_link(0) }}">templates/recap_international/index.html.twig</a></code></li>
-    </ul>
+      <div class="container cta-100 ">
+        <div class="container">
+          <div class="row blog">
+            <div class="col-md-12">
+              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#blogCarousel" data-slide-to="1"></li>
+                </ol>
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="row">
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <!--Image-->
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>{{article1.title}}</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Admin</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                                    {{article1.content}}
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <!--Image-->
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>{{article2.title}}</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Admin </p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                             {{article2.content}}
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <!--Image-->
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>{{article3.title}}</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Admin </p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              {{article3.content}}
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--.row-->
+                  </div>
+                  <!--.item-->
+                  <div class="carousel-item ">
+                    <div class="row">
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <!--Image-->
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>{{article4.title}}</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Admin</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                             <div class="item-box-blog-text">
+                              <p>  </p>
+                                                            
+                                  <p>{{article4.content}}.</p>
+
+                            </div>
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <!--Image-->
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>{{article5.title}}</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Admin <p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              {{article5.content}}
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <!--Image-->
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>{{article6.title}}</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Admin</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              {{article6.content}}
+                            </div>
+                             <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--.row-->
+                  </div>
+                  <!--.item-->
+                </div>
+                <!--.carousel-inner-->
+              </div>
+              <!--.Carousel-->
+            </div>
+          </div>
+        </div>
 </div>
+
+<pre>
+{% if  app.user %}
+
+	<a href="{{path('international')}}"><span style="color:white;align:left; font-style:italic; font-weight:bold;background-color:#503a2c;"><mark>EDIT</mark></span></a>
+
+{% endif %}
+
+</pre>
 {% endblock %}

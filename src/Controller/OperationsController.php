@@ -7,6 +7,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\IloiloType;
 use App\Form\CapizType;
 use App\Form\AntiqueType;
+use App\Form\GuimarasType;
+use App\Form\NegrosType;
+use App\Form\MindanaoType;
+use App\Form\AklanType;
+use App\Form\MetroManilaType;
+use App\Form\InternationalType;
 use App\Repository\IloiloRepository;
 use App\Handlers\Form\IloiloFormHandler;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,7 +90,7 @@ class OperationsController extends AbstractController
         }
 
         return $this->render('operations/aklan.html.twig', [
-            'controller_name' => 'OperationsController',
+            'aklan' => $form->createView(),
         ]);
     }
 
@@ -93,8 +99,13 @@ class OperationsController extends AbstractController
      */
     public function guimaras(Request $request)
     {
+        $form = $this->createForm(GuimarasType::class)->handleRequest($request);
+        if ($this->formHandler->handle($form)) {
+            return $this->redirectToRoute('recap_guimaras');
+        }
+
         return $this->render('operations/guimaras.html.twig', [
-            'controller_name' => 'OperationsController',
+            'guimaras' => $form->createView(),
         ]);
     }
     /**
@@ -102,8 +113,13 @@ class OperationsController extends AbstractController
      */
     public function negros(Request $request)
     {
+        $form = $this->createForm(NegrosType::class)->handleRequest($request);
+        if ($this->formHandler->handle($form)) {
+            return $this->redirectToRoute('recap_negros');
+        }
+
         return $this->render('operations/negros.html.twig', [
-            'controller_name' => 'OperationsController',
+            'negros' => $form->createView(),
         ]);
     }
     /**
@@ -111,17 +127,28 @@ class OperationsController extends AbstractController
      */
     public function mindanao(Request $request)
     {
+        $form = $this->createForm(MindanaoType::class)->handleRequest($request);
+        if ($this->formHandler->handle($form)) {
+            return $this->redirectToRoute('recap_mindanao');
+        }
+
         return $this->render('operations/mindanao.html.twig', [
-            'controller_name' => 'OperationsController',
+            'mindanao' => $form->createView(),
         ]);
     }
+    
     /**
      * @Route("/metroManila", name="metroManila")
      */
     public function metroManila(Request $request)
     {
+        $form = $this->createForm(MetroManilaType::class)->handleRequest($request);
+        if ($this->formHandler->handle($form)) {
+            return $this->redirectToRoute('recap_metro_manila');
+        }
+
         return $this->render('operations/metroManila.html.twig', [
-            'controller_name' => 'OperationsController',
+            'metroManila' => $form->createView(),
         ]);
     }
     /**
@@ -129,8 +156,13 @@ class OperationsController extends AbstractController
      */
     public function international(Request $request)
     {
+         $form = $this->createForm(InternationalType::class)->handleRequest($request);
+        if ($this->formHandler->handle($form)) {
+            return $this->redirectToRoute('recap_international');
+        }
+
         return $this->render('operations/international.html.twig', [
-            'controller_name' => 'OperationsController',
+            'international' => $form->createView(),
         ]);
     }
 

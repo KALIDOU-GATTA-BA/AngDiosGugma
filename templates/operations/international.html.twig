@@ -1,15 +1,23 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello OperationsController!{% endblock %}
-
+{% form_theme international 'bootstrap_4_layout.html.twig'  %}
+{% block title %}International{% endblock %}
 {% block body %}
-<style>
 
-</style>
+    <h1 style="text-decoration:underline">International</h1>
+    {{form_start(international)}}
 
-<div class="example-wrapper">
-    <h1 style="text-decoration:underline">INTERNATIONAL</h1>
-    <p>
-    </p>
-</div>
+
+    {{ form_row(international.title, {'attr' : { 'placeholder': "Title"},  'label': 'Title'} ) }}
+    {{ form_row(international.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(international)}}
+
 {% endblock %}

@@ -1,12 +1,23 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello OperationsController!{% endblock %}
-
+{% form_theme negros 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Mindanao{% endblock %}
 {% block body %}
 
-	<div class="example-wrapper">
-	    <h1 style="text-decoration:underline">NEGROS</h1>
-	    <p>Lorem ipsum dolor</p>
-	</div>
+    <h1 style="text-decoration:underline">Mindanao</h1>
+    {{form_start(negros)}}
+
+
+    {{ form_row(negros.title, {'attr' : { 'placeholder': "Title"},  'label': 'Title'} ) }}
+    {{ form_row(negros.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(negros)}}
 
 {% endblock %}

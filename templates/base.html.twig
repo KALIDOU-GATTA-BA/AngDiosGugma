@@ -16,7 +16,6 @@
   <li class="dropdown">
           <a href="{{path('home')}}" class="nav-link"  style="color:white">HOME<span class="caret"></span></a>
   </li>
-
   <li class="dropdown">
           <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">ANG DIOS GUGMA <span class="caret"></span></a>
           <ul class="dropdown-menu" style="width:400px" role="menu">
@@ -29,25 +28,25 @@
   <li class="dropdown">
           <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">OPERATIONS <span class="caret"></span></a>
           <ul class="dropdown-menu" style="width:400px" role="menu">
-            <li><a href="{{path('iloilo')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c"  onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_iloilo')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c"  onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'">ILOILO</a></li>
-            <li><a href="{{path('capiz')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_capiz')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">CAPIZ</a></li>
-            <li><a href="{{path('antique')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_antique')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">ANTIQUE</a></li>
-            <li><a href="{{path('aklan')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_aklan')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">AKLAN</a></li>
-            <li><a href="{{path('guimaras')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_guimaras')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">GUIMARAS</a></li>
-            <li><a href="{{path('negros')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_negros')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">NEGROS</a></li>
-            <li><a href="{{path('mindanao')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_mindanao')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">MINDANAO</a></li>
-            <li><a href="{{path('metroManila')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_metro_manila')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">METRO MANILA</a></li>
-            <li><a href="{{path('international')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
+            <li><a href="{{path('recap_international')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
    onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c">INTERNATIONAL</a></li>
           </ul>
         </li>
@@ -92,9 +91,13 @@
   <li class="dropdown">
           <a href="#" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white">DONATION <span class="caret"></span></a>  
   </li>
+  <li class="dropdown">
+          <a href="{{path('security_login')}}" class="nav-link"  style="color:white"><i class="fa fa-user-o" style="text-align:right; color:white; font-weight:bold"></i><span class="caret"></span></a>
+</li> 
   </li>
   
-</ul>
+</ul> 
+
         <div class="container">
             {% block body %}{% endblock %}
         </div>
