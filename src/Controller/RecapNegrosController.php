@@ -13,6 +13,7 @@ class RecapNegrosController extends AbstractController
      */
     public function index()
     {
+        
         $repo = $this->getDoctrine()->getRepository(Negros::class);
         $articles = $repo ->findAll() ;
         $articles1=$articles[0];
