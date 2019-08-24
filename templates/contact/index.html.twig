@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 {% form_theme contact 'bootstrap_4_layout.html.twig'  %}
 {% block title %}Contact{% endblock %}
+
 {% block body %}
 
-    <h1>Contact Form </h1>
+    <i class="fa fa-phone" aria-hidden="false" style="color:red;"></i>
+
+    <h1>Contact Form</h1>
     {{form_start(contact)}}
 
     {{ form_row(contact.firstName, {'attr' : { 'placeholder': "Your first name"}, 'label': 'First Name' } ) }}
