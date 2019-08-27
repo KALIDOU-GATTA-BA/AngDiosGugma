@@ -20,7 +20,7 @@ class InternationalType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => International::class,  
+            'data_class' => International::class,
         ]);
     }
 }

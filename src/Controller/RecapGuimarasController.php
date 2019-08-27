@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Guimaras;
 
-
 class RecapGuimarasController extends AbstractController
 {
     /**
@@ -14,7 +13,7 @@ class RecapGuimarasController extends AbstractController
      */
     public function index()
     {
-       $repo = $this->getDoctrine()->getRepository(Guimaras::class);
+        $repo = $this->getDoctrine()->getRepository(Guimaras::class);
         $articles = $repo ->findAll() ;
         $articles1=$articles[0];
         $articles2=$articles[1];

@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\MetroManila;
 
-
 class RecapMetroManilaController extends AbstractController
 {
     /**
@@ -31,6 +30,6 @@ class RecapMetroManilaController extends AbstractController
             'article5' => $articles5,
             'article6' => $articles6,
             
-        ]);  
+        ]);
     }
 }

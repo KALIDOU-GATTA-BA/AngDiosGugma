@@ -30,6 +30,6 @@ class RecapInternationalController extends AbstractController
             'article5' => $articles5,
             'article6' => $articles6,
             
-        ]);  
+        ]);
     }
 }

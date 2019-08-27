@@ -20,7 +20,7 @@ class MetroManilaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => MetroManila::class,  
+            'data_class' => MetroManila::class,
         ]);
     }
 }

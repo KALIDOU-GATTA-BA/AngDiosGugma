@@ -21,7 +21,7 @@ class CommunityIncType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => CommunityInc::class,  
+            'data_class' => CommunityInc::class,
         ]);
-    } 
+    }
 }

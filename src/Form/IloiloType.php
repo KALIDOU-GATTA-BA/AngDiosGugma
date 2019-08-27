@@ -20,7 +20,7 @@ class IloiloType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Iloilo::class,  
+            'data_class' => Iloilo::class,
         ]);
     }
 }

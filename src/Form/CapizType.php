@@ -20,7 +20,7 @@ class CapizType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Capiz::class,  
+            'data_class' => Capiz::class,
         ]);
     }
 }

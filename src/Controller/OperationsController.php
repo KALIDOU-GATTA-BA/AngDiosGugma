@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class OperationsController extends AbstractController
 {
-	private $formHandler;
+    private $formHandler;
     /**
      * @var ContactFormHandler
      */
@@ -41,9 +41,9 @@ class OperationsController extends AbstractController
      */
     public function iloilo(Request $request)
     {
-    	$form = $this->createForm(IloiloType::class)->handleRequest($request);
+        $form = $this->createForm(IloiloType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-        	return $this->redirectToRoute('recap_iloilo');
+            return $this->redirectToRoute('recap_iloilo');
         }
         return $this->render('operations/iloilo.html.twig', [
             'iloilo' => $form->createView(),
@@ -54,10 +54,9 @@ class OperationsController extends AbstractController
      */
     public function capiz(Request $request)
     {
-    	
         $form = $this->createForm(CapizType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-        	return $this->redirectToRoute('recap_capiz');
+            return $this->redirectToRoute('recap_capiz');
         }
         return $this->render('operations/capiz.html.twig', [
             'capiz' => $form->createView(),
@@ -69,10 +68,9 @@ class OperationsController extends AbstractController
      */
     public function antique(Request $request)
     {
-        
         $form = $this->createForm(AntiqueType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-        	return $this->redirectToRoute('recap_antique');
+            return $this->redirectToRoute('recap_antique');
         }
         return $this->render('operations/antique.html.twig', [
             'antique' => $form->createView(),
@@ -80,13 +78,12 @@ class OperationsController extends AbstractController
     }
     /**
      * @Route("/aklan", name="aklan")
-     */ 
+     */
     public function aklan(Request $request)
     {
-
-    	$form = $this->createForm(AklanType::class)->handleRequest($request);
+        $form = $this->createForm(AklanType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-        	return $this->redirectToRoute('recap_aklan');
+            return $this->redirectToRoute('recap_aklan');
         }
 
         return $this->render('operations/aklan.html.twig', [
@@ -156,7 +153,7 @@ class OperationsController extends AbstractController
      */
     public function international(Request $request)
     {
-         $form = $this->createForm(InternationalType::class)->handleRequest($request);
+        $form = $this->createForm(InternationalType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('recap_international');
         }
@@ -165,5 +162,4 @@ class OperationsController extends AbstractController
             'international' => $form->createView(),
         ]);
     }
-
 }

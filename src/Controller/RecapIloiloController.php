@@ -13,7 +13,7 @@ class RecapIloiloController extends AbstractController
      */
     public function index()
     {
-    	$repo = $this->getDoctrine()->getRepository(Iloilo::class);
+        $repo = $this->getDoctrine()->getRepository(Iloilo::class);
         $articles = $repo ->findAll() ;
         $articles1=$articles[0];
         $articles2=$articles[1];
@@ -30,6 +30,6 @@ class RecapIloiloController extends AbstractController
             'article5' => $articles5,
             'article6' => $articles6,
             
-        ]);  
+        ]);
     }
 }

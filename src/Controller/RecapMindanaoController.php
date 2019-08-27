@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Mindanao;
 
-
 class RecapMindanaoController extends AbstractController
 {
     /**
@@ -31,6 +30,6 @@ class RecapMindanaoController extends AbstractController
             'article5' => $articles5,
             'article6' => $articles6,
             
-        ]);  
+        ]);
     }
 }

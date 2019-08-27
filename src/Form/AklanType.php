@@ -20,7 +20,7 @@ class AklanType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Aklan::class,  
+            'data_class' => Aklan::class,
         ]);
     }
 }

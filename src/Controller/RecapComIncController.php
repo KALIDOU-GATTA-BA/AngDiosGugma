@@ -13,12 +13,12 @@ class RecapComIncController extends AbstractController
      */
     public function index()
     {
-    	$repo = $this->getDoctrine()->getRepository(CommunityInc::class);
+        $repo = $this->getDoctrine()->getRepository(CommunityInc::class);
         $articles = $repo ->findAll() ;
         
         return $this->render('recap_com_inc/index.html.twig', [
             'controller_name' => 'BlogController',
             'articles' =>$articles
-        ]);  
+        ]);
     }
 }

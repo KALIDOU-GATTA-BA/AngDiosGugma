@@ -27,7 +27,7 @@ class CommunityInc
     private $title;
 
     public function getId(): ?int
-    {           
+    {
         return $this->id;
     }
 

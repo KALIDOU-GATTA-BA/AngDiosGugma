@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
@@ -6,15 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Antique;
 
-
 class RecapAntiqueController extends AbstractController
 {
-   /**
-     * @Route("/recap/antique", name="recap_antique")
-     */
+    /**
+      * @Route("/recap/antique", name="recap_antique")
+      */
     public function index()
     {
-    	 $repo = $this->getDoctrine()->getRepository(Antique::class);
+        $repo = $this->getDoctrine()->getRepository(Antique::class);
         $articles = $repo ->findAll() ;
         $articles1=$articles[0];
         $articles2=$articles[1];

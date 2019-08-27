@@ -20,7 +20,7 @@ class GuimarasType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Guimaras::class,  
+            'data_class' => Guimaras::class,
         ]);
     }
 }
