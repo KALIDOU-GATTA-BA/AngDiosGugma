@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% form_theme actualities 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Actualities{% endblock %}
+{% block body %}
+
+    <h1>Actualities</h1>
+    {{form_start(actualities)}}
+
+    {{ form_row(actualities.title, {'attr' : { 'placeholder': "Title"}, 'label': 'Title' } ) }}
+
+    {{ form_row(actualities.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+    {{ form_row(actualities.image, {'attr' : { 'placeholder': "Image"},  'label': 'Image'} ) }}
+
+    
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(actualities)}}
+
+{% endblock %}
