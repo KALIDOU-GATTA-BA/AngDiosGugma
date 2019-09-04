@@ -2,26 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\Actualities;
+use App\Entity\Donation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ActualitiesType extends AbstractType
+class DonationProcess_1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content')
-            ->add('author')
+            ->add('name')
+            ->add('country')
+            ->add('phone')
+            ->add('email')
+            ->add('age')
+            ->add('occupation')
+            ->add('donationNumber')
+            ->add('postalAddress')
+
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Actualities::class,
+            'data_class' => Donation::class,
         ]);
     }
 }

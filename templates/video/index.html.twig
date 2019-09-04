@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% form_theme video 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Video{% endblock %}
+{% block body %}
+
+    <h1>Video</h1> 
+    {{form_start(video)}}
+
+    {{ form_row(video.link, {'attr' : { 'placeholder': "Put here the link..."}, 'label': 'Link' } ) }}
+
+    {{ form_row(video.title, {'attr' : { 'placeholder': "Add a title for the video..."},  'label': 'Title'} ) }}
+    
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(video)}}
+
+{% endblock %}

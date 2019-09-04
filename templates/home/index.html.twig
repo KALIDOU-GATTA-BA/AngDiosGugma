@@ -43,25 +43,30 @@
                     </div>
                     <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
                        <div class="news"> 
-                          <h3>
-                                  FGHJ
-                                  <em>le 3456></em>
-                          </h3>                           
-                              <p style="color:black">LOREMLOREMLOREMLOREMLO</p>
+                          <h3 style="text-align:center;border-radius: 12px;border: 2px solid;">
+                                  {{ lastActuTitle }} 
+                          </h3>     
+                          <p style="color:black;"><br>
+                                  {{lastActuContent}}
+                          </p>
+                          <p style="color:black;text-align:center;font-size:12px">
+                                 <strong><em>Author: <span style="text-decoration:underline">{{author}}</span></em></strong>
+                          </p>                      
                           <p style="color:red">  
-                              <a href=""><em>Read more</em></a>
+                              <a href="{{path('recap_actualities')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:white;background-color:red;border:2px solid;">Read more</em></a>
                           </p> 
                        </div>
                     </div>
                     <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
                        <div class="news"> 
-                          <h3>
-                                  FGHJ
-                                  <em>le 3456></em>
+                          <h3 style="text-align:center;border-radius: 12px;border: 2px solid;">
+                                  Last posted video
                           </h3>                           
-                              <p style="color:black">LOREMLOREMLOREMLOREMLO</p>
+                              <p style="color:black;font-size:12px"><br><br><strong><em>{{ videoTitle }}</em></strong></p>
                           
-                              <a href=""><em>play</em></a>
+                              <a href="{{videoLink}}" target="_blank">
+                              <img style="height:100px; " src="{{  asset ('images/play_icone.png') }}"/>
+                              </a>
                        </div>
                     </div>
         </div>

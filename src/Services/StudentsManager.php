@@ -44,7 +44,7 @@ class StudentsManager
     {
         $res = $this->entityManager->createQuery('SELECT r FROM App\Entity\StudentAdd r ')->getResult();
 
-        $i='';
+        $i=''; 
         $j='';
         $buffer=0;
       

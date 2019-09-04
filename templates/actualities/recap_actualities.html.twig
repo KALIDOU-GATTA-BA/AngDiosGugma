@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Actualities{% endblock %}
+{% block body %}
+
+   
+    <h1>{{article1Title }}</h1> 
+
+    
+    	<p style="color:black;font-size:13px">{{article1Content }}</p>
+
+<br>
+  	<h1>{{article2Title }}</h1>
+
+    	<p style="color:black;font-size:13px">{{article2Content }}</p>
+
+<br>
+    <h1>{{article3Title }}</h1>
+
+    	<p style="color:black;font-size:13px">{{article3Content }}</p>
+
+    <br>
+    
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+{% endblock %}
