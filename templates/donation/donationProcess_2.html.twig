@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% form_theme donationProcess_2 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Donation{% endblock %}
+{% block body %}
+
+    <h1>Donation</h1> 
+
+    {{form_start(donationProcess_2)}}
+
+    {{ form_row(donationProcess_2.currency, {'attr' : { 'placeholder': "Select your currency"}, 'label': 'Currency' } ) }}
+
+
+    {{ form_row(donationProcess_2.amount, {'attr' : { 'placeholder': "Amount"}, 'label': 'Amount' } ) }}
+
+
+    
+    <button type="submit" class ="btn">Validate</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(donationProcess_2)}}
+    <form action="{{path('donation_payment')}}" method="POST" class='stripe_payment'>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_live_IQCBAdS6DTaqctUfaF0mBkgE00GgEg2L54"
+    data-amount="100"
+    data-name="Stripe.com"
+    data-description="Example charge"
+    data-image="https://www.lebaladin.fr/wp-content/uploads/2018/10/louvre-102840_960_720.jpg"
+    data-locale="auto"
+    data-currency="eur"
+    data-label="Procéder au paiement"
+    data-zip-code="false">
+  </script>
+</form>
+
+{% endblock %}

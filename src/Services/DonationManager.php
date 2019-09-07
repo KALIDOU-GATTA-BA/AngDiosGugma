@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class DonationManager
 {
@@ -26,14 +28,31 @@ class DonationManager
 
         return $message->setTo('baniabina.ba@gmail.com');
     }
-}  
+    public function getSessionDonationForm()
+    {
+        $ss= new Session();
+        return $ss->get('donationForm');
+    }
+    public function setDonationForm()
+    {
 
-/*
-namespace App\Services;
+    }
+    public function setSession()
+    {
+        $session = new Session();
 
-use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\HttpFoundation\Request;
+        return $reservation = $session->get('reservation');
+    }
+
+    public function checkPayment()
+    {
+         $session = new Session();
+
+            return $reservation = $session->get('reservation');
+
+    }
+} 
+ /*
 
     public function checkPayment()
     {
@@ -63,7 +82,8 @@ use Symfony\Component\HttpFoundation\Request;
                 foreach ($reservation->getTickets() as $ticket) {
                     $nom = $ticket->getName();
                     $birthDate = $ticket->getBirthDate()->format('Y-m-d');
-                    $country = $ticket->getCountry();
+
+
                     $ticketType = $ticket->getTicketType();
                     ++$i;
                 }

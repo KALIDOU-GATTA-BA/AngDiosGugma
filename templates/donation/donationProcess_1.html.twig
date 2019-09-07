@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% form_theme donationProcess_1 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Donation{% endblock %}
+{% block body %}
+
+    <h1>Donation</h1> 
+
+    {{form_start(donationProcess_1)}}
+
+    {{ form_row(donationProcess_1.name, {'attr' : { 'placeholder': "Your full name"}, 'label': 'Full name' } ) }}
+
+    {{ form_row(donationProcess_1.age, {'attr' : { 'placeholder': "Your age"},  'label': 'Age'} ) }}
+
+    {{ form_row(donationProcess_1.phone, {'attr' : { 'placeholder': "Your phone number"},  'label': 'Phone number'} ) }}
+
+    {{ form_row(donationProcess_1.email, {'attr' : { 'placeholder': "Your E-amil"},  'label': 'Your E-mail'} ) }}
+
+
+    {{ form_row(donationProcess_1.postalAddress, {'attr' : { 'placeholder': "Your postal address"},  'label': 'Postal address'} ) }}
+
+    {{ form_row(donationProcess_1.occupation, {'attr' : { 'placeholder': "Your occupation"},  'label': 'Occupation'} ) }}
+
+    {{ form_row(donationProcess_1.country) }}
+
+    {{ form_row(donationProcess_1.donationNumber) }}
+
+
+    
+    
+   <a href="{{path('donationProcess_2')}}"> <button type="submit" class ="btn">Next</button></a><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(donationProcess_1)}}
+
+{% endblock %}

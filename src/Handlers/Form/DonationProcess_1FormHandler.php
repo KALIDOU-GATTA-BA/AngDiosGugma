@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class DonationFormHandler
+class DonationProcess_1FormHandler
 {
     private $entityManager;
 
@@ -18,13 +18,10 @@ class DonationFormHandler
     public function handle(FormInterface $form)
     {
         if ($form->isSubmitted() && $form->isValid()) {
-            $form = $form->getData();
-           // $this->entityManager->persist($form);
-           // $this->entityManager->flush();
-            
-            $ss=new Session();
-            $ss->set('donation', $form);
-            return true;
+           $form = $form->getData();
+           $ss=new Session();
+           $ss->set('donation', $form);
+           return true;
         }
     }
 }

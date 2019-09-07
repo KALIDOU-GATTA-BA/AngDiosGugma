@@ -35,7 +35,7 @@ class Donation
      * @ORM\Column(type="string", length=400)
      */
     private $postalAddress;
-
+                                                
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -55,16 +55,6 @@ class Donation
      * @ORM\Column(type="integer", nullable=true)
      */
     private $donationNumber;
-
-    /**
-     * @ORM\Column(type="string", length=10)
-     */
-    private $currency;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $amount;
 
     public function getId(): ?int
     {
@@ -167,27 +157,4 @@ class Donation
         return $this;
     }
 
-    public function getCurrency(): ?string
-    {
-        return $this->currency;
-    }
-
-    public function setCurrency(string $currency): self
-    {
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    public function getAmount(): ?float
-    {
-        return $this->amount;
-    }
-
-    public function setAmount(float $amount): self
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
 }
