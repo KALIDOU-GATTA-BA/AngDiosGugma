@@ -18,7 +18,8 @@ class DonationProcess_2FormHandler
     public function handle(FormInterface $form)
     {
         if ($form->isSubmitted() && $form->isValid()) {
-           return true;
+            $ss=new Session();
+            return true;
         }
     }
 }

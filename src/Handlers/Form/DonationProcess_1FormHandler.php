@@ -21,7 +21,7 @@ class DonationProcess_1FormHandler
             $form = $form->getData();
             $this->entityManager->persist($form);
             $this->entityManager->flush();
-            return true;   
+            return true;
         }
     }
 }

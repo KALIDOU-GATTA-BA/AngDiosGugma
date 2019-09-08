@@ -8,7 +8,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-
 class DonationProcess_2Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -23,7 +22,7 @@ class DonationProcess_2Type extends AbstractType
                     'USD' => 'USD',
                     'SGD' => 'SGD',
                     'EUR' => 'EUR',
-                    'CND' => 'CND',
+                    'CAD' => 'CAD',
                 ], ])
         ;
     }

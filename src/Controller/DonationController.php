@@ -15,21 +15,16 @@ use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use App\Entity\DonationPayment;
+use App\Services\DonationManager;
 
-
-
-//use App\Services\DontationManager;
-
-
-class DonationController extends AbstractController	
+class DonationController extends AbstractController
 {
-
-	private $formHandler;
+    private $formHandler;
     
     /**
      * @var ContactFormHandler
      */
-     public function __construct(DonationFormHandler $formHandler)
+    public function __construct(DonationFormHandler $formHandler)
     {
         $this->formHandler = $formHandler;
     }
@@ -39,13 +34,12 @@ class DonationController extends AbstractController
      */
     public function donationProcess_1(Request $request)
     {
-
         $form = $this->createForm(DonationProcess_1Type::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('donationProcess_2');
         }
        
-         return $this->render('donation/donationProcess_1.html.twig', [
+        return $this->render('donation/donationProcess_1.html.twig', [
             'donationProcess_1' => $form->createView(),
         ]);
     }
@@ -55,42 +49,40 @@ class DonationController extends AbstractController
      */
     public function donationProcess_2(Request $request)
     {
-
         $form = $this->createForm(DonationProcess_2Type::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('go_to_payment');
         }
        
-         return $this->render('donation/donationProcess_2.html.twig', [
+        return $this->render('donation/donationProcess_2.html.twig', [
             'donationProcess_2' => $form->createView(),
         ]);
-
     }
 
     /**
      * @Route("/donationPayment", name="donation_payment")
      */
-    public function donationPayment()
+    public function donationPayment(DonationManager $dm)
     {
-        \Stripe\Stripe::setApiKey('jhgf');
+        \Stripe\Stripe::setApiKey('sk_test_gpKxIKuEzEW5gMZcPvWPAewK00mlglAU2B');
         $request = new Request(
             $_GET,
             $_POST
                     );
         $token = $request->request->get('stripeToken');
 
+        $currency=$dm->getCurrency();
+     
         $charge = \Stripe\Charge::create([
-            'amount' => 10,
-            'currency' => 'eur',
-            'description' => 'Example charge',
+            'amount' => $dm->getAmount() * 100,
+            'currency' => ''.$currency.'',
+            'description' => 'Ang Dios Gugma',
             'source' => $token,
         ]);
+
         if ('succeeded' == $charge['status']) {
-                
-                return $this->redirectToRoute('home');
-        }
-        else
-        {
+            return $this->redirectToRoute('home');
+        } else {
             die();
         }
 
@@ -98,14 +90,17 @@ class DonationController extends AbstractController
             'controller_name' => 'DonationController',
         ]);
     }
+
     /**
      * @Route("/payment", name="go_to_payment")
      */
-    public function goToPayment(){
-        $amount=10;
+    public function goToPayment(DonationManager $dm)
+    {
+        $amount=$dm->getAmount()*100;
+        $currency=$dm->getCurrency();
         return $this->render('donation/payment.html.twig', [
             'amount' => $amount,
+            'currency'=>$currency,
         ]);
     }
-
 }

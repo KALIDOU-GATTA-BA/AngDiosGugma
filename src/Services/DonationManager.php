@@ -5,12 +5,13 @@ namespace App\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class DonationManager
 {
     public function __construct(ObjectManager $entityManager)
     {
-        $this->entityManager = $entityManager;               
+        $this->entityManager = $entityManager;
     }
 
     public function sql()
@@ -28,74 +29,14 @@ class DonationManager
 
         return $message->setTo('baniabina.ba@gmail.com');
     }
-    public function getSessionDonationForm()
+    public function getAmount()
     {
         $ss= new Session();
-        return $ss->get('donationForm');
+        return $ss->get('donation')->getAmount();
     }
-    public function setDonationForm()
+    public function getCurrency()
     {
-
+        $ss= new Session();
+        return $ss->get('donation')->getCurrency();
     }
-    public function setSession()
-    {
-        $session = new Session();
-
-        return $reservation = $session->get('reservation');
-    }
-
-    public function checkPayment()
-    {
-         $session = new Session();
-
-            return $reservation = $session->get('reservation');
-
-    }
-} 
- /*
-
-    public function checkPayment()
-    {
-        \Stripe\Stripe::setApiKey('sk_test_EgBGQdrRZj3PtAaMKLkm4uFV00i7r6061c');
-        $request = new Request(
-            $_GET,
-            $_POST
-                    );
-        $token = $request->request->get('stripeToken');
-        $buffer = 0;
-        //$reservation_num = null;
-        //$rp = new ReservationProcess();
-        if (0 != $rp->getTotal()) {
-            $charge = \Stripe\Charge::create([
-            'amount' => $rp->getTotal() * 100,
-            'currency' => 'eur',
-            'description' => 'Example charge',
-            'source' => $token,
-        ]);
-
-            $reservation_num = $charge['id'];
-            $reservation = $rp->getSessionReservation();
-
-            if ('succeeded' == $charge['status']) {
-                $reservation->setPayment(true);
-                $i = 0;
-                foreach ($reservation->getTickets() as $ticket) {
-                    $nom = $ticket->getName();
-                    $birthDate = $ticket->getBirthDate()->format('Y-m-d');
-
-
-                    $ticketType = $ticket->getTicketType();
-                    ++$i;
-                }
-                $reservation->setCount($i);
-                $this->entityManager->persist($reservation);
-                $this->entityManager->flush();
-                $buffer = 1;
-            } else {
-                $reservation->setPayment(false);
-                $buffer = -1;
-            }
-        }
-
-        return [$buffer, $reservation_num];
-    }
+}

@@ -7,7 +7,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-
 class VideoManager
 {
     private $request;
@@ -22,14 +21,12 @@ class VideoManager
     
     public function getLastVideo()
     {
+        $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Video id')->getResult();
 
-            $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Video id')->getResult();
+        $res1 = $this->entityManager->createQuery(' SELECT vid FROM App\Entity\Video vid where vid.id = '.$res[0][1].'')->getResult();
+        $a=$res1[0]->getTitle();
+        $b=$res1[0]->getLink();
 
-            $res1 = $this->entityManager->createQuery(' SELECT vid FROM App\Entity\Video vid where vid.id = '.$res[0][1].'')->getResult();
-            $a=$res1[0]->getTitle();
-            $b=$res1[0]->getLink();
-
-            return [$a, $b];
+        return [$a, $b];
     }
-    
 }

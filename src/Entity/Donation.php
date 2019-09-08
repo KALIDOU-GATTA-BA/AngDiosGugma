@@ -156,5 +156,4 @@ class Donation
 
         return $this;
     }
-
 }

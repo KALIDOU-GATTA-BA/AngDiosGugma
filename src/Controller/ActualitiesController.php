@@ -12,11 +12,9 @@ use App\Handlers\Form\ActualitiesFormHandler;
 use App\Entity\Actualities;
 use App\Services\ActualitiesManager;
 
-
 class ActualitiesController extends AbstractController
 {
-
-	private $formHandler;
+    private $formHandler;
     
     /**
      * @var ContactFormHandler
@@ -31,13 +29,12 @@ class ActualitiesController extends AbstractController
      */
     public function index(Request $request, ActualitiesManager $am)
     {
-       
         $form = $this->createForm(ActualitiesType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('home');
         }
        
-         return $this->render('actualities/index.html.twig', [
+        return $this->render('actualities/index.html.twig', [
             'actualities' => $form->createView(),
         ]);
     }
@@ -45,7 +42,8 @@ class ActualitiesController extends AbstractController
     /**
      * @Route("/recap_actualities", name="recap_actualities")
      */
-    public function recapActualities (Request $request, ActualitiesManager $am){
+    public function recapActualities(Request $request, ActualitiesManager $am)
+    {
         $form = $this->createForm(ActualitiesType::class)->handleRequest($request);
 
         $article1Title=$am->getLast3Actualities()[0];
