@@ -72,7 +72,7 @@ class DonationController extends AbstractController
      */
     public function donationPayment()
     {
-        \Stripe\Stripe::setApiKey('sk_live_MWSJiYoZFUW0BMRStG3xoFn600cJ9dDBUB');
+        \Stripe\Stripe::setApiKey('jhgf');
         $request = new Request(
             $_GET,
             $_POST
