@@ -18,7 +18,6 @@ use App\Entity\DonationPayment;
 
 
 
-
 //use App\Services\DontationManager;
 
 
@@ -87,7 +86,7 @@ class DonationController extends AbstractController
             'source' => $token,
         ]);
         if ('succeeded' == $charge['status']) {
-                $reservation->setPayment(true);
+                
                 return $this->redirectToRoute('home');
         }
         else
