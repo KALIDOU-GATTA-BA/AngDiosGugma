@@ -14,7 +14,11 @@
 
 
     
-    <button type="submit" class ="btn">Validate</button><br><br>
+<style>
+.stripe-button-el{
+    color:red;
+}
+</style>
 
     {% block javascript %}
     <script src={{ asset("build/app.js") }}></script>
@@ -27,11 +31,11 @@
     data-key="oiuyhg"
     data-amount="100"
     data-name="Stripe.com"
-    data-description="Example charge"
-    data-image="https://www.lebaladin.fr/wp-content/uploads/2018/10/louvre-102840_960_720.jpg"
+    data-description="Ang Dios Gugma"
+    data-image="{{  asset ('images/36295287_2025187550833951_675333532272295936_n.jpg') }}"
     data-locale="auto"
     data-currency="eur"
-    data-label="Procéder au paiement"
+    
     data-zip-code="false">
   </script>
 </form>

@@ -18,10 +18,10 @@ class DonationProcess_1FormHandler
     public function handle(FormInterface $form)
     {
         if ($form->isSubmitted() && $form->isValid()) {
-           $form = $form->getData();
-           $ss=new Session();
-           $ss->set('donation', $form);
-           return true;
+            $form = $form->getData();
+            $this->entityManager->persist($form);
+            $this->entityManager->flush();
+            
         }
     }
 }
