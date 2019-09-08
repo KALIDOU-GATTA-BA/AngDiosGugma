@@ -58,7 +58,7 @@ class DonationController extends AbstractController
 
         $form = $this->createForm(DonationProcess_2Type::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('go_to_payment');
         }
        
          return $this->render('donation/donationProcess_2.html.twig', [
@@ -80,7 +80,7 @@ class DonationController extends AbstractController
         $token = $request->request->get('stripeToken');
 
         $charge = \Stripe\Charge::create([
-            'amount' => 100,
+            'amount' => 10,
             'currency' => 'eur',
             'description' => 'Example charge',
             'source' => $token,
@@ -98,4 +98,14 @@ class DonationController extends AbstractController
             'controller_name' => 'DonationController',
         ]);
     }
+    /**
+     * @Route("/payment", name="go_to_payment")
+     */
+    public function goToPayment(){
+        $amount=10;
+        return $this->render('donation/payment.html.twig', [
+            'amount' => $amount,
+        ]);
+    }
+
 }

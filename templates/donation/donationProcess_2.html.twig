@@ -2,42 +2,23 @@
 {% form_theme donationProcess_2 'bootstrap_4_layout.html.twig'  %}
 {% block title %}Donation{% endblock %}
 {% block body %}
-
+ 
     <h1>Donation</h1> 
-
+ 
     {{form_start(donationProcess_2)}}
-
+ 
     {{ form_row(donationProcess_2.currency, {'attr' : { 'placeholder': "Select your currency"}, 'label': 'Currency' } ) }}
-
-
+ 
+ 
     {{ form_row(donationProcess_2.amount, {'attr' : { 'placeholder': "Amount"}, 'label': 'Amount' } ) }}
-
-
-    
-<style>
-.stripe-button-el{
-    color:red;
-}
-</style>
-
+ 
+   <button type="submit" class ="btn">Go to payment</button><br><br>
+ 
     {% block javascript %}
     <script src={{ asset("build/app.js") }}></script>
-	{% endblock %}
-
+    {% endblock %}
+ 
     {{form_end(donationProcess_2)}}
-    <form action="{{path('donation_payment')}}" method="POST" class='stripe_payment'>
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="oiuyhg"
-    data-amount="100"
-    data-name="Stripe.com"
-    data-description="Ang Dios Gugma"
-    data-image="{{  asset ('images/36295287_2025187550833951_675333532272295936_n.jpg') }}"
-    data-locale="auto"
-    data-currency="eur"
-    
-    data-zip-code="false">
-  </script>
-</form>
-
+ 
 {% endblock %}
+ 

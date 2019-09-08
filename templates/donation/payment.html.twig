@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Donation{% endblock %}
+{% block body %}
+
+<br><br><br>
+<div style="text-align:center">
+    <img style="height:35px" src="{{  asset ('images/cbType.jpg') }}"/>
+</div>
+<br><br><br>
+<form action="{{path('donation_payment')}}" method="POST" class='stripe_payment'>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_live_IQCBAdS6DTaqctUfaF0mBkgE00GgEg2L54"
+    data-amount="{{amount}}*100"
+    data-name="Stripe.com"
+    data-description="Ang Dios Gugma"
+    data-image="{{  asset ('images/36295287_2025187550833951_675333532272295936_n.jpg') }}"
+    data-locale="auto"
+    data-currency="eur"
+    data-zip-code="false">
+  </script>
+</form>
+
+{% endblock %}
