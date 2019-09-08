@@ -1,210 +1,23 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}Actualities{% endblock %}
 {% block body %}
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+   
+    <h1>tiokuh</h1> 
 
-      <div class="container cta-100 ">
-        <div class="container">
-          <div class="row blog">
-            <div class="col-md-12">
-              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#blogCarousel" data-slide-to="1"></li>
-                </ol>
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div class="row">
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <!--Image-->
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
-                                <h5>{{article1.title}}</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Admin</p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-                                    {{article1.content}}
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <!--Image-->
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
-                                <h5>{{article2.title}}</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Admin </p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-                             {{article2.content}}
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <!--Image-->
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
-                                <h5>{{article3.title}}</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Admin </p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-                              {{article3.content}}
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--.row-->
-                  </div>
-                  <!--.item-->
-                  <div class="carousel-item ">
-                    <div class="row">
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <!--Image-->
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
-                                <h5>{{article4.title}}</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Admin</p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-                             <div class="item-box-blog-text">
-                              <p>  </p>
-                                                            
-                                  <p>{{article4.content}}.</p>
+    
+      <p style="color:black;font-size:13px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                            </div>
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <!--Image-->
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
-                                <h5>{{article5.title}}</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Admin <p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-                              {{article5.content}}
-                            </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4" >
-                        <div class="item-box-blog">
-                          <div class="item-box-blog-image">
-                            <!--Date-->
-                            <!--Image-->
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
-                            <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
-                                <h5>{{article6.title}}</h5>
-                              </a>
-                            </div>
-                            <!--Data-->
-                            <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Admin</p>
-                            </div>
-                            <!--Text-->
-                            <div class="item-box-blog-text">
-                              {{article6.content}}
-                            </div>
-                             <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
-                            <!--Read More Button-->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--.row-->
-                  </div>
-                  <!--.item-->
-                </div>
-                <!--.carousel-inner-->
-              </div>
-              <!--.Carousel-->
-            </div>
-          </div>
-        </div>
-      </div>
-      <pre>
-{% if  app.user %}
+<br>
 
-  <a href="{{path('guimaras')}}"><span style="color:white;align:left; font-style:italic; font-weight:bold;background-color:#503a2c;"><mark>EDIT</mark></span></a>
+    {% if app.user %}
+          <span>
+              <a href="{{path('guimaras')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
+          </span> 
+    {% endif %}
 
-{% endif %}
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+  {% endblock %}
 
-</pre>
 {% endblock %}

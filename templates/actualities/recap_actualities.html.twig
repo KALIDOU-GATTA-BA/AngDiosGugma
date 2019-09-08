@@ -20,6 +20,14 @@
 
     <br>
     
+
+
+    {% if app.user %}
+          <span>
+              <a href="{{path('actualities')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
+          </span> 
+    {% endif %}
+
     {% block javascript %}
     <script src={{ asset("build/app.js") }}></script>
 	{% endblock %}

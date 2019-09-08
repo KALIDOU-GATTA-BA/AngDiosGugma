@@ -1,20 +1,23 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello HealingDelivranceController!{% endblock %}
-
+{% block title %}Actualities{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+   
+    <h1>tiokuh</h1> 
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/adgs/src/Controller/HealingDelivranceController.php'|file_link(0) }}">src/Controller/HealingDelivranceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/adgs/templates/healing_delivrance/index.html.twig'|file_link(0) }}">templates/healing_delivrance/index.html.twig</a></code></li>
-    </ul>
-</div>
+    
+      <p style="color:black;font-size:13px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<br>
+
+    {% if app.user %}
+          <span>
+              <a href="{{path('iloilo')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
+          </span> 
+    {% endif %}
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+  {% endblock %}
+
 {% endblock %}

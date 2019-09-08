@@ -18,11 +18,12 @@ class DonationProcess_2Type extends AbstractType
             ->add('currency', ChoiceType::class, [
                 'label' => 'Donation number',
                 'choices' => [
-                    'PHP' => 'PHP',
-                    'USD' => 'USD',
-                    'SGD' => 'SGD',
-                    'EUR' => 'EUR',
-                    'CAD' => 'CAD',
+                    'PHP(Filipino pesos)' => 'PHP',
+                    'USD(US dollar)' => 'USD',
+                    'SGD(Singaporean dollar)' => 'SGD',
+                    'EUR(Euro)' => 'EUR',
+                    'CAD(Canadian dollar)' => 'CAD',
+                    'HKD(Hong Kong dollar)' => 'HKD',
                 ], ])
         ;
     }
