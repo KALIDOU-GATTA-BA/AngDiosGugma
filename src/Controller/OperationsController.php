@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
 class OperationsController extends AbstractController
 {
     private $formHandler;
+
     /**
      * @var ContactFormHandler
      */
@@ -27,6 +28,7 @@ class OperationsController extends AbstractController
     {
         $this->formHandler = $formHandler;
     }
+
     /**
      * @Route("/operations", name="operations")
      */
@@ -36,6 +38,7 @@ class OperationsController extends AbstractController
             'controller_name' => 'OperationsController',
         ]);
     }
+
     /**
      * @Route("/iloilo", name="iloilo")
      */
@@ -49,6 +52,7 @@ class OperationsController extends AbstractController
             'iloilo' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/capiz", name="capiz")
      */
@@ -76,6 +80,7 @@ class OperationsController extends AbstractController
             'antique' => $form->createView(),
             ]);
     }
+
     /**
      * @Route("/aklan", name="aklan")
      */
@@ -105,6 +110,7 @@ class OperationsController extends AbstractController
             'guimaras' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/negros", name="negros")
      */
@@ -119,6 +125,7 @@ class OperationsController extends AbstractController
             'negros' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/mindanao", name="mindanao")
      */
@@ -148,6 +155,7 @@ class OperationsController extends AbstractController
             'metroManila' => $form->createView(),
         ]);
     }
+    
     /**
      * @Route("/international", name="international")
      */
