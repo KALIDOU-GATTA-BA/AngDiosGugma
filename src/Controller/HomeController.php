@@ -29,4 +29,12 @@ class HomeController extends AbstractController
             'videoLink'=>$videoLink,
         ]);
     }
+    /**
+     * @Route("/adminHome", name="admin_home")
+     */
+    public function adminHome(){
+        return $this->render('home/adminHome.html.twig', [
+            'lastActuContent' => 'adminHome',
+        ]);
+    }
 }

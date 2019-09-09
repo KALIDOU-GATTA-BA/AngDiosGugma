@@ -1,16 +1,24 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}Community Inc{% endblock %}
 {% block body %}
 <section class ="articles">
 {% for article in articles %}
-	<article>
-	
-	 <h1 class='resa_recap'>{{article.title}}</h1>
-        <pre class='recap'>
-        		{{article.AddArticleComInc}}
-		</pre>
-			
-	</article>
+  <article>
+    <h2 style="text-align:center"> {{article.title}} </h2>
+      <div style ="text-align:justify">
+          {{article.content}}
+      </div>
+  </article>
 {% endfor %}
 </section>
+    {% if app.user %}
+          <span>
+              <a href="{{path('community_inc')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
+          </span> 
+    {% endif %}
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+  {% endblock %}
+
 {% endblock %}

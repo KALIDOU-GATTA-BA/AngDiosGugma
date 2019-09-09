@@ -38,13 +38,7 @@ class SecurityController extends AbstractController
      */
     
     public function login()
-    {   /*//session test
-        if (isset($this->session)) {
-            return $this->redirectToRoute('path');
-        }
-        else{
-            return $this->redirectToRoute('security_logout')
-        }*/
+    {   
         return $this->render('security/login.html.twig');
     }
 
