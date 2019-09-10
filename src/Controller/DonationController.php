@@ -56,7 +56,7 @@ class DonationController extends AbstractController
         if ($this->formHandler->handle($form)) {
             $ss=new Session();
             $ss->set('donationForm2', $form->getNormData());
-            return $this->redirectToRoute('maintenance');
+            return $this->redirectToRoute('go_to_payment');
         }
        
         return $this->render('donation/donationProcess_2.html.twig', [
