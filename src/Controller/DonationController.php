@@ -122,15 +122,11 @@ class DonationController extends AbstractController
         $amount=$ss->get('donationForm2')->getAmount();
         $currency=$ss->get('donationForm2')->getCurrency();
         $ref=$ss->get('charge');
-
-
-
-        $message = (new \Swift_Message('Donation'))
+        $messageToUser = (new \Swift_Message('Donation'))
         ->setFrom('kalidougattaba@gmail.com')
         ->setTo(''.$email.'')
         ->setBody(
             $this->renderView(
-                // templates/emails/registration.html.twig
                 'emails/mailPayment.html.twig',
                 ['name' => $name,
                  'amount' => $amount,
@@ -141,7 +137,34 @@ class DonationController extends AbstractController
             'text/html'
         )
     ;
-        $mailer->send($message);
+        //daulomarygrace@yahoo.com
+        $phone=$ss->get('donationForm1')->getPhone();
+        $occupation=$ss->get('donationForm1')->getOccupation();
+        $age=$ss->get('donationForm1')->getAge();
+        $country=$ss->get('donationForm1')->getCountry();
+        $messageToAdmin = (new \Swift_Message('Donation'))
+        ->setFrom('kalidougattaba@gmail.com')
+        ->setTo('daulomarygrace@yahoo.com')
+        ->setBody(
+            $this->renderView(
+                'emails/mailToAdmin.html.twig',
+                ['name' => $name,
+                 'amount' => $amount,
+                 'currency' => $currency,
+                 'occupation'=>$occupation,
+                 'age'=>$age,
+                 'country'=>$country,
+                 'phone'=>$phone,
+                 'email'=>$email,
+                ]
+            ),
+            'text/html'
+        )
+    ;
+
+
+        $mailer->send($messageToUser);
+        $mailer->send($messageToAdmin);
         return $this->render('donation/payment_succeeded.html.twig', [
             'name' => $name,
             'email' => $email,
