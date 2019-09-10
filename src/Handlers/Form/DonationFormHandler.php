@@ -19,11 +19,8 @@ class DonationFormHandler
     {
         if ($form->isSubmitted() && $form->isValid()) {
             $form = $form->getData();
-            // $this->entityManager->persist($form);
-            // $this->entityManager->flush();
-            
-            $ss=new Session();
-            $ss->set('donation', $form);
+            $this->entityManager->persist($form);
+            $this->entityManager->flush();
             return true;
         }
     }

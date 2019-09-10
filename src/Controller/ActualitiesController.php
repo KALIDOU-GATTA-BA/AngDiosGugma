@@ -44,24 +44,10 @@ class ActualitiesController extends AbstractController
      */
     public function recapActualities(Request $request, ActualitiesManager $am)
     {
-        $form = $this->createForm(ActualitiesType::class)->handleRequest($request);
-
-        $article1Title=$am->getLast3Actualities()[0];
-        $article1Content=$am->getLast3Actualities()[1];
-
-        $article2Title=$am->getLast3Actualities()[2];
-        $article2Content=$am->getLast3Actualities()[3];
-
-        $article3Title=$am->getLast3Actualities()[4];
-        $article3Content=$am->getLast3Actualities()[5];
-
+       $repo = $this->getDoctrine()->getRepository(Actualities::class);
+        $articles = $repo ->findAll() ;
         return $this->render('actualities/recap_actualities.html.twig', [
-            'article1Title' => $article1Title,
-            'article1Content' => $article1Content,
-            'article2Title' => $article2Title,
-            'article2Content' => $article2Content,
-            'article3Title' => $article3Title,
-            'article3Content' => $article3Content,
-        ]);
+            'articles' => $articles,
+            ]);
     }
 }

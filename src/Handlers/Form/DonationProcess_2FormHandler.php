@@ -19,6 +19,7 @@ class DonationProcess_2FormHandler
     {
         if ($form->isSubmitted() && $form->isValid()) {
             $ss=new Session();
+            $ss->set('donationForm2', $form);
             return true;
         }
     }

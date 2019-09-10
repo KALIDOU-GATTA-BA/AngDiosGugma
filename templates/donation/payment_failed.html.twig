@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payment success!{% endblock %}
+
+{% block body %} 
+
+<div><br><br><br><br>
+    <h6 style ="text-align:center;color:black;background-color:white">GOD Bless you {{name}} ! You tried to give {{currency}} {{amount}} to Ang Dios Gugma community.<br> But the payment has not been made. <br> You can <a href="{{path('donationProcess_2')}}"><strong><mark>try again</mark></strong></a></h6>
+    <br>
+</div>
+{% endblock %}

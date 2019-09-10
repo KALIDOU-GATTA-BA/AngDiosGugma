@@ -29,14 +29,18 @@ class DonationManager
 
         return $message->setTo('baniabina.ba@gmail.com');
     }
-    public function getAmount()
+    public function mailInvoice()
     {
-        $ss= new Session();
-        return $ss->get('donation')->getAmount();
-    }
-    public function getCurrency()
-    {
-        $ss= new Session();
-        return $ss->get('donation')->getCurrency();
+        /* $ss=new Session();
+
+         $ss->get('donationForm1')->getName();
+         $ss->get('donationForm1')->getEmail();
+         $ss->get('donationForm2')->getAmount();
+         $ss->get('donationForm2')->getCurrency();
+
+         $message = (new \Swift_Message($this->sql()[3]))
+                     ->setFrom($this->sql()[4]);
+
+         return $message->setTo('baniabina.ba@gmail.com');*/
     }
 }

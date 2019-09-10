@@ -1,26 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block title %}Actualities{% endblock %}
 {% block body %}
-
-   
-    <h1>{{article1Title }}</h1> 
-
+  
     
-    	<p style="color:black;font-size:13px">{{article1Content }}</p>
-
-<br>
-  	<h1>{{article2Title }}</h1>
-
-    	<p style="color:black;font-size:13px">{{article2Content }}</p>
-
-<br>
-    <h1>{{article3Title }}</h1>
-
-    	<p style="color:black;font-size:13px">{{article3Content }}</p>
-
-    <br>
-    
-
+<section class ="articles">
+{% for article in articles %}
+  <article>
+    <h1 style="text-align:center"> {{article.title}} </h1>
+      <div style ="text-align:justify">
+          {{article.content}}
+      </div>
+      <br>
+      <p style="color:black; text-decoration:underline">{{article.author}} </p>
+  </article>
+{% endfor %}
+</section>
+ 
 
     {% if app.user %}
           <span>

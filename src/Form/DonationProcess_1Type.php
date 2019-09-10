@@ -26,16 +26,7 @@ class DonationProcess_1Type extends AbstractType
             ->add('occupation')
             ->add('postalAddress')
 
-            ->add('donationNumber', ChoiceType::class, [
-                'label' => 'Donation number',
-                'choices' => [
-                    '1' => '1',
-                    '2' => '2',
-                    '3' => '3',
-                    '4' => '4',
-                    '5' => '5',
-                    'more' => 'more',
-                ], ])
+            ->add('donationNumber')
 
         ;
     }

@@ -3,13 +3,35 @@
 {% block title %}Donation{% endblock %}
 {% block body %}
 <br> <br> <div style="text-align:center; font-size:20px"></div>
-<div style="text-align:center">
-    <img style="padding-left:12px; height:300px"  src="{{  asset ('images/jesus.png') }}"/>
-</div>
 <br>
 <br><br>
     <h1><mark>Give to Receive</mark></h1> 
 <br>
+<style>
+body{ 
+    background: url('{{  asset ('images/jesus.png') }}');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        overflow-x: hidden; 
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        background-color:#FFF;
+    }
+    .container{
+        opacity:0,7;
+    }
+    .required, label, .form-control{
+        color:red;
+        font-weight:bold;
+    }
+    #donation_process_1_country{
+        color:gray;
+        font-weight:bold;
+    }
+    
+</style>
 
     {{form_start(donationProcess_1)}}
 

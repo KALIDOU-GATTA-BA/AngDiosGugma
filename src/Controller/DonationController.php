@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use App\Entity\DonationPayment;
-use App\Services\DonationManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class DonationController extends AbstractController
 {
@@ -36,6 +36,9 @@ class DonationController extends AbstractController
     {
         $form = $this->createForm(DonationProcess_1Type::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
+            $ss=new Session();
+            $ss->set('donationForm1', $form->getNormData());
+
             return $this->redirectToRoute('donationProcess_2');
         }
        
@@ -51,7 +54,9 @@ class DonationController extends AbstractController
     {
         $form = $this->createForm(DonationProcess_2Type::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-            return $this->redirectToRoute('go_to_payment');
+            $ss=new Session();
+            $ss->set('donationForm2', $form->getNormData());
+            return $this->redirectToRoute('maintenance');
         }
        
         return $this->render('donation/donationProcess_2.html.twig', [
@@ -62,7 +67,7 @@ class DonationController extends AbstractController
     /**
      * @Route("/donationPayment", name="donation_payment")
      */
-    public function donationPayment(DonationManager $dm)
+    public function donationPayment()
     {
         \Stripe\Stripe::setApiKey('sk_test_gpKxIKuEzEW5gMZcPvWPAewK00mlglAU2B');
         $request = new Request(
@@ -71,19 +76,19 @@ class DonationController extends AbstractController
                     );
         $token = $request->request->get('stripeToken');
 
-        $currency=$dm->getCurrency();
+        $ss=new Session();
      
         $charge = \Stripe\Charge::create([
-            'amount' => $dm->getAmount() * 100,
-            'currency' => ''.$currency.'',
+            'amount' => $ss->get('donationForm2')->getAmount()*100,
+            'currency' => ''.$ss->get('donationForm2')->getCurrency().'',
             'description' => 'Ang Dios Gugma',
             'source' => $token,
         ]);
 
         if ('succeeded' == $charge['status']) {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('payment_succeeded');
         } else {
-            die();
+            return $this->redirectToRoute('payment_failed');
         }
 
         return $this->render('donation/donation_payment.html.twig', [
@@ -94,13 +99,63 @@ class DonationController extends AbstractController
     /**
      * @Route("/payment", name="go_to_payment")
      */
-    public function goToPayment(DonationManager $dm)
+    public function goToPayment()
     {
-        $amount=$dm->getAmount()*100;
-        $currency=$dm->getCurrency();
+        $ss=new Session();
+
+        $amount=$ss->get('donationForm2')->getAmount()*100;
+        $currency=$ss->get('donationForm2')->getCurrency();
         return $this->render('donation/payment.html.twig', [
             'amount' => $amount,
             'currency'=>$currency,
+        ]);
+    }
+    /**
+     * @Route("/paymentSucceeded", name="payment_succeeded")
+     */
+    public function thanks()
+    {
+        $ss=new Session();
+        $name=$ss->get('donationForm1')->getName();
+        $email=$ss->get('donationForm1')->getEmail();
+        $amount=$ss->get('donationForm2')->getAmount();
+        $currency=$ss->get('donationForm2')->getCurrency();
+        return $this->render('donation/payment_succeeded.html.twig', [
+            'name' => $name,
+            'email' => $email,
+            'amount' => $amount,
+            'currency'=>$currency,
+        ]);
+    }
+    /**
+     * @Route("/paymentFailed", name="payment_failed")
+     */
+    public function fail()
+    {
+        $ss=new Session();
+        $name=$ss->get('donationForm1')->getName();
+        $amount=$ss->get('donationForm2')->getAmount();
+        $currency=$ss->get('donationForm2')->getCurrency();
+        return $this->render('donation/payment_failed.html.twig', [
+            'name' => $name,
+            'amount' => $amount,
+            'currency'=>$currency,
+        ]);
+    }
+    /**
+     * @Route("/maintenance", name="maintenance")
+     */
+    public function maintenance()
+    {
+        $ss=new Session();
+        $name=$ss->get('donationForm1')->getName();
+        $amount=$ss->get('donationForm2')->getAmount();
+        $currency=$ss->get('donationForm2')->getCurrency();
+        
+        return $this->render('donation/maintenance.html.twig', [
+            'name' => $name,
+            'amount' => $amount,
+            'currency' => $currency,
         ]);
     }
 }
