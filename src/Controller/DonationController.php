@@ -30,7 +30,7 @@ class DonationController extends AbstractController
     }
 
     /**
-     * @Route("/donationProcess_1", name="donationProcess_1")
+     * @Route("/donation", name="donationProcess_1")
      */
     public function donationProcess_1(Request $request)
     {
@@ -48,7 +48,7 @@ class DonationController extends AbstractController
     }
 
     /**
-     * @Route("/donationProcess_2", name="donationProcess_2")
+     * @Route("/donation/amount&currency", name="donationProcess_2")
      */
     public function donationProcess_2(Request $request)
     {
@@ -86,6 +86,7 @@ class DonationController extends AbstractController
         ]);
 
         if ('succeeded' == $charge['status']) {
+            $ss->set('charge', $charge['id']);
             return $this->redirectToRoute('payment_succeeded');
         } else {
             return $this->redirectToRoute('payment_failed');
@@ -113,13 +114,34 @@ class DonationController extends AbstractController
     /**
      * @Route("/paymentSucceeded", name="payment_succeeded")
      */
-    public function thanks()
+    public function thanks(\Swift_Mailer $mailer)
     {
         $ss=new Session();
         $name=$ss->get('donationForm1')->getName();
         $email=$ss->get('donationForm1')->getEmail();
         $amount=$ss->get('donationForm2')->getAmount();
         $currency=$ss->get('donationForm2')->getCurrency();
+        $ref=$ss->get('charge');
+
+
+
+        $message = (new \Swift_Message('Donation'))
+        ->setFrom('kalidougattaba@gmail.com')
+        ->setTo(''.$email.'')
+        ->setBody(
+            $this->renderView(
+                // templates/emails/registration.html.twig
+                'emails/mailPayment.html.twig',
+                ['name' => $name,
+                 'amount' => $amount,
+                 'currency' => $currency,
+                 'ref'=>$ref,
+                ]
+            ),
+            'text/html'
+        )
+    ;
+        $mailer->send($message);
         return $this->render('donation/payment_succeeded.html.twig', [
             'name' => $name,
             'email' => $email,
@@ -127,6 +149,7 @@ class DonationController extends AbstractController
             'currency'=>$currency,
         ]);
     }
+    
     /**
      * @Route("/paymentFailed", name="payment_failed")
      */
