@@ -1,21 +1,19 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body{
-background: url('../../public/images/36295287_2025187550833951_675333532272295936_n.jpg');
+background: url('../../public/images/eglise.jpeg');
 		background-repeat: no-repeat;
-  		background-size: 200px 200px;
+  		background-size: 100% 100%;
   		background-position: center;
   		overflow-x: hidden; 
   		display: flex;
         min-height: 100vh;
  		flex-direction: column;
- 		background-color:#FFF;
 }
 
 .container{
 	
 	opacity: 0.9;
-	background-color:white;
 }
 a{
 	color: #503a2c;
