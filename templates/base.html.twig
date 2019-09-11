@@ -243,6 +243,16 @@ border: 2px solid blue;
 border-radius: 12px;
 font-size: 15px;
 } 
+body{
+background: url(' {{  asset ('images/eglise.jpeg') }}');
+    background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+      overflow-x: hidden; 
+      display: flex;
+        min-height: 100vh;
+    flex-direction: column;
+}
 </style>
         {% block footer %}{% endblock %}
         {% block javascripts %}
