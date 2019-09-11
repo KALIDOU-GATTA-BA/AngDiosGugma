@@ -143,7 +143,7 @@ class DonationController extends AbstractController
         $age=$ss->get('donationForm1')->getAge();
         $country=$ss->get('donationForm1')->getCountry();
         $messageToAdmin = (new \Swift_Message('Donation'))
-        ->setFrom('kalidougattaba@gmail.com')
+        ->setFrom('baniabina.ba@gmail.com')
         ->setTo('kalidougattaba@gmail.com')
         ->setBody(
             $this->renderView(
