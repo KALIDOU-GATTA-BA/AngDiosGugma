@@ -144,7 +144,7 @@ class DonationController extends AbstractController
         $country=$ss->get('donationForm1')->getCountry();
         $messageToAdmin = (new \Swift_Message('Donation'))
         ->setFrom('kalidougattaba@gmail.com')
-        ->setTo('daulomarygrace@yahoo.com')
+        ->setTo('kalidougattaba@gmail.com')
         ->setBody(
             $this->renderView(
                 'emails/mailToAdmin.html.twig',
