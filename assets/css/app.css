@@ -11,10 +11,7 @@ background: url('../../public/images/eglise.jpeg');
  		flex-direction: column;
 }
 
-.container{
-	
-	opacity: 0.9;
-}
+
 a{
 	color: #503a2c;
 }
