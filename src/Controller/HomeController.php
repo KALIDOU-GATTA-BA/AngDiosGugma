@@ -15,8 +15,7 @@ class HomeController extends AbstractController
     public function index(ActualitiesManager $am, VideoManager $vm)
     {
         $videoTitle=$vm->getLastVideo()[0];
-        $videoLink=$vm->getLastVideo()[1];
-
+        $videoLink= $vm->getLastVideo()[1];
         $lastActuTitle=$am->getLastActuality()[0];
         $lastActuContent=$am->getLastActuality()[1];
         $lastActuContent=substr($lastActuContent, 0, 100).'[...]';
@@ -24,7 +23,6 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
-            'videoTitle'=>$videoTitle,
             'author' => $author,
             'videoLink'=>$videoLink,
         ]);
@@ -32,7 +30,8 @@ class HomeController extends AbstractController
     /**
      * @Route("/adminHome", name="admin_home")
      */
-    public function adminHome(){
+    public function adminHome()
+    {
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
         ]);

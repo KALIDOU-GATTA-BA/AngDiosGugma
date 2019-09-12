@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% form_theme liveChatMaintenance 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Live Chat{% endblock %}
+
+{% block body %}<br><br>
+
+    <img style="height:150px;width:150px;margin-left:40%" src="{{  asset ('images/maintenance.png') }}"/>
+    <br>
+    	<h6 style="text-align:center">This section is in <strong style="font-weight:bold; color:red">maintenance</strong> our team is working on it. <br>Fill the form below if you would like to be notified when this section is available</h6><br><br>
+    {{form_start(liveChatMaintenance)}}
+
+    {{ form_row(liveChatMaintenance.facebook, {'attr' : { 'placeholder': "facebook link"}, 'label': 'Facebook link *' } ) }} <br>
+    {{ form_row(liveChatMaintenance.email, {'attr' : { 'placeholder': "e-mail address"}, 'label': 'E-mail' } ) }}
+
+    <pre> <button type="submit" class ="btn">Be informed!</button><br><br></pre>
+
+    {{form_end(liveChatMaintenance)}}
+
+{% endblock %}

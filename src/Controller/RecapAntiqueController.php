@@ -13,7 +13,7 @@ class RecapAntiqueController extends AbstractController
       */
     public function index()
     {
-         $repo = $this->getDoctrine()->getRepository(Antique::class);
+        $repo = $this->getDoctrine()->getRepository(Antique::class);
         $articles = $repo ->findAll() ;
         return $this->render('recap_antique/index.html.twig', [
             'articles' => $articles,

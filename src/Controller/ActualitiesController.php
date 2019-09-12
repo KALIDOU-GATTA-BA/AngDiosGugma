@@ -44,7 +44,7 @@ class ActualitiesController extends AbstractController
      */
     public function recapActualities(Request $request, ActualitiesManager $am)
     {
-       $repo = $this->getDoctrine()->getRepository(Actualities::class);
+        $repo = $this->getDoctrine()->getRepository(Actualities::class);
         $articles = $repo ->findAll() ;
         return $this->render('actualities/recap_actualities.html.twig', [
             'articles' => $articles,

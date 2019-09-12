@@ -28,7 +28,6 @@ body{
       {% endfor %}
       </section>
 </div>
- 
 
     {% if app.user %}
           <span>
@@ -38,6 +37,7 @@ body{
 
     {% block javascript %}
     <script src={{ asset("build/app.js") }}></script>
+    
 	{% endblock %}
-
 {% endblock %}
+

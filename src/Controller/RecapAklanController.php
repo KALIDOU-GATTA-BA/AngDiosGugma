@@ -13,7 +13,7 @@ class RecapAklanController extends AbstractController
      */
     public function index()
     {
-         $repo = $this->getDoctrine()->getRepository(Aklan::class);
+        $repo = $this->getDoctrine()->getRepository(Aklan::class);
         $articles = $repo ->findAll() ;
         return $this->render('recap_aklan/index.html.twig', [
             'articles' => $articles,

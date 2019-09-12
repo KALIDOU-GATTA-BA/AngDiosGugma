@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class StudentAddFormHandler
+class LiveChatMaintenanceFormHandler
 {
     private $entityManager;
 
@@ -21,7 +21,6 @@ class StudentAddFormHandler
             $form = $form->getData();
             $this->entityManager->persist($form);
             $this->entityManager->flush();
-            
             return true;
         }
     }
