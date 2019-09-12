@@ -25,6 +25,7 @@ class HomeController extends AbstractController
             'lastActuTitle' => $lastActuTitle,
             'author' => $author,
             'videoLink'=>$videoLink,
+            'videoTitle'=>$videoTitle,
         ]);
     }
     /**
