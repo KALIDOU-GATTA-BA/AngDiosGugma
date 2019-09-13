@@ -11,19 +11,35 @@ body{
         display: flex;
         min-height: 100vh;
         flex-direction: column;
-        background-color:#FFF;
+        background-color:#FFF;          
+
     }
   </style>
  <div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
       <section class ="articles">
+
+      
+
+      
+
       {% for article in articles %}
         <article>
-          <h1 style="text-align:center"> {{article.title}} </h1>
-            <div style ="text-align:justify">
-                {{article.content}}
-            </div>
-            <br>
-            <p style="color:black; text-decoration:underline">{{article.author}} </p>
+
+                {% if a == 1 %}
+                        <img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image">
+                {% elseif a == 0 %}
+                <img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image">
+                    <script>
+                           document.getElementById("img").removeAttribute("src"); 
+                    </script>
+                {% endif %}
+                          <h1 style="text-align:center"> {{article.title}} </h1>
+                          <div style ="text-align:justify">
+                              {{article.content}}
+                          </div>
+                          <br>
+                          <p style="color:black; text-decoration:underline">{{article.author}} </p>
+        
         </article>
       {% endfor %}
       </section>

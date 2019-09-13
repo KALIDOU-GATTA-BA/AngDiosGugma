@@ -5,6 +5,9 @@ namespace App\Form;
 use App\Entity\Actualities;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ActualitiesType extends AbstractType
@@ -15,6 +18,9 @@ class ActualitiesType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('author')
+            ->add('image', FileType::class, [
+                'mapped'=>false
+                ])
         ;
     }
 
