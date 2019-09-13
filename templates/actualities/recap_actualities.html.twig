@@ -1,59 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block title %}Actualities{% endblock %}
 {% block body %}
-  <style>
-body{ 
-    background: url('{{  asset ('images/jesus2.jpg') }}'); 
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-position: center;
-        overflow-x: hidden; 
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-        background-color:#FFF;          
-
-    }
-  </style>
- <div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
-      <section class ="articles">
-
-      
-
-      
-
+<style>
+  body{ 
+      background: url('{{  asset ('images/jesus2.jpg') }}'); 
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFF;          
+      }
+</style>
+<div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
+    <section class ="articles">
       {% for article in articles %}
-        <article>
-
-                {% if a == 1 %}
-                        <img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image">
-                {% elseif a == 0 %}
-                <img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image">
-                    <script>
-                           document.getElementById("img").removeAttribute("src"); 
-                    </script>
-                {% endif %}
-                          <h1 style="text-align:center"> {{article.title}} </h1>
-                          <div style ="text-align:justify">
-                              {{article.content}}
-                          </div>
-                          <br>
-                          <p style="color:black; text-decoration:underline">{{article.author}} </p>
-        
+        <article> 
+          <h1 style="text-align:center"> {{article.title}} </h1>
+            <div>                           
+                <img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image" style="height:100%;width:100%">
+            </div>
+            <div style ="text-align:justify">
+              {{article.content}}
+            </div><br>  
+            <p style="color:black; text-decoration:underline">{{article.author}} </p>
         </article>
       {% endfor %}
-      </section>
+    </section>
 </div>
+{% if app.user %}
+  <span>
+    <a href="{{path('actualities')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
+  </span> 
+{% endif %}
 
-    {% if app.user %}
-          <span>
-              <a href="{{path('actualities')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
-          </span> 
-    {% endif %}
-
-    {% block javascript %}
-    <script src={{ asset("build/app.js") }}></script>
-    
-	{% endblock %}
+{% block javascript %}
+  <script src={{ asset("build/app.js") }}></script>
 {% endblock %}
-
+{% endblock %}
