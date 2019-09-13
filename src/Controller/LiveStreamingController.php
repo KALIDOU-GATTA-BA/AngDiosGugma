@@ -7,7 +7,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Services\VideoManager;
 use App\Entity\Video;
 
-
 class LiveStreamingController extends AbstractController
 {
     /**
@@ -15,7 +14,7 @@ class LiveStreamingController extends AbstractController
      */
     public function index(VideoManager $vm)
     {
-    	$repo = $this->getDoctrine()->getRepository(Video::class);
+        $repo = $this->getDoctrine()->getRepository(Video::class);
         $videos = $repo ->findAll() ;
         return $this->render('live_streaming/index.html.twig', [
             'videos' => $videos,

@@ -12,13 +12,9 @@ use App\Handlers\Form\ActualitiesFormHandler;
 use App\Entity\Actualities;
 use App\Services\ActualitiesManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
-
-
 
 class ActualitiesController extends AbstractController
 {
-
     private $entityManager;
     private $formHandler;
     
@@ -29,7 +25,6 @@ class ActualitiesController extends AbstractController
     {
         $this->formHandler = $formHandler;
         $this->entityManager = $entityManager;
-
     }
     /**
      * @Route("/actualities", name="actualities")
@@ -40,18 +35,10 @@ class ActualitiesController extends AbstractController
 
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
-
             $this->entityManager->persist($form);
             $this->entityManager->flush();
-        $a=false; 
             $fileName = 'image';
-            if ($formr['image']->getData()!=null) {
-                $file = $formr['image']->getData();
-                $file->move('uploads/'.$am->maxId()[0][1].'', $fileName);
-                $a=true;
-            }
-            $ss=new Session();
-            $ss->set('a', $a);
+            $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
             return $this->redirectToRoute('recap_actualities');
         }
         return $this->render('actualities/index.html.twig', [
@@ -63,12 +50,10 @@ class ActualitiesController extends AbstractController
      */
     public function recapActualities(Request $request, ActualitiesManager $am)
     {
-       $ss=new Session();
         $repo = $this->getDoctrine()->getRepository(Actualities::class);
         $articles = $repo ->findAll() ;
         return $this->render('actualities/recap_actualities.html.twig', [
             'articles' => $articles,
-            'a'=>$ss->get('a'),
             ]);
     }
 }

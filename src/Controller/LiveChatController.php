@@ -10,13 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Form\LiveChatMaintenanceType;
 
-
-
-
-
 class LiveChatController extends AbstractController
 {
-	private $formHandler;
+    private $formHandler;
     /**
      * @var ContactFormHandler
      */
@@ -29,8 +25,7 @@ class LiveChatController extends AbstractController
      */
     public function maintenance(Request $request)
     {
-
-    	$form = $this->createForm(LiveChatMaintenanceType::class)->handleRequest($request);
+        $form = $this->createForm(LiveChatMaintenanceType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('home');
         }
