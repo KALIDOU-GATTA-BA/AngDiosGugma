@@ -38,6 +38,7 @@ class ActualitiesController extends AbstractController
             $this->entityManager->persist($form);
             $this->entityManager->flush();
             $fileName = 'image';
+
             $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
             return $this->redirectToRoute('recap_actualities');
         }
