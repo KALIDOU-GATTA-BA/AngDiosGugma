@@ -38,20 +38,13 @@
                 <div class="container">
                     {% block body %}{% endblock %}
                 </div><br><br><br><br><br><br><br>
-<img src="{{  asset ('images/p12.jpg') }}" style="width:100%; height:300px; z-index:0">
-
-                
-                <div class="container-fluid" style="background-color:#503a2c;color:white;font: 15px/30px Georgia, serif;">
-                  <div class="row">
-                    <div class="col s12 m6 l6 xl5">
-                      <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">More</h5>
-                      <ul>
-                          <li class="dropdown">
-                              <a href="{{path('security_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">ADG catholic school</div></a>  
-                          </li>
-                          <li class="dropdown">
-                            <a href="{{path('about_us')}}" class="nav-link"  style="color:white"><div class="menu">About us</div> </a>        
-                          </li>
+          <img src="{{  asset ('images/p12.jpg') }}" style="width:100%; height:300px; z-index:0">
+          <div class="container-fluid" style="background-color:#503a2c;color:white;font: 15px/30px Georgia, serif;">
+            <div class="row">
+              <div class="col s12 m6 l6 xl5">
+                <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">More</h5>
+                  <a href="{{path('security_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Catholic school</div></a>  
+                  <a href="{{path('about_us')}}" class="nav-link"  style="color:white"><div class="menu">About us</div> </a>         
                              <!-- <li class="dropdown">
                                     <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><div class="menu">Operations</div></a>
                                     <ul class="dropdown-menu" style="width:100px" role="menu">
@@ -90,10 +83,9 @@
                                       
                       </ul>
                     </li> -->
-                    </div>
-                      <div class="col s12 m6 l6 xl2">
-                      <h5 class="blue-grey-text text-darken-3" style="opacity:0;color:white;font-size:15px">More</h5>
-                      <ul>
+              </div>
+              <div class="col s12 m6 l6 xl2">
+                <h5 class="blue-grey-text text-darken-3" style="opacity:0;color:white;font-size:15px">More</h5>
                          <!-- <li class="dropdown">
                                       <a href="{{path('media_phil')}}" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><div class="menu">Special ministries</div> </a>
                                       <ul class="dropdown-menu" style="width:250px" role="menu">
@@ -115,36 +107,29 @@
                                onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>liturgy</span></a></li>
                               </ul>
                           </li>-->
-                          
-                          <li class="dropdown">
                             <a href="{{path('contact')}}" class="nav-link"  style="color:white"><div class="menu">Contact us</div> </a>       
-                          </li>
-
-                      </ul>
-                    </div>
-                    <div class="col s12 m6 l6 xl1">
-                      <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Social networks</h5>
-                       <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank"><img style="padding-left:12px; height:36px" class="img_footer_fb" style="color:white" src="{{  asset ('images/fb.png') }}"/></a>
-                  <a href="https://www.youtube.com/channel/UCf5qwwCzUoenGKvt9mi06dQ" target="_blank"><img style="padding-left:12px; height:49px" class="img_footer_yt"  src="{{  asset ('images/yt.png') }}"/></a><br>            
-
-                    </div>
-                    <div class="col s12 m6 l6 xl1">
-                      <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Administration</h5>
-                       
+              </div>
+                <div class="col s12 m6 l6 xl1">
+                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Social networks</h5>
+                    <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank"><img style="padding-left:12px; height:36px" class="img_footer_fb" style="color:white" src="{{  asset ('images/fb.png') }}"/></a>
+                    <a href="https://www.youtube.com/channel/UCf5qwwCzUoenGKvt9mi06dQ" target="_blank"><img style="padding-left:12px; height:49px" class="img_footer_yt"  src="{{  asset ('images/yt.png') }}"/></a><br>            
+                </div>
+                <div class="col s12 m6 l6 xl1">
+                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Administration</h5>
+               
           {% if  not app.user %}
           <span>
               <a href="{{path('security_login')}}" class="nav-link"  style="color:white;font-size:15px">Log in</a>
-          </span> 
+          </span></div>
           {% endif %}
           {% if  app.user %}
-          <p>
+          <span>
                   <a href="{{path('security_logout')}}" class="nav-link"  style="color:white;font-size:15px">Log out</a>
-          </p> 
+          </span></div>
           {% endif %}
-          </p>
+          
           
         </div>
-      </div>
     </div>
     <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
         Allrights Reserved 2019 &#x24B8;<a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a><br>
@@ -152,7 +137,7 @@
           <span style="font-size:8px"> | (+33)651472049 | kalidougattaba@gmail.com</span>
     </p>
 </body>
-<style type="text/css">
+<style>
 h3
 {
     font-size:20px;
