@@ -31,6 +31,8 @@ class ActualitiesController extends AbstractController
      */
     public function index(Request $request, ActualitiesManager $am)
     {
+
+
         $formr = $this->createForm(ActualitiesType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -38,7 +40,6 @@ class ActualitiesController extends AbstractController
             $this->entityManager->persist($form);
             $this->entityManager->flush();
             $fileName = 'image';
-
             $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
             return $this->redirectToRoute('recap_actualities');
         }
@@ -51,10 +52,8 @@ class ActualitiesController extends AbstractController
      */
     public function recapActualities(Request $request, ActualitiesManager $am)
     {
-        $repo = $this->getDoctrine()->getRepository(Actualities::class);
-        $articles = $repo ->findAll() ;
         return $this->render('actualities/recap_actualities.html.twig', [
-            'articles' => $articles,
+            'articles' => $am->getAllActu(),
             ]);
     }
 }
