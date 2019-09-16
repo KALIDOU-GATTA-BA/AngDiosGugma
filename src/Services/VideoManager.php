@@ -31,4 +31,9 @@ class VideoManager
         $res = $this->entityManager->createQuery("DELETE  FROM App\Entity\Video vid where vid.title ='$title' ")->getResult();
         return $res;
     }
+    public function getAllVideos()
+    {
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid order by vid.id desc')->getResult();
+        return $res;
+    }
 }

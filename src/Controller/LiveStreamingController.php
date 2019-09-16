@@ -29,10 +29,11 @@ class LiveStreamingController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
+
         $repo = $this->getDoctrine()->getRepository(Video::class);
         $videos = $repo ->findAll() ;
         return $this->render('live_streaming/index.html.twig', [
-            'videos' => $videos,
+            'videos' => $vm->getAllVideos(),
              'buffer'=>$buffer,
             'user'=>$user,
         ]);
