@@ -30,8 +30,14 @@ class ActualitiesManager
         return $res;
     }
 
-    public function getAllActu(){
-         $res1 = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu order by actu.id desc')->getResult();   
-         return $res1; 
+    public function getAllActu()
+    {
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu order by actu.id desc')->getResult();
+        return $res;
+    }
+    public function deleteActu(string $title)
+    {
+        $res = $this->entityManager->createQuery("DELETE  FROM App\Entity\Actualities actu where actu.title ='$title' ")->getResult();
+        return $res;
     }
 }

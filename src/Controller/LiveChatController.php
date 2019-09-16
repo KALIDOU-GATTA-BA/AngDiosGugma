@@ -36,7 +36,8 @@ class LiveChatController extends AbstractController
     /**
      * @Route("/chat/home", name="chat_home")
      */
-    public function chatHome(){
+    public function chatHome()
+    {
         return $this->render('live_chat/home.html.twig', [
             'home' => '',
         ]);

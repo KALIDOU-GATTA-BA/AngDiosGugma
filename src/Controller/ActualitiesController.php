@@ -31,8 +31,6 @@ class ActualitiesController extends AbstractController
      */
     public function index(Request $request, ActualitiesManager $am)
     {
-
-
         $formr = $this->createForm(ActualitiesType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -55,5 +53,13 @@ class ActualitiesController extends AbstractController
         return $this->render('actualities/recap_actualities.html.twig', [
             'articles' => $am->getAllActu(),
             ]);
+    }
+    /**
+     * @Route("/delete", name="delete")
+     */
+    public function deleteActu(ActualitiesManager $am)
+    {
+        $am->deleteActu($_GET['val']);
+        return $this->redirectToRoute('actualities');
     }
 }

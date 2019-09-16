@@ -14,6 +14,7 @@ class HomeController extends AbstractController
      */
     public function index(ActualitiesManager $am, VideoManager $vm)
     {
+        //  dd($am->deleteActu('greffzeq'));
         $videoTitle=$vm->getLastVideo()[0];
         $videoLink= $vm->getLastVideo()[1];
         $lastActuTitle=$am->getLastActuality()[0];

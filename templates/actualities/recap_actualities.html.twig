@@ -16,6 +16,11 @@
 </style>
 <div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
     <section class ="articles">
+    {% if app.user %}
+        <span>
+          <a href="{{path('actualities')}}" class="nav-link"  style="color:red;font-size:15px; font-weight:bold"><< Back</a>
+        </span> 
+    {% endif %}
       {% for article in articles %}
         <article> 
           <h1 style="text-align:center"> {{article.title}} </h1>
