@@ -21,7 +21,7 @@ class LiveStreamingController extends AbstractController
         ]);
     }
     /**
-     * @Route("/live/maintenance", name="live_maintenance")
+     * @Route("/live/maintenance", name="live_maintenanceSTOP")
      */
     public function maintenance( )
     {
