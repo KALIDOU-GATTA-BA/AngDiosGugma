@@ -33,4 +33,12 @@ class LiveChatController extends AbstractController
             'liveChatMaintenance' => $form->createView(),
         ]);
     }
+    /**
+     * @Route("/chat/home", name="chat_home")
+     */
+    public function chatHome(){
+        return $this->render('live_chat/home.html.twig', [
+            'home' => '',
+        ]);
+    }
 }
