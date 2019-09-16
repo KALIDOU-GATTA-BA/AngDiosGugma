@@ -35,6 +35,13 @@ class ActualitiesController extends AbstractController
      */
     public function index(Request $request, ActualitiesManager $am)
     {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()!=null) {
+            $user=new User();  
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
         $formr = $this->createForm(ActualitiesType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -47,6 +54,8 @@ class ActualitiesController extends AbstractController
         }
         return $this->render('actualities/index.html.twig', [
             'actualities' => $formr->createView(),
+            'buffer'=>$buffer,
+            'user'=>$user,
         ]);
     }
     /**
