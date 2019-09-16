@@ -2,8 +2,7 @@
 {% form_theme video 'bootstrap_4_layout.html.twig'  %}
 {% block title %}Video{% endblock %}
 {% block body %}
-
-    <h1>Videos</h1> 
+<h1>Videos</h1><nobr><a href="{{path('actualities')}}"  style="color:blue;background-color:white"> <mark>>>Switch to articles sections</mark></a></nobr>
     <h2>Fill the bellow field if you want to delete a video</h2>
     <form style ='height:100%; width:100%' method ="GET" action="{{path('delete_video')}}">
       Video title:<br>

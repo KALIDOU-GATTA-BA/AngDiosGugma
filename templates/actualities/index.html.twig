@@ -3,7 +3,7 @@
 {% block title %}Actualities{% endblock %}
 {% block body %}
 
-    <h1>Actualities</h1> 
+<h1>Actualities</h1><nobr><a href="{{path('video')}}"  style="color:blue;background-color:white"> <mark>>>Switch to videos sections</mark></a></nobr>
     <h2>Fill the bellow field if you want to delete an article</h2>
     <form style ='height:100%; width:100%' method ="GET" action="{{path('delete')}}">
       Article title:<br>
