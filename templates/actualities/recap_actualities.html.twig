@@ -14,6 +14,10 @@
           background-color:#FFF;          
       }
 </style>
+  {%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
 <div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
     <section class ="articles">
     {% if app.user %}

@@ -12,6 +12,9 @@ use App\Handlers\Form\ActualitiesFormHandler;
 use App\Entity\Actualities;
 use App\Services\ActualitiesManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Security;
+use App\Entity\User;
+
 
 class ActualitiesController extends AbstractController
 {
@@ -21,10 +24,11 @@ class ActualitiesController extends AbstractController
     /**
      * @var ContactFormHandler
      */
-    public function __construct(ActualitiesFormHandler $formHandler, EntityManagerInterface $entityManager)
+    public function __construct(ActualitiesFormHandler $formHandler, EntityManagerInterface $entityManager, Security $security)
     {
         $this->formHandler = $formHandler;
         $this->entityManager = $entityManager;
+        $this->security = $security;
     }
     /**
      * @Route("/actualities", name="actualities")
@@ -50,8 +54,18 @@ class ActualitiesController extends AbstractController
      */
     public function recapActualities(Request $request, ActualitiesManager $am)
     {
+
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()!=null) {
+            $user=new User();  
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
         return $this->render('actualities/recap_actualities.html.twig', [
             'articles' => $am->getAllActu(),
+            'buffer'=>$buffer,
+            'user'=>$user,
             ]);
     }
     /**
