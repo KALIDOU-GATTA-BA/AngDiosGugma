@@ -16,3 +16,7 @@ require('../css/app.css');
 // const $ = require('jquery');
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+$(document).ready(function(){
+    $("iframe").attr("height", "100%");
+    $("iframe").attr("width", "100%");
+});

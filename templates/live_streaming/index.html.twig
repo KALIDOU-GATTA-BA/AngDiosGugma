@@ -3,7 +3,7 @@
 {% block title %}Ang Dios Gugma{% endblock %}
 	
 {% block body %}
-<div class="container"><br><br>            
+<div class="container"><br>          
 		<div class="row"> 
 			{% for video in videos %}
 
@@ -13,10 +13,10 @@
 	                             {{video.title}}                                                  
 	                       </h3>                    
 	                                {{video.link|raw}}
-                       </div>
+                       </div><br>
                     </div>
             {% endfor %}
-        </div>          
+        </div>           
 </div>  
 <script>
 var iframe = document.querySelector("iframe"); 
