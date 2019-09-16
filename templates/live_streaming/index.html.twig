@@ -3,7 +3,12 @@
 {% block title %}Ang Dios Gugma{% endblock %}
 	
 {% block body %}
-<div class="container"><br>          
+<div class="container"><br> 
+	{% if  app.user %}
+        <span>
+          <a href="{{path('video')}}" class="nav-link"  style="color:red;font-size:15px; font-weight:bold"><< Go to videos management</a>
+        </span> 
+    {% endif %}         
 		<div class="row"> 
 			{% for video in videos %}
 

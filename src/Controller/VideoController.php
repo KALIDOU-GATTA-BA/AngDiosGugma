@@ -39,4 +39,12 @@ class VideoController extends AbstractController
             'video' => $form->createView(),
         ]);
     }
+    /**
+     * @Route("/delete/video", name="delete_video")
+     */
+    public function deleteVideo(VideoManager $vm)
+    {
+        $vm->deleteVideo($_GET['val']);
+        return $this->redirectToRoute('video');
+    }
 }

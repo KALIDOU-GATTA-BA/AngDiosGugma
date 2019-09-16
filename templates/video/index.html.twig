@@ -3,7 +3,15 @@
 {% block title %}Video{% endblock %}
 {% block body %}
 
-    <h1>Video</h1> 
+    <h1>Videos</h1> 
+    <h2>Fill the bellow field if you want to delete a video</h2>
+    <form style ='height:100%; width:100%' method ="GET" action="{{path('delete_video')}}">
+      Video title:<br>
+      <input type ="text"  style="color:white;background-color:red" name="val" placeholder="Video title"> <nobr><a href="{{path('live_streaming')}}"  style="color:blue;background-color:white">>>See all videos</a></nobr><br>
+      <button type="submit" class ="btn">Delete</button><br><br>
+    </form>  <br>
+       <h2>Fill the bellow form to add a video</h2>
+
     {{form_start(video)}}
 
     {{ form_row(video.link, {'attr' : { 'placeholder': "Put here the link..."}, 'label': 'Link' } ) }}
