@@ -20,4 +20,15 @@ class LiveStreamingController extends AbstractController
             'videos' => $videos,
         ]);
     }
+    /**
+     * @Route("/live/maintenance", name="live_maintenance")
+     */
+    public function maintenance( )
+    {
+        
+        return $this->render('live_streaming/maintenance.html.twig', [
+            'videos' => '',
+        ]);
+    }
+
 }
