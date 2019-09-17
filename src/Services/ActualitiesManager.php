@@ -28,7 +28,6 @@ class ActualitiesManager
         $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Actualities id')->getResult();
         return $res;
     }
-
     public function getAllActu()
     {
         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu order by actu.id desc')->getResult();

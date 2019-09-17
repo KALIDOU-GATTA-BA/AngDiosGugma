@@ -10,13 +10,10 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class VideoManager
 {
     private $request;
-
-
     public function __construct(ObjectManager $entityManager)
     {
         $this->entityManager = $entityManager;
     }
-    
     public function getLastVideo()
     {
         $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Video id')->getResult();
@@ -25,7 +22,6 @@ class VideoManager
         $b=$res1[0]->getLink();
         return [$a, $b];
     }
-
     public function deleteVideo(string $title)
     {
         $res = $this->entityManager->createQuery("DELETE  FROM App\Entity\Video vid where vid.title ='$title' ")->getResult();

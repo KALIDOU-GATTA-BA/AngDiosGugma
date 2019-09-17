@@ -14,7 +14,6 @@ use App\Services\VideoManager;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
 
-
 class VideoController extends AbstractController
 {
     private $formHandler;
@@ -25,7 +24,7 @@ class VideoController extends AbstractController
     public function __construct(VideoFormHandler $formHandler, Security $security)
     {
         $this->formHandler = $formHandler;
-            $this->security = $security;
+        $this->security = $security;
     }
 
     /**
@@ -36,7 +35,7 @@ class VideoController extends AbstractController
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {
-            $user=new User();  
+            $user=new User();
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }

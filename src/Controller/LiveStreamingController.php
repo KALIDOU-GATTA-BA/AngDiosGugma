@@ -13,7 +13,6 @@ class LiveStreamingController extends AbstractController
 {
     public function __construct(Security $security)
     {
-       
         $this->security = $security;
     }
     /**
@@ -21,11 +20,10 @@ class LiveStreamingController extends AbstractController
      */
     public function index(VideoManager $vm)
     {
-
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {
-            $user=new User();  
+            $user=new User();
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }

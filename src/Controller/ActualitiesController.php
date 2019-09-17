@@ -15,12 +15,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
 use App\Entity\User;
 
-
 class ActualitiesController extends AbstractController
 {
     private $entityManager;
     private $formHandler;
-    
     /**
      * @var ContactFormHandler
      */
@@ -38,7 +36,7 @@ class ActualitiesController extends AbstractController
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {
-            $user=new User();  
+            $user=new User();
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
@@ -63,11 +61,10 @@ class ActualitiesController extends AbstractController
      */
     public function recapActualities(Request $request, ActualitiesManager $am)
     {
-
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {
-            $user=new User();  
+            $user=new User();
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
