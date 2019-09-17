@@ -11,6 +11,7 @@ use App\Repository\VideoRepository;
 use App\Handlers\Form\VideoFormHandler;
 use App\Entity\Video;
 use App\Services\VideoManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
 
@@ -58,5 +59,20 @@ class VideoController extends AbstractController
     {
         $vm->deleteVideo($_GET['val']);
         return $this->redirectToRoute('video');
+    }
+    /**
+     * @Route("/update/video/select", name="update_video_select")
+     */
+    public function selectVideoToUpdate(VideoManager $vm)
+    {
+        $vm->goToVideo($_GET['val']);
+        if (!$vm->goToVideo($_GET['val'])) {
+            return $this->redirectToRoute('video');
+        }
+        $ss=new Session();
+
+        $ss->set('title', $_GET['val']);
+        $ss->set('id', $vm->goToVideo($_GET['val'])[2]);
+        return $this->redirectToRoute('update_video');
     }
 }

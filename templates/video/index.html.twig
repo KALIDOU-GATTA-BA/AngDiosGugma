@@ -13,6 +13,12 @@
       <input type ="text"  style="color:white;background-color:red" name="val" placeholder="Video title"> <nobr><a href="{{path('live_streaming')}}"  style="color:blue;background-color:white">>>See all videos</a></nobr><br>
       <button type="submit" class ="btn">Delete</button><br><br>
     </form>  <br>
+    <h2>Fill the bellow field if you want to update a video</h2>
+    <form style ='height:100%; width:100%' method ="GET" action="{{path('update_video_select')}}">
+      Video title:<br>
+      <input type ="text"  style="color:white;background-color:green" name="val" placeholder="Video title"> <nobr><a href="{{path('live_streaming')}}"  style="color:blue;background-color:white">>>See all videos</a></nobr><br>
+      <button type="submit" class ="btn">Update</button><br><br>
+    </form>  <br>
        <h2>Fill the bellow form to add a video</h2>
 
     {{form_start(video)}}
