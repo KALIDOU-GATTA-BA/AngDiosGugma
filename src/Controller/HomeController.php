@@ -23,6 +23,8 @@ class HomeController extends AbstractController
      */
     public function index(ActualitiesManager $am, VideoManager $vm)
     {
+        
+        // dd(    );
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {
@@ -30,8 +32,6 @@ class HomeController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-
-   
         
         $videoTitle=$vm->getLastVideo()[0];
         $videoLink= $vm->getLastVideo()[1];
