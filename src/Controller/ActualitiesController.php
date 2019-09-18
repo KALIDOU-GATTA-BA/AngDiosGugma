@@ -49,7 +49,7 @@ class ActualitiesController extends AbstractController
             $this->entityManager->flush();
             $fileName = 'image';
             $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
-            return $this->redirectToRoute('recap_actualities');
+            return $this->redirectToRoute('recap_actualities_anchor');
         }
         return $this->render('actualities/index.html.twig', [
             'actualities' => $formr->createView(),
@@ -58,9 +58,9 @@ class ActualitiesController extends AbstractController
         ]);
     }
     /**
-     * @Route("/recap_actualities", name="recap_actualities")
-     */
-    public function recapActualities(Request $request, ActualitiesManager $am)
+    * @Route("/recap_actualities_anchor", name="recap_actualities_anchor")
+    */
+    public function recapActualitiesAnchor(Request $request, ActualitiesManager $am)
     {
         $user='';
         $buffer=false;
@@ -69,8 +69,44 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-        return $this->render('actualities/recap_actualities.html.twig', [
-            'articles' => $am->getAllActu(),
+        return $this->render('actualities/recap_actualities_anchor.html.twig', [
+            'articles' => $am->getAllActuAnchor(),
+            'buffer'=>$buffer,
+            'user'=>$user,
+            ]);
+    }
+    /**
+    * @Route("/recap_actualities_dailyGolspels", name="recap_actualities_dailyGospels")
+    */
+    public function recapActualitiesDailyGospels(Request $request, ActualitiesManager $am)
+    {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()!=null) {
+            $user=new User();
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
+        return $this->render('actualities/recap_actualities_dailyGospels.html.twig', [
+            'articles' => $am->getAllActuDailyGospels(),
+            'buffer'=>$buffer,
+            'user'=>$user,
+            ]);
+    }
+    /**
+    * @Route("/recap_actualities_st_of_day", name="recap_actualities_st_of_day")
+    */
+    public function recapActualitiesStOfDay(Request $request, ActualitiesManager $am)
+    {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()!=null) {
+            $user=new User();
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
+        return $this->render('actualities/recap_actualities_st_of_day.html.twig', [
+            'articles' => $am->getAllActuStOfDay(),
             'buffer'=>$buffer,
             'user'=>$user,
             ]);
@@ -83,7 +119,6 @@ class ActualitiesController extends AbstractController
         $am->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities');
     }
-    
     /**
      * @Route("/update/actu/select", name="update_actu_select")
      */
@@ -106,7 +141,7 @@ class ActualitiesController extends AbstractController
     {
         $user='';
         $buffer=false;
-        if ($this->security->getUser()!=null) {
+        if ($this->security->getUser()) {
             $user=new User();
             $user = $this->getUser()->getUsername();
             $buffer=true;
@@ -120,13 +155,12 @@ class ActualitiesController extends AbstractController
         $formr = $this->createForm(ActualitiesType::class)->handleRequest($request);
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
-            $am->update($form->getTitle(), $form->getContent(), $form->getAuthor(), null);
+            $am->update($form->getTitle(), $form->getContent(), $form->getAuthor(), null, $form->getType());
             $fileName = 'image';
             $formr['image']->getData()->move('uploads/'.$ss->get('id').'', $fileName);
-            return $this->redirectToRoute('recap_actualities');
+            return $this->redirectToRoute('recap_actualities_anchor');
         }
         return $this->render('actualities/update_actu.html.twig', [
-            'articles' => $am->getAllActu(),
             'buffer'=>$buffer,
             'user'=>$user,
             'buffer'=>$buffer,

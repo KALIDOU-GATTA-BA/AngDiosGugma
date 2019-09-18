@@ -68,10 +68,24 @@
                           </p>
                           <p style="color:black;text-align:center;font-size:12px">
                                  <strong><em style="font: italic  15px/30px Georgia, serif;">Author: <span style="text-decoration:underline;font: italic  15px/30px Georgia, serif;">{{author}}</span></em></strong>
-                          </p>                      
-                          <p style="color:red">  
-                              <a href="{{path('recap_actualities')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
                           </p> 
+                          {% if type == 1 %}
+                              <span style="color:red">  
+                                  <a href="{{path('recap_actualities_anchor')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
+                              </span> 
+                          {% endif %}
+
+                          {% if type == 2 %}
+                              <span style="color:red">  
+                                  <a href="{{path('recap_actualities_dailyGospels')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
+                              </span> 
+                          {% endif %}
+
+                          {% if type == 3 %}
+                              <span style="color:red">  
+                                  <a href="{{path('recap_actualities_st_of_day')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
+                              </span> 
+                          {% endif %}
                        </div><br>
                     </div>
                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">

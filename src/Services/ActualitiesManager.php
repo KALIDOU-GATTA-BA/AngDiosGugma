@@ -17,20 +17,35 @@ class ActualitiesManager
     public function getLastActuality()
     {
         $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Actualities id')->getResult();
-        $res1 = $this->entityManager->createQuery(' SELECT actu FROM App\Entity\Actualities actu  where actu.id = '.$res[0][1].'')->getResult();
-        $a=$res1[0]->getTitle();
-        $b=$res1[0]->getContent();
-        $c=$res1[0]->getAuthor();
-        return [$a, $b, $c];
+        if ($res[0][1]) {
+            $res1 = $this->entityManager->createQuery(' SELECT actu FROM App\Entity\Actualities actu  where actu.id = '.$res[0][1].'')->getResult();
+            $a=$res1[0]->getTitle();
+            $b=$res1[0]->getContent();
+            $c=$res1[0]->getAuthor();
+            $d=$res1[0]->getType();
+            return [$a, $b, $c, $d];
+        } else {
+            return false;
+        }
     }
     public function maxId()
     {
         $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Actualities id')->getResult();
         return $res;
     }
-    public function getAllActu()
+    public function getAllActuAnchor()
     {
-        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu order by actu.id desc')->getResult();
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=1 order by actu.id desc')->getResult();
+        return $res;
+    }
+    public function getAllActuDailyGospels()
+    {
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=2 order by actu.id desc')->getResult();
+        return $res;
+    }
+    public function getAllActuStOfDay()
+    {
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu where actu.type=3 order by actu.id desc ')->getResult();
         return $res;
     }
     public function deleteActu(string $title)
@@ -52,12 +67,13 @@ class ActualitiesManager
         }
     }
    
-    public function update(string $title, $content, $author, $image)
+    public function update(string $title, $content, $author, $image, $type)
     {
         $ss=new Session();
         $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.title = '$title' where actu.id IN (".$ss->get('id').")  ")->getResult();
         $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.content = '$content' where actu.id IN (".$ss->get('id').")  ")->getResult();
         $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.image = '$image' where actu.id IN (".$ss->get('id').")  ")->getResult();
         $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.author = '$author' where actu.id IN (".$ss->get('id').")  ")->getResult();
+        $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.type ='$type'  where actu.id IN (".$ss->get('id').") ")->getResult();
     }
 }

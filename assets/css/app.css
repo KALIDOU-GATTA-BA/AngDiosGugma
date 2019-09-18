@@ -20,6 +20,14 @@ background: url('../../public/images/36295287_2025187550833951_67533353227229593
 a{
 	color: #503a2c;
 }
+
+button a {
+	color: white;
+}
+button a:hover {
+	color: white;
+text-decoration: none;
+}
 .social_media_img img{
 	height: 25px;
 	width: 25px;

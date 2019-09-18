@@ -17,28 +17,32 @@ class HomeController extends AbstractController
         // be complete yet. Instead, store the entire Security object.
         $this->security = $security;
     }
-
     /**
      * @Route("/", name="home")
      */
     public function index(ActualitiesManager $am, VideoManager $vm)
     {
-        
-        // dd(    );
         $user='';
         $buffer=false;
-        if ($this->security->getUser()!=null) {
+        $author='';
+        $lastActuTitle='';
+        $lastActuContent='';
+        $type=0;
+        if ($this->security->getUser()) {
             $user=new User();
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-        
         $videoTitle=$vm->getLastVideo()[0];
         $videoLink= $vm->getLastVideo()[1];
-        $lastActuTitle=$am->getLastActuality()[0];
-        $lastActuContent=$am->getLastActuality()[1];
-        $lastActuContent=substr($lastActuContent, 0, 100).'[...]';
-        $author=$am->getLastActuality()[2];
+        if ($am->getLastActuality()) {
+            $lastActuTitle=$am->getLastActuality()[0];
+            $lastActuContent=$am->getLastActuality()[1];
+            $lastActuContent=substr($lastActuContent, 0, 100).'[...]';
+            $author=$am->getLastActuality()[2];
+            $type=$am->getLastActuality()[3];
+        }
+
         return $this->render('home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
@@ -47,6 +51,7 @@ class HomeController extends AbstractController
             'videoTitle'=>$videoTitle,
             'buffer'=>$buffer,
             'user'=>$user,
+            'type'=>$type,
         ]);
     }
     /**

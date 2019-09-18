@@ -20,3 +20,7 @@ $(document).ready(function(){
     $("iframe").attr("height", "100%");
     $("iframe").attr("width", "100%");
 });
+
+ // document.getElementById('ip').style.backgroundColor="white";
+
+

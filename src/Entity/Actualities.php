@@ -36,6 +36,11 @@ class Actualities
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $type;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Actualities
     public function setAuthor(string $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function setType(int $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
