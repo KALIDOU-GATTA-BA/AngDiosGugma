@@ -3,42 +3,6 @@
 {% block title %}Ang Dios Gugma{% endblock %}
 	
 {% block body %}
-<style>
-body{
-  background: url(' {{  asset ('images/eglise.jpeg') }}');
-    background-repeat: no-repeat;
-      background-size: 100% 100% ;
-      background-position: center;
-      overflow-x: hidden; 
-      display: flex;
-        min-height: 100vh;
-    flex-direction: column;
-    background-color:#FFF ;
-}
-.container{
-  opacity: 0.9;
-  background-color:transparent;
-}
-
-@media screen and (max-width: 600px) {
-
-      body{
-  background: url(' {{  asset ('images/eglise.jpeg') }}');
-    background-repeat: repeat;
-      background-size: 100% 20% ;
-      background-position: center;
-      overflow-x: hidden; 
-      display: flex;
-        min-height: 100vh;
-    flex-direction: column;
-    background-color:#FFF ;
-}
-.container{
-  opacity: 0.9;
-  background-color:transparent;
-}
-}
-</style>
 <script>$(document).ready(function(){
     $("iframe").attr("height", "100%");
     $("iframe").attr("width", "100%");
@@ -51,7 +15,7 @@ body{
    <div class="container"><br><br>       
         <div class="row"> 
                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
-                       <div class="news" style="background-color:transparent;border: 2px solid transparent">                           
+                       <div class="news">                           
                                 <img class="mySlides" src="{{  asset ('images/ag1.jpg') }}" style="width:100%;height:100%">
                                 <img class="mySlides" src="{{  asset ('images/ag2.jpg') }}" style="width:100%;height:100%">
                                 <img class="mySlides" src="{{  asset ('images/ag3.jpg') }}" style="width:100%;height:100%">
@@ -87,7 +51,7 @@ body{
                        </div><br>
                     </div>
                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
-                       <div class="news" style="background-color:white;border: 2px solid transparent;opacity:1"> 
+                       <div class="news"> 
                           <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  15px/30px Georgia, serif;">
                                   {{ lastActuTitle }} 
                           </h3>     
@@ -103,10 +67,10 @@ body{
                        </div><br>
                     </div>
                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
-                       <div class="news" style="background-color:transparent;border: 2px solid white;opacity:1">
+                       <div class="news">
                        <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  15px/30px Georgia, serif;">
                              {{videoTitle}}                                                  
-                      </h3><br><br>
+                      </h3>
                          <div>{{videoLink|raw}}</div>
                        </div><br>
                     </div>
