@@ -69,6 +69,7 @@ class DonationController extends AbstractController
      */
     public function donationPayment()
     {
+        //https://stripe.com/docs/payments/checkout/migration
         \Stripe\Stripe::setApiKey('sk_live_MWSJiYoZFUW0BMRStG3xoFn600cJ9dDBUB');
         $request = new Request(
             $_GET,
