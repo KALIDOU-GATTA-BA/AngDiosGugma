@@ -1,3 +1,4 @@
 swiftmailer:
     url: '%env(MAILER_URL)%'
+    transport:  "%mailer_transport%"
     spool: { type: 'memory' }
