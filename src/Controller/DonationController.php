@@ -34,11 +34,12 @@ class DonationController extends AbstractController
      */
     public function donationProcess_1(Request $request)
     {
+         return $this->redirectToRoute('maintenance_general') ;
         $form = $this->createForm(DonationProcess_1Type::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             $ss=new Session();
             $ss->set('donationForm1', $form->getNormData());
-            return $this->redirectToRoute('maintenance_general') ;
+
 
             return $this->redirectToRoute('donationProcess_2');
         }
