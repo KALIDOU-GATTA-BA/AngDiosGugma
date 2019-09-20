@@ -21,7 +21,7 @@ class DonationController extends AbstractController
 {
     private $formHandler;
     
-    /**
+    /** 
      * @var ContactFormHandler
      */
     public function __construct(DonationFormHandler $formHandler)
