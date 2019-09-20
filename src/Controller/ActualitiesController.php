@@ -51,6 +51,7 @@ class ActualitiesController extends AbstractController
             $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
             return $this->redirectToRoute('recap_actualities_anchor');
         }
+
         return $this->render('actualities/index.html.twig', [
             'actualities' => $formr->createView(),
             'buffer'=>$buffer,
@@ -69,6 +70,7 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
+        return $this->redirectToRoute('maintenance_general') ;
         return $this->render('actualities/recap_actualities_anchor.html.twig', [
             'articles' => $am->getAllActuAnchor(),
             'buffer'=>$buffer,

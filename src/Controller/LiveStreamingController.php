@@ -34,6 +34,7 @@ class LiveStreamingController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
+        return $this->redirectToRoute('maintenance_general') ;
 
         $repo = $this->getDoctrine()->getRepository(Video::class);
         $videos = $repo ->findAll() ;
