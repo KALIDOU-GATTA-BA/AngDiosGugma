@@ -29,7 +29,7 @@ class LiveChatController extends AbstractController
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('home');
         }
-        return $this->redirectToRoute('maintenance_general') ;
+      //  return $this->redirectToRoute('maintenance_general') ;
         return $this->render('live_chat/maintenance.html.twig', [
             'liveChatMaintenance' => $form->createView(),
         ]);

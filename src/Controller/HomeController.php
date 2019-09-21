@@ -42,7 +42,7 @@ class HomeController extends AbstractController
             $author=$am->getLastActuality()[2];
             $type=$am->getLastActuality()[3];
         }
-        return $this->redirectToRoute('maintenance_general') ;
+       // return $this->redirectToRoute('maintenance_general') ;
 
         return $this->render('home/index.html.twig', [
             'lastActuContent' => $lastActuContent,

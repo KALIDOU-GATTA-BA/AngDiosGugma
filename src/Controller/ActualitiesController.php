@@ -70,7 +70,7 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-        return $this->redirectToRoute('maintenance_general') ;
+       // return $this->redirectToRoute('maintenance_general') ;
         return $this->render('actualities/recap_actualities_anchor.html.twig', [
             'articles' => $am->getAllActuAnchor(),
             'buffer'=>$buffer,
