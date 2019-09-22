@@ -113,6 +113,63 @@ class ActualitiesController extends AbstractController
             'user'=>$user,
             ]);
     }
+
+    /**
+    * @Route("/recap_actualities_radio_prog", name="recap_actualities_radio_prog")
+    */
+    public function recapActualitiesRadioProg(Request $request, ActualitiesManager $am)
+    {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()!=null) {
+            $user=new User();
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
+        return $this->render('actualities/recap_actualities_radio_prog.html.twig', [
+            'articles' => $am->getAllActuRadioProg(),
+            'buffer'=>$buffer,
+            'user'=>$user,
+            ]);
+    }
+
+    /**
+    * @Route("/recap_actualities_tv_prog", name="recap_actualities_tv_prog")
+    */
+    public function recapActualitiesTVProg(Request $request, ActualitiesManager $am)
+    {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()!=null) {
+            $user=new User();
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
+        return $this->render('actualities/recap_actualities_tv_prog.html.twig', [
+            'articles' => $am->getAllActuTVProg(),
+            'buffer'=>$buffer,
+            'user'=>$user,
+            ]);
+    }
+
+    /**
+    * @Route("/recap_actualities_uyas", name="recap_actualities_uyas")
+    */
+    public function recapActualitiesUyas(Request $request, ActualitiesManager $am)
+    {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()!=null) {
+            $user=new User();
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
+        return $this->render('actualities/recap_actualities_uyas.html.twig', [
+            'articles' => $am->getAllActuUyas(),
+            'buffer'=>$buffer,
+            'user'=>$user,
+            ]);
+    }
     /**
      * @Route("/delete", name="delete")
      */

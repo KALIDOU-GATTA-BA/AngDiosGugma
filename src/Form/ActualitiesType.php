@@ -26,6 +26,9 @@ class ActualitiesType extends AbstractType
                     'Anchor' => '1',
                     'Daily gospels' => '2',
                     'Saints of the day' => '3',
+                    'Radio program' => '4',
+                    'TV program' => '5',
+                    'Uyas' => '6',
                 ], ])
             ->add('image', FileType::class, [
                 'mapped'=>false

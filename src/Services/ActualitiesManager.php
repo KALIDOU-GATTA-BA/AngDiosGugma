@@ -48,6 +48,21 @@ class ActualitiesManager
         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu where actu.type=3 order by actu.id desc ')->getResult();
         return $res;
     }
+    public function getAllActuRadioProg()
+    {
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu where actu.type=4 order by actu.id desc ')->getResult();
+        return $res;
+    }
+    public function getAllActuTVProg()
+    {
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu where actu.type=5 order by actu.id desc ')->getResult();
+        return $res;
+    }
+    public function getAllActuUyas()
+    {
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu where actu.type=6 order by actu.id desc ')->getResult();
+        return $res;
+    }
     public function deleteActu(string $title)
     {
         $res = $this->entityManager->createQuery("DELETE  FROM App\Entity\Actualities actu where actu.title ='$title' ")->getResult();
