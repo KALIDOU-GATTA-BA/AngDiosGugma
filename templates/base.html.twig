@@ -147,12 +147,12 @@
           <div class="container-fluid" style="background-color:#503a2c;color:white;font: 15px/30px Georgia, serif;">
             <div class="row">
               <div class="col s12 m6 l6 xl5">
-                <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">More</h5>
+                <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:12px">More</h5>
                   <a href="{{path('security_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Catholic school</div></a>  
                   <a href="{{path('about_us')}}" class="nav-link"  style="color:white;font-size:12px"><div class="menu">About us</div> </a>
               </div>
               <div class="col s12 m6 l6 xl2">
-                <h5 class="blue-grey-text text-darken-3" style="opacity:0;color:white;font-size:15px">More</h5>
+                <h5 class="blue-grey-text text-darken-3" style="opacity:0;color:white;font-size:12px">More</h5>
                     <a href="{{path('contact')}}" class="nav-link"  style="color:white"><div class="menu">Contact us</div> </a>       
               </div>
                 <div class="col s12 m6 l6 xl1">
@@ -161,16 +161,16 @@
                     <a href="https://www.youtube.com/channel/UCf5qwwCzUoenGKvt9mi06dQ" target="_blank" style='background-color:red; color:white;font-weight:bold'>YouTube</a><br>             
                 </div>
                 <div class="col s12 m6 l6 xl1">
-                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Administration</h5>
+                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:12px">Administration</h5>
                
           {% if  not app.user %}
           <span>
-              <a href="{{path('security_login')}}" class="nav-link"  style="color:white;font-size:15px">Log in</a>
+              <a href="{{path('security_login')}}" class="nav-link"  style="color:white;font-size:12px">Log in</a>
           </span></div>
           {% endif %}
           {% if  app.user %}
           <span>
-                  <a href="{{path('security_logout')}}" class="nav-link"  style="color:white;font-size:15px">Log out</a>
+                  <a href="{{path('security_logout')}}" class="nav-link"  style="color:white;font-size:12px">Log out</a>
           </span></div>
           {% endif %}
           
