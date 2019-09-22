@@ -20,6 +20,11 @@ $(document).ready(function(){
     $("iframe").attr("height", "100%");
     $("iframe").attr("width", "100%");
 });
+var btn =document.querySelector('.toggle_btn');
+var nav =document.querySelector('.nav');
+btn.onclick=function(){
+nav.classList.toggle('nav_open');
+}
 
  // document.getElementById('ip').style.backgroundColor="white";
 

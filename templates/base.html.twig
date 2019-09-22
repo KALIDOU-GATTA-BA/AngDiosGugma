@@ -2,351 +2,73 @@
 <html>
     <head>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-               <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-        <title>{% block title %}Ang Dios Gugma{% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+      <title>{% block title %}Ang Dios Gugma{% endblock %}</title>
+      {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+      {% endblock %}
     </head>          
     <body>     
-   <div class='tr'>
-      <div class='toggle_btn'>
-            <div style="margin-left:-180% !important;color:white">Menu</div><span></span>
-          </div>
-          <div class='menu nav'><nobr>
-            <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white"></i></a>&nbsp
-            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white">News</a>&nbsp
-            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white">Donation</a>&nbsp
-            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white">Live streaming</a>&nbsp
-             <a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white">Live chat<i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>
+      <div class='before_toggle_btn'>
+        <div class='toggle_btn'>
+          <div style="margin-left:-180% !important;color:white">Menu</div><span></span>
+        </div>
+          <div class='menu nav'>
+            <nobr>
+              <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;font-size:15px"></i></a>&nbsp
+              <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:15px">News</a>&nbsp
+              <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:15px">Donation</a>&nbsp
+              <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:15px">Live streaming</a>&nbsp
+               <a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white;font-size:15px">Chat<i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>
             </nobr>
-          </div> </div>
-          <style>
-          .tr{
-            background-color: #503a2c;
-            position: fixed;
-            width: 100%;
-            z-index: 3;
-          }
-              .toggle_btn{
-                height: 30px;
-                width: 30px;
-                position: relative;
-                float: right;
-                margin-right: 10px;
-                margin-top: 5px;
-                cursor: pointer;
-                background-color: none;
-              }
-              .toggle_btn span{
-                height: 3px;
-                background-color: white;
-                width: 100%;
-                position: absolute;
-                top: 10px;
-                left: 0;
-              }
-              .toggle_btn span:before{
-                content: '';
-                height: 3px;
-                background-color: white;
-                width: 100%;
-                position: absolute;
-                top: -10px;
-                
-              }
-              .toggle_btn span:after{
-                content: '';
-                height: 3px;
-                background-color: white;
-                width: 100%;
-                position: absolute;
-                top: 10px;
-                left: 0;
-              }
-              .menu{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-size: 12px;
-              }
-              .menu .item_1:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .menu .item_2:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .menu .item_3:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .menu .item_4:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .menu .item_5:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .menu a {
-                color: white;
-                font-family: sans-serif;
-                text-align: center;
-                
-                padding-top: 30px;
-                text-decoration: none;
-              }
-              .nav{
-                margin-left: -2000px;
-                transition-duration:0.2s;
-              }
-              .nav_open{
-                margin-left: 0px;
-                transition-duration:0.2s;
-              }
-          </style> 
-          <script>
-            var btn =document.querySelector('.toggle_btn');
-            var nav =document.querySelector('.nav');
-            btn.onclick=function(){
-              nav.classList.toggle('nav_open');
-            }
-          </script>
-
-        
-
-          
-  
-        <div class='pic_eg'>
+          </div> 
+      </div>  
+      <div class='pic_eg'>
             <iframe width="100%" height="600px" src="https://www.youtube.com/embed/-vLZ_ur8TUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br><br>
-       </div>
- 
-
-                  <!-- <img class='pic_eg' src="{{  asset ('images/eglise.jpeg') }}"> -->
-         
-                <div class="container">
-                    {% block body %}{% endblock %}
-                </div><br><br><br><br><br>
-         <img class='pic_eg' src="{{  asset ('images/eglise.jpeg') }}"> 
-          <div class="container-fluid" style="background-color:#503a2c;color:white;font: 15px/30px Georgia, serif;">
-            <div class="row">
-              <div class="col s12 m6 l6 xl5">
-                <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">More</h5>
-                  <a href="{{path('security_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Catholic school</div></a>  
-                  <a href="{{path('about_us')}}" class="nav-link"  style="color:white"><div class="menu">About us</div> </a>         
-                             <!-- <li class="dropdown">
-                                    <a href="s" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><div class="menu">Operations</div></a>
-                                    <ul class="dropdown-menu" style="width:100px" role="menu">
-                                      <li><a href="{{path('recap_iloilo')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c"  onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>Iloilo</span></a></li>
-                                      <li><a href="{{path('recap_capiz')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>Capiz</span></a></li>
-                                      <li><a href="{{path('recap_antique')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>Antique</span></a></li>
-                                      <li><a href="{{path('recap_aklan')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>Aklan</span></a></li>
-                                      <li><a href="{{path('recap_guimaras')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>Guimaras</span></a></li>
-                                      <li><a href="{{path('recap_negros')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>Negros</span></a></li>
-                                      <li><a href="{{path('recap_mindanao')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>Mindanao</span></a></li>
-                                      <li><a href="{{path('recap_metro_manila')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>Metro manila</span></a></li>
-                                      <li><a href="{{path('recap_international')}}" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'" style="padding-left:12px; color:#FFF; background-color:#503a2c"><span class='menu'>International</span></a></li>
-                                    </ul>
-                                  </li> -->
-                                
-                            <!-- <li class="dropdown">
-                                    <a href="{{path('support_ministries')}}" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><div class="menu">Support ministries</div></a>
-                                    <ul class="dropdown-menu" style="width:312px" role="menu">
-                                      <li><a href="{{path('media_phil')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>ADG Media Philippines</span></a></li>
-                                      <li><a href="{{path('catholic_ministries_foundation')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>ADG Catholic ministries foundation</span></a></li>
-                                      <li><a href="{{path('dev_cooperative')}}" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                             onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>ADG Developpement cooperative</span></a></li>
-                                      
-                      </ul>
-                    </li> -->
+      </div>
+      <div class="container">
+        {% block body %}{% endblock %}
+      </div><br><br><br><br><br>
+      <img class='pic_eg' src="{{  asset ('images/eglise.jpeg') }}"> 
+        <div class="container-fluid" style="background-color:#503a2c;color:white;font: 15px/30px Georgia, serif;">
+          <div class="row">
+            <div class="col s12 m6 l6 xl5">
+              <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">More</h5>
+              <a href="{{path('security_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu_foot">Catholic school</div></a>  
+              <a href="{{path('about_us')}}" class="nav-link"  style="color:white"><div class="menu_foot">About us</div> </a>               
+            </div>
+            <div class="col s12 m6 l6 xl2">
+              <h5 class="blue-grey-text text-darken-3" style="opacity:0;color:white;font-size:15px">More</h5>
+              <a href="{{path('contact')}}" class="nav-link"  style="color:white"><div class="menu_foot">Contact us</div> </a> 
+            </div>
+              <div class="col s12 m6 l6 xl1">
+                <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Social networks</h5>
+                  <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" style='background-color:#3b5998; color:white;font-weight:bold'>facebook</a><br> 
+                  <a href="https://www.youtube.com/channel/UCf5qwwCzUoenGKvt9mi06dQ" target="_blank" style='background-color:red; color:white;font-weight:bold'>YouTube</a><br>             
               </div>
-              <div class="col s12 m6 l6 xl2">
-                <h5 class="blue-grey-text text-darken-3" style="opacity:0;color:white;font-size:15px">More</h5>
-                         <!-- <li class="dropdown">
-                                      <a href="{{path('media_phil')}}" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white"><div class="menu">Special ministries</div> </a>
-                                      <ul class="dropdown-menu" style="width:250px" role="menu">
-                                        <li><a href="{{path('youth_warriors')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>Prayer warriors</span></a></li>
-                                        <li><a href="{{path('healing_delivrance')}}" style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>Healing and deliverance</span></a></li>
-                                        <li><a href="{{path('music_ministry')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>Music ministry</span></a></li>
-                                        <li><a href="{{path('home')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>Youth ministry</span></a></li>
-                                        <li><a href="{{path('little_junior_servants')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>Little and junior servant</span></a></li>
-                                        <li><a href="{{path('seniors_retirees')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>Seniors and retirees</span></a></li>
-                                <li><a href="{{path('community_services_professionals')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>com serv & professionals</span></a></li>
-                                        <li><a href="{{path('liturgy')}}"style="padding-left:12px; color:#FFF; background-color:#503a2c" onMouseOver="this.style.backgroundColor='#503a2c';this.style.color='#FFF'"
-                               onMouseOut="this.style.backgroundColor='white';this.style.color='#503a2c'"><span class='menu'>liturgy</span></a></li>
-                              </ul>
-                          </li>-->
-                            <a href="{{path('contact')}}" class="nav-link"  style="color:white"><div class="menu">Contact us</div> </a>       
+              <div class="col s12 m6 l6 xl1">
+                <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Administration</h5>   
+                {% if  not app.user %}
+                <span>
+                    <a href="{{path('security_login')}}" class="nav-link"  style="color:white;font-size:15px">Log in</a>
+                </span>
               </div>
-                <div class="col s12 m6 l6 xl1">
-                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Social networks</h5>
-                    <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" style='background-color:#3b5998; color:white;font-weight:bold'>facebook</a><br> 
-                    <a href="https://www.youtube.com/channel/UCf5qwwCzUoenGKvt9mi06dQ" target="_blank" style='background-color:red; color:white;font-weight:bold'>YouTube</a><br>             
-                </div>
-                <div class="col s12 m6 l6 xl1">
-                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Administration</h5>
-               
-          {% if  not app.user %}
-          <span>
-              <a href="{{path('security_login')}}" class="nav-link"  style="color:white;font-size:15px">Log in</a>
-          </span></div>
+              {% endif %}
+              {% if  app.user %}
+            <span>
+              <a href="{{path('security_logout')}}" class="nav-link"  style="color:white;font-size:15px">Log out</a>
+            </span>
+          </div>
           {% endif %}
-          {% if  app.user %}
-          <span>
-                  <a href="{{path('security_logout')}}" class="nav-link"  style="color:white;font-size:15px">Log out</a>
-          </span></div>
-          {% endif %}
-          
-          
         </div>
-    </div>
-    <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
-        All rights Reserved 2019 &#x24B8;<a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a><br>
-        Designed by  KALIDOU <strong>GATTA</strong> BA
+      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
+          All rights Reserved 2019 &#x24B8;<a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a><br>
+          Designed by  KALIDOU <strong>GATTA</strong> BA
           <span style="font-size:8px"> | (+33)651472049 | kalidougattaba@gmail.com</span>
-    </p>
-</body>
-<style>
-.pic_eg{
-   width:100%;
-    height:400px;
-}
-h3
-{
-    font-size:20px;
-    margin-bottom:0px;
-    word-spacing: 6px;
-   background-color: #503a2c;
-}
-th button:hover{
-background-color: lightgreen;
-cursor:pointer;
-}
-table{
-width:100%;
-margin-top: -50px;
-}
-.news:hover
-{
-background-color: #fff  ;
-color: white;
-}
-@media screen and (max-width: 600px) {
-  .new, .new h3
-      {
-      background-color:white;
-      margin-left: 0px;
-      margin-right: 0px;
-      padding-left: 0px;
-      padding-right:0px;
-      padding-bottom: 0px;
-       
-      }
-      .pic_eg{
-   width:100%;
-    height:250px;
-}
-}
-@media screen and (min-width: 600px) {
-.new, .new h3
-{
-background-color:white;
-margin-left: 100px;
-margin-right: 100px;
-padding-left: 20px;
-padding-right: 15px;
-padding-bottom: 10px; 
- 
-}
-}
-@media screen and (min-width: 400px) {
-      .news 
-      {
-          background-color:white;
-          margin-top:0px;
-          height:300px;
-          border: 2px solid #FFF;
-          padding: 10px;
-       
-          border-top-left-radius: 50px 20px;
-          border-top-right-radius: 50px 20px;
-          border-bottom-right-radius: 50px 20px;
-          border-bottom-left-radius: 50px 20px;
-      }
-}
-@media screen and (max-width: 399px) {
-      .news 
-      {
-          background-color:white;
-          margin-top:0px;
-          border: 2px solid red;
-      }
-}
-.btn.btn-primary{
-      background-color: #58ACFA;
-}
-.btn.btn-primary:hover{
-background-color: white;
-color: #503a2c;
-}
-.title{
-    color: blue;
-    padding-left: 230px;
-}
-a em{
-  color: blue;
-  font-weight: bold;
-  text-decoration: underline;
-} 
-.col-md-12.col-xs-12.col-sm-12.col-lg-12{
-background-color: white;
-color: #503a2c;
-font-weight: bold;
-border: 2px solid blue;
-border-radius: 12px;
-font-size: 15px;
-} 
-</style>
+      </p>
+    </body>
         {% block footer %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
