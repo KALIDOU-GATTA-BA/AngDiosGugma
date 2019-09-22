@@ -11,26 +11,129 @@
         {% endblock %}
     </head>          
     <body>     
-          <ul class="nav nav-tabs" style="background-color:#503a2c;font:15px/30px Georgia, serif;position:fixed;width:100%;z-index:3">
-              <li class="dropdown">
-                  <a href="{{path('home')}}" class="nav-link"  style="color:white"><div class="menu">Home</div></a>
-              </li>   
- 
-              <li class="dropdown">
-                      <a href="{{path('recap_actualities_anchor')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">News</div></a>  
-              </li>
-              <li class="dropdown">
-                      <a href="{{path('donationProcess_1')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Donation</div></a>  
-              </li> 
-              <li class="dropdown">
-                      <a href="{{path('live_streaming')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Live streaming</div></a>  
-              </li> 
-              <li class="dropdown">
-                      <a href="{{path('live_chat')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Live chat <i class="fa fa-comment" aria-hidden="false" style="color:red"></i></div></a>  
-              </li> 
-          </ul> 
+   <div class='tr'>
+      <div class='toggle_btn'>
+            <div style="margin-left:-180% !important;color:white">Menu</div><span></span>
+          </div>
+          <div class='menu nav'><nobr>
+            <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white"></i></a>&nbsp
+            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white">News</a>&nbsp
+            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white">Donation</a>&nbsp
+            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white">Live streaming</a>&nbsp
+             <a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white">Live chat<i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>
+            </nobr>
+          </div> </div>
+          <style>
+          .tr{
+            background-color: #503a2c;
+            position: fixed;
+            width: 100%;
+            z-index: 3;
+          }
+              .toggle_btn{
+                height: 30px;
+                width: 30px;
+                position: relative;
+                float: right;
+                margin-right: 10px;
+                margin-top: 5px;
+                cursor: pointer;
+                background-color: none;
+              }
+              .toggle_btn span{
+                height: 3px;
+                background-color: white;
+                width: 100%;
+                position: absolute;
+                top: 10px;
+                left: 0;
+              }
+              .toggle_btn span:before{
+                content: '';
+                height: 3px;
+                background-color: white;
+                width: 100%;
+                position: absolute;
+                top: -10px;
+                
+              }
+              .toggle_btn span:after{
+                content: '';
+                height: 3px;
+                background-color: white;
+                width: 100%;
+                position: absolute;
+                top: 10px;
+                left: 0;
+              }
+              .menu{
+                height: 10px;
+                background-color: none;
+                width: 150px;
+              }
+              .menu .item_1:hover{
+                height: 10px;
+                background-color: none;
+                width: 200px;
+                font-weight: bold;
+                text-decoration: underline;
+              }
+              .menu .item_2:hover{
+                height: 10px;
+                background-color: none;
+                width: 200px;
+                font-weight: bold;
+                text-decoration: underline;
+              }
+              .menu .item_3:hover{
+                height: 10px;
+                background-color: none;
+                width: 200px;
+                font-weight: bold;
+                text-decoration: underline;
+              }
+              .menu .item_4:hover{
+                height: 10px;
+                background-color: none;
+                width: 200px;
+                font-weight: bold;
+                text-decoration: underline;
+              }
+              .menu .item_5:hover{
+                height: 10px;
+                background-color: none;
+                width: 200px;
+                font-weight: bold;
+                text-decoration: underline;
+              }
+              .menu a {
+                color: white;
+                font-family: sans-serif;
+                text-align: center;
+                
+                padding-top: 30px;
+                text-decoration: none;
+              }
+              .nav{
+                margin-left: -2000px;
+                transition-duration:0.2s;
+              }
+              .nav_open{
+                margin-left: 0px;
+                transition-duration:0.2s;
+              }
+          </style> 
+          <script>
+            var btn =document.querySelector('.toggle_btn');
+            var nav =document.querySelector('.nav');
+            btn.onclick=function(){
+              nav.classList.toggle('nav_open');
+            }
+          </script>
 
-          <div>
+        
+
+          
   
         <div class='pic_eg'>
             <iframe width="100%" height="600px" src="https://www.youtube.com/embed/-vLZ_ur8TUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
