@@ -38,11 +38,11 @@ class HomeController extends AbstractController
         if ($am->getLastActuality()) {
             $lastActuTitle=$am->getLastActuality()[0];
             $lastActuContent=$am->getLastActuality()[1];
-            $lastActuContent=substr($lastActuContent, 0, 100).'[...]';
+            $lastActuContent=substr($lastActuContent, 0, 60).'[...]';
             $author=$am->getLastActuality()[2];
             $type=$am->getLastActuality()[3];
         }
-       // return $this->redirectToRoute('maintenance_general') ;
+        // return $this->redirectToRoute('maintenance_general') ;
 
         return $this->render('home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
@@ -55,9 +55,9 @@ class HomeController extends AbstractController
             'type'=>$type,
         ]);
     }
-     /**
-     * @Route("/maintenance/general", name="maintenance_general")
-     */
+    /**
+    * @Route("/maintenance/general", name="maintenance_general")
+    */
     public function maintenance()
     {
         return $this->render('home/maintenance.html.twig', [

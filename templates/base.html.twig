@@ -2,8 +2,8 @@
 <html>
     <head>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-               <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
         <title>{% block title %}Ang Dios Gugma{% endblock %}</title>
         {% block stylesheets %}
@@ -13,14 +13,14 @@
     <body>     
    <div class='tr'>
       <div class='toggle_btn'>
-            <div style="margin-left:-180% !important;color:white">Menu</div><span></span>
+            <div id="menuHam" style="margin-left:-180% !important;color:white">Menu</div><span></span>
           </div>
           <div class='nav nav'><nobr>
             <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;font-size:15px"></i></a>&nbsp
-            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:15px">News</a>&nbsp
-            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:15px">Donation</a>&nbsp
-            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:15px">Live streaming</a>&nbsp
-             <a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white;font-size:15px">Chat<i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>
+            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:16px">News</a>&nbsp
+            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:16px">Donation</a>&nbsp
+            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:16px">Live streaming</a>&nbsp
+             <a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white;font-size:16px">Chat <i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>
             </nobr>
           </div> </div>
           <style>
@@ -125,17 +125,19 @@
               }
           </style> 
           <script>
+          var x=document.getElementById('menuHam');
             var btn =document.querySelector('.toggle_btn');
             var nav =document.querySelector('.nav');
             btn.onclick=function(){
               nav.classList.toggle('nav_open');
+                //alert('ok');
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                        x.style.display = "none";
+              }
             }
-          </script>
-
-        
-
-          
-  
+          </script>          
         <div class='pic_eg'>
             <iframe width="100%" height="600px" src="https://www.youtube.com/embed/-vLZ_ur8TUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <br><br>
