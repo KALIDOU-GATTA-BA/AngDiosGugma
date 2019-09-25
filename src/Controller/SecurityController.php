@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/$2y$13$ZgiY.xjG.NOdbLrjeYhj7O0pLR.LO41DdCCRwpn6iKNJffW1dX6ry", name="security")
+     * @Route("/inscription", name="security")
      */
     public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -26,7 +26,7 @@ class SecurityController extends AbstractController
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
-           // return $this->redirectToRoute('security_login');
+            return $this->redirectToRoute('security_login');
         }
 
         return $this->render('security/index.html.twig', [
