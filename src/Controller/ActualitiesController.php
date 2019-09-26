@@ -239,13 +239,11 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-        $formr = $this->createForm(CommentsType::class)->handleRequest($request);
-
-        if ($formr->isSubmitted() && $formr->isValid()) {
-            $form = $formr->getData();
-            $this->entityManager->persist($form);
-            $this->entityManager->flush();
-        }
+        $form = $this->createForm(CommentsType::class)->handleRequest($request);
+        $this->cfh->handle($form);
+       // $ss=new Session();
+         
+       // dd('er');
         $ss = $request->getSession();
        // dd($ss);
         $ss->set('idArticle', $_GET['val']);
@@ -258,7 +256,7 @@ class ActualitiesController extends AbstractController
             'author'=>$am->getActuToComment($_GET['val'])[2],
             'idArticle'=>$_GET['val'],
             'comments'=>$am->getComments($_GET['val']),
-            'comment_actu' => $formr->createView(),
+            'comment_actu' => $form->createView(),
            
             ]);
     }
