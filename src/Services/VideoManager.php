@@ -63,7 +63,6 @@ class VideoManager
     public function getVideoToComment(int $id)
     {
         $res = $this->entityManager->createQuery(" SELECT vid FROM App\Entity\Video vid where vid.id = '$id' ")->getResult();
-        
         $a=$res[0]->getTitle();
         $b=$res[0]->getLink();
         return [$a, $b];

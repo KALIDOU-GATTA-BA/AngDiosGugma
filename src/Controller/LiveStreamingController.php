@@ -17,15 +17,17 @@ use App\Form\CommentsVideoType;
 use App\Entity\CommentsVideo;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Handlers\Form\CommentsVideoFormHandler;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class LiveStreamingController extends AbstractController
 {
-    public function __construct(Security $security, VideoFormHandler $formHandler, CommentsVideoFormHandler $cfh, EntityManagerInterface $entityManager)
+    public function __construct(Security $security, VideoFormHandler $formHandler, SessionInterface $session, CommentsVideoFormHandler $cfh, EntityManagerInterface $entityManager)
     {
         $this->security = $security;
         $this->formHandler = $formHandler;
         $this->cfh=$cfh;
-       $this->entityManager = $entityManager;
+        $this->entityManager = $entityManager;
+        $this->session = $session;
     }
     /**
      * @Route("/live/streaming", name="live_streaming")
@@ -40,7 +42,6 @@ class LiveStreamingController extends AbstractController
             $buffer=true;
         }
         //   return $this->redirectToRoute('maintenance_general') ;
-
         $repo = $this->getDoctrine()->getRepository(Video::class);
         $videos = $repo ->findAll() ;
         return $this->render('live_streaming/index.html.twig', [
@@ -58,7 +59,6 @@ class LiveStreamingController extends AbstractController
             'videos' => '',
         ]);
     }
- 
     /**
      * @Route("/update/video", name="update_video")
      */
@@ -71,7 +71,7 @@ class LiveStreamingController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-        $ss=new Session();
+        $ss = $this->session;
 
         $title=$vm->goToVideo(''.$ss->get('title').'')[0];
         $link=$vm->goToVideo(''.$ss->get('title').'')[1];
@@ -104,10 +104,12 @@ class LiveStreamingController extends AbstractController
             $buffer=true;
         }
         $formr = $this->createForm(CommentsVideoType::class)->handleRequest($request);
-        $form = $formr->getData();
+        if ($formr->isSubmitted() && $formr->isValid()) {
+            $form = $formr->getData();
             $this->entityManager->persist($form);
             $this->entityManager->flush();
-        $ss = $request->getSession();
+        }
+        $ss = $this->session;
         $ss->set('idVideo', $_GET['val']);
         return $this->render('live_streaming/comment_video.html.twig', [
             'comment_video' => $formr->createView(),
@@ -117,15 +119,14 @@ class LiveStreamingController extends AbstractController
             'link'=>$vm->getVideoToComment($_GET['val'])[1],
             'idVideo'=>$_GET['val'],
             'comments'=>$vm->getComments($_GET['val']),
-           
             ]);
     }
     /**
-     * @Route("/show/comments", name="show_comments")
+     * @Route("/show/comments/video", name="show_comments_video")
      */
     public function showComments(VideoManager $vm)
     {
-        $ss=new Session;
+        $ss = $this->session;
         return $this->render('live_streaming/show_comments.html.twig', [
          
             'title'=>$vm->getVideoToComment($ss->get('idVideo'))[0],

@@ -17,6 +17,7 @@ use App\Services\ActualitiesManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class ActualitiesController extends AbstractController
@@ -25,12 +26,13 @@ class ActualitiesController extends AbstractController
     private $formHandler;
     private $cfh;
    
-    public function __construct(ActualitiesFormHandler $formHandler, CommentsFormHandler $cfh, EntityManagerInterface $entityManager, Security $security)
+    public function __construct(ActualitiesFormHandler $formHandler, SessionInterface $session, CommentsFormHandler $cfh, EntityManagerInterface $entityManager, Security $security)
     {
         $this->formHandler = $formHandler;
         $this->cfh=$cfh;
         $this->entityManager = $entityManager;
         $this->security = $security;
+        $this->session = $session;
     }
     /**
      * @Route("/actualities", name="actualities")
@@ -232,35 +234,21 @@ class ActualitiesController extends AbstractController
      */
     public function commentActu(ActualitiesManager $am, Request $request)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
         $formr = $this->createForm(CommentsType::class)->handleRequest($request);
-      // dd( $this->cfh->handle($form));
-       // $ss=new Session();
-         $form = $formr->getData();
+        if ($formr->isSubmitted() && $formr->isValid()) {
+            $form = $formr->getData();
             $this->entityManager->persist($form);
             $this->entityManager->flush();
-         
-       // dd('er');
+        }
         $ss = $request->getSession();
-       // dd($ss);
         $ss->set('idArticle', $_GET['val']);
         return $this->render('actualities/comment_actu.html.twig', [
-            
-            'buffer'=>$buffer,
-            'user'=>$user,
             'title'=>$am->getActuToComment($_GET['val'])[0],
             'content'=>$am->getActuToComment($_GET['val'])[1],
             'author'=>$am->getActuToComment($_GET['val'])[2],
             'idArticle'=>$_GET['val'],
             'comments'=>$am->getComments($_GET['val']),
             'comment_actu' => $formr->createView(),
-           
             ]);
     }
     /**
@@ -268,7 +256,7 @@ class ActualitiesController extends AbstractController
      */
     public function showComments(ActualitiesManager $am)
     {
-        $ss=new Session;
+        $ss = $this->session;
         return $this->render('actualities/show_comments.html.twig', [
          
             'title'=>$am->getActuToComment($ss->get('idArticle'))[0],

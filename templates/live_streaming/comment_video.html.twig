@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% form_theme comment_video 'bootstrap_4_layout.html.twig'  %}
-{% block title %}Payment success!{% endblock %}
+{% block title %}Comments{% endblock %}
 
 {% block body %}  
 
@@ -38,10 +38,10 @@
 <script>  
 
 $(document).ready(function () {
-    $(".afficher").load("http://angdiosgugma.com/show/comments");
+    $(".afficher").load("http://angdiosgugma.com/show/comments/video");
     //env=prod :http://angdiosgugma.com;
     var refreshId = setInterval(function () {
-        $(".afficher").load("http://127.0.0.1:8000/show/comments");
+        $(".afficher").load("http://angdiosgugma.com/show/comments/video");
     }, 2000);
     $.ajaxSetup({
         cache: false 
