@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class ActualitiesManager
 {
-    private $request;
+    // private $request;
     public function __construct(ObjectManager $entityManager)
     {
         $this->entityManager = $entityManager;
@@ -90,5 +90,19 @@ class ActualitiesManager
         $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.image = '$image' where actu.id IN (".$ss->get('id').")  ")->getResult();
         $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.author = '$author' where actu.id IN (".$ss->get('id').")  ")->getResult();
         $res = $this->entityManager->createQuery(" UPDATE   App\Entity\Actualities actu SET actu.type ='$type'  where actu.id IN (".$ss->get('id').") ")->getResult();
+    }
+    public function getActuToComment(int $id)
+    {
+        $res = $this->entityManager->createQuery(" SELECT actu FROM App\Entity\Actualities actu where actu.id = '$id' ")->getResult();
+        
+        $a=$res[0]->getTitle();
+        $b=$res[0]->getContent();
+        $c=$res[0]->getAuthor();
+        return [$a, $b, $c];
+    }
+    public function getComments(int $id)
+    {
+        $res = $this->entityManager->createQuery("SELECT comment FROM App\Entity\Comments comment where comment.idArticle = '$id' order by comment.id asc ")->getResult();
+        return $res;
     }
 }

@@ -60,4 +60,17 @@ class VideoManager
         $res = $this->entityManager->createQuery("DELETE  FROM App\Entity\Video vid where vid.id ='$id' ")->getResult();
         return $res;
     }
+    public function getVideoToComment(int $id)
+    {
+        $res = $this->entityManager->createQuery(" SELECT vid FROM App\Entity\Video vid where vid.id = '$id' ")->getResult();
+        
+        $a=$res[0]->getTitle();
+        $b=$res[0]->getLink();
+        return [$a, $b];
+    }
+    public function getComments(int $id)
+    {
+        $res = $this->entityManager->createQuery("SELECT comment FROM App\Entity\CommentsVideo comment where comment.idVideo= '$id' order by comment.id asc ")->getResult();
+        return $res;
+    }
 }

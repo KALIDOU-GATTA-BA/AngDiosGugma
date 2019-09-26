@@ -7,8 +7,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Form\ActualitiesType;
+use App\Form\CommentsType;
+use App\Entity\Comments;
 use App\Repository\ActualitiesRepository;
 use App\Handlers\Form\ActualitiesFormHandler;
+use App\Handlers\Form\CommentsFormHandler;
 use App\Entity\Actualities;
 use App\Services\ActualitiesManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,12 +23,12 @@ class ActualitiesController extends AbstractController
 {
     private $entityManager;
     private $formHandler;
-    /**
-     * @var ContactFormHandler
-     */
-    public function __construct(ActualitiesFormHandler $formHandler, EntityManagerInterface $entityManager, Security $security)
+    private $cfh;
+   
+    public function __construct(ActualitiesFormHandler $formHandler, CommentsFormHandler $cfh, EntityManagerInterface $entityManager, Security $security)
     {
         $this->formHandler = $formHandler;
+        $this->cfh=$cfh;
         $this->entityManager = $entityManager;
         $this->security = $security;
     }
@@ -51,7 +54,6 @@ class ActualitiesController extends AbstractController
             $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
             return $this->redirectToRoute('recap_actualities_anchor');
         }
-
         return $this->render('actualities/index.html.twig', [
             'actualities' => $formr->createView(),
             'buffer'=>$buffer,
@@ -70,11 +72,11 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-       // return $this->redirectToRoute('maintenance_general') ;
         return $this->render('actualities/recap_actualities_anchor.html.twig', [
             'articles' => $am->getAllActuAnchor(),
             'buffer'=>$buffer,
             'user'=>$user,
+            'id'=>$am->getAllActuAnchor()[0]->getId(),
             ]);
     }
     /**
@@ -113,7 +115,6 @@ class ActualitiesController extends AbstractController
             'user'=>$user,
             ]);
     }
-
     /**
     * @Route("/recap_actualities_radio_prog", name="recap_actualities_radio_prog")
     */
@@ -132,7 +133,6 @@ class ActualitiesController extends AbstractController
             'user'=>$user,
             ]);
     }
-
     /**
     * @Route("/recap_actualities_tv_prog", name="recap_actualities_tv_prog")
     */
@@ -151,7 +151,6 @@ class ActualitiesController extends AbstractController
             'user'=>$user,
             ]);
     }
-
     /**
     * @Route("/recap_actualities_uyas", name="recap_actualities_uyas")
     */
@@ -190,7 +189,6 @@ class ActualitiesController extends AbstractController
 
         $ss->set('title', $_GET['val']);
         $ss->set('id', $am->goToActu($_GET['val'])[3]);
-        // die();
         return $this->redirectToRoute('update_actu');
     }
     /**
@@ -206,7 +204,6 @@ class ActualitiesController extends AbstractController
             $buffer=true;
         }
         $ss=new Session();
-
         $image= $this->getParameter('upload_directory').'/'.$ss->get('id').'/image' ;
         $title=$am->goToActu(''.$ss->get('title').'')[0];
         $content=$am->goToActu(''.$ss->get('title').'')[1];
@@ -229,5 +226,48 @@ class ActualitiesController extends AbstractController
             'image'=>$image,
             'update_actu'=>$formr->createView(),
             ]);
+    }
+    /**
+     * @Route("/comment/actu", name="comment_actu")
+     */
+    public function commentActu(ActualitiesManager $am, Request $request)
+    {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()) {
+            $user=new User();
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
+        $form = $this->createForm(CommentsType::class)->handleRequest($request);
+        $this->cfh->handle($form);
+        $ss=new Session();
+        $ss->set('idArticle', $_GET['val']);
+        return $this->render('actualities/comment_actu.html.twig', [
+            'comment_actu' => $form->createView(),
+            'buffer'=>$buffer,
+            'user'=>$user,
+            'title'=>$am->getActuToComment($_GET['val'])[0],
+            'content'=>$am->getActuToComment($_GET['val'])[1],
+            'author'=>$am->getActuToComment($_GET['val'])[2],
+            'idArticle'=>$_GET['val'],
+            'comments'=>$am->getComments($_GET['val']),
+           
+            ]);
+    }
+    /**
+     * @Route("/show/comments", name="show_comments")
+     */
+    public function showComments(ActualitiesManager $am)
+    {
+        $ss=new Session;
+        return $this->render('actualities/show_comments.html.twig', [
+         
+            'title'=>$am->getActuToComment($ss->get('idArticle'))[0],
+            'content'=>$am->getActuToComment($ss->get('idArticle'))[1],
+            'author'=>$am->getActuToComment($ss->get('idArticle')),
+            'idArticle'=>$ss->get('idArticle'),
+            'comments'=>$am->getComments($ss->get('idArticle')),
+        ]);
     }
 }

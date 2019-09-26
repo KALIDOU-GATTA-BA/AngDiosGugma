@@ -13,15 +13,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
+use App\Form\CommentsVideoType;
+use App\Entity\CommentsVideo;
+use App\Handlers\Form\CommentsVideoFormHandler;
 
 class LiveStreamingController extends AbstractController
 {
-    public function __construct(Security $security, VideoFormHandler $formHandler)
+    public function __construct(Security $security, VideoFormHandler $formHandler, CommentsVideoFormHandler $cfh)
     {
         $this->security = $security;
         $this->formHandler = $formHandler;
+        $this->cfh=$cfh;
     }
-    
     /**
      * @Route("/live/streaming", name="live_streaming")
      */
@@ -34,7 +37,7 @@ class LiveStreamingController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-     //   return $this->redirectToRoute('maintenance_general') ;
+        //   return $this->redirectToRoute('maintenance_general') ;
 
         $repo = $this->getDoctrine()->getRepository(Video::class);
         $videos = $repo ->findAll() ;
@@ -85,5 +88,46 @@ class LiveStreamingController extends AbstractController
             'link'=>$link,
             'update_video'=>$form->createView(),
             ]);
+    }
+    /**
+     * @Route("/comment/video", name="comment_video")
+     */
+    public function commentVideo(VideoManager $vm, Request $request)
+    {
+        $user='';
+        $buffer=false;
+        if ($this->security->getUser()) {
+            $user=new User();
+            $user = $this->getUser()->getUsername();
+            $buffer=true;
+        }
+        $form = $this->createForm(CommentsVideoType::class)->handleRequest($request);
+        $this->cfh->handle($form);
+        $ss=new Session();
+        $ss->set('idVideo', $_GET['val']);
+        return $this->render('live_streaming/comment_video.html.twig', [
+            'comment_video' => $form->createView(),
+            'buffer'=>$buffer,
+            'user'=>$user,
+            'title'=>$vm->getVideoToComment($_GET['val'])[0],
+            'link'=>$vm->getVideoToComment($_GET['val'])[1],
+            'idVideo'=>$_GET['val'],
+            'comments'=>$vm->getComments($_GET['val']),
+           
+            ]);
+    }
+    /**
+     * @Route("/show/comments", name="show_comments")
+     */
+    public function showComments(VideoManager $vm)
+    {
+        $ss=new Session;
+        return $this->render('live_streaming/show_comments.html.twig', [
+         
+            'title'=>$vm->getVideoToComment($ss->get('idVideo'))[0],
+            'link'=>$vm->getVideoToComment($ss->get('idVideo'))[1],
+            'idVideo'=>$ss->get('idVideo'),
+            'comments'=>$vm->getComments($ss->get('idVideo')),
+        ]);
     }
 }
