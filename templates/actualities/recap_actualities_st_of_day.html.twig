@@ -57,10 +57,7 @@
               {{article.content}}
             </div><br>  
             <p style="color:black; text-decoration:underline">{{article.author}} </p>
-            <form action='{{path('comment_actu')}}' method='GET'>
-              <input type ="text" style='opacity:0' value='{{article.id}}' name="val">
-              <button type="submit" style='text-align:left;color:white;background-color:none;border-radius: 50px 20px'>Add a comment</button>
-            </form>
+        
         </article>
       {% endfor %}
      </section>

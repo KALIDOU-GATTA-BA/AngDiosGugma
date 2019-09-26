@@ -15,15 +15,17 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
 use App\Form\CommentsVideoType;
 use App\Entity\CommentsVideo;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Handlers\Form\CommentsVideoFormHandler;
 
 class LiveStreamingController extends AbstractController
 {
-    public function __construct(Security $security, VideoFormHandler $formHandler, CommentsVideoFormHandler $cfh)
+    public function __construct(Security $security, VideoFormHandler $formHandler, CommentsVideoFormHandler $cfh, EntityManagerInterface $entityManager)
     {
         $this->security = $security;
         $this->formHandler = $formHandler;
         $this->cfh=$cfh;
+       $this->entityManager = $entityManager;
     }
     /**
      * @Route("/live/streaming", name="live_streaming")
@@ -101,12 +103,14 @@ class LiveStreamingController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-        $form = $this->createForm(CommentsVideoType::class)->handleRequest($request);
-        $this->cfh->handle($form);
-        $ss=new Session();
+        $formr = $this->createForm(CommentsVideoType::class)->handleRequest($request);
+        $form = $formr->getData();
+            $this->entityManager->persist($form);
+            $this->entityManager->flush();
+        $ss = $request->getSession();
         $ss->set('idVideo', $_GET['val']);
         return $this->render('live_streaming/comment_video.html.twig', [
-            'comment_video' => $form->createView(),
+            'comment_video' => $formr->createView(),
             'buffer'=>$buffer,
             'user'=>$user,
             'title'=>$vm->getVideoToComment($_GET['val'])[0],
