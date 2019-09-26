@@ -240,7 +240,6 @@ class ActualitiesController extends AbstractController
             $buffer=true;
         }
         $formr = $this->createForm(CommentsType::class)->handleRequest($request);
-               dd($formr);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
