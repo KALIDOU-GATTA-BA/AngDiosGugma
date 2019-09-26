@@ -241,7 +241,9 @@ class ActualitiesController extends AbstractController
         }
         $form = $this->createForm(CommentsType::class)->handleRequest($request);
         $this->cfh->handle($form);
-        $ss=new Session();
+       // $ss=new Session();
+        $ss = $request->getSession();
+
         $ss->set('idArticle', $_GET['val']);
         return $this->render('actualities/comment_actu.html.twig', [
             'comment_actu' => $form->createView(),
