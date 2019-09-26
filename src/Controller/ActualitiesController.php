@@ -239,14 +239,19 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-        $form = $this->createForm(CommentsType::class)->handleRequest($request);
-        $this->cfh->handle($form);
-       // $ss=new Session();
-        $ss = $request->getSession();
+        $formr = $this->createForm(CommentsType::class)->handleRequest($request);
+               dd($formr);
 
+        if ($formr->isSubmitted() && $formr->isValid()) {
+            $form = $formr->getData();
+            $this->entityManager->persist($form);
+            $this->entityManager->flush();
+        }
+        $ss = $request->getSession();
+       // dd($ss);
         $ss->set('idArticle', $_GET['val']);
         return $this->render('actualities/comment_actu.html.twig', [
-            'comment_actu' => $form->createView(),
+            
             'buffer'=>$buffer,
             'user'=>$user,
             'title'=>$am->getActuToComment($_GET['val'])[0],
@@ -254,6 +259,7 @@ class ActualitiesController extends AbstractController
             'author'=>$am->getActuToComment($_GET['val'])[2],
             'idArticle'=>$_GET['val'],
             'comments'=>$am->getComments($_GET['val']),
+            'comment_actu' => $formr->createView(),
            
             ]);
     }
