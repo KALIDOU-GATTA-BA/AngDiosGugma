@@ -105,4 +105,24 @@ class ActualitiesManager
         $res = $this->entityManager->createQuery("SELECT comment FROM App\Entity\Comments comment where comment.idArticle = '$id' order by comment.id asc ")->getResult();
         return $res;
     }
+    public function paginationAnchor()
+    {
+        $res = $this->entityManager->createQuery("SELECT count(actu.id)  FROM App\Entity\Actualities  actu  where actu.type = 1")->getResult();
+        return (int)$res[0][1];
+    }
+    public function paginationDailyGospels()
+    {
+        $res = $this->entityManager->createQuery("SELECT count(actu.id)  FROM App\Entity\Actualities  actu  where actu.type = 2")->getResult();
+        return (int)$res[0][1];
+    }
+    public function paginationStOfDay()
+    {
+        $res = $this->entityManager->createQuery("SELECT count(actu.id)  FROM App\Entity\Actualities  actu  where actu.type = 3")->getResult();
+        return (int)$res[0][1];
+    }
+     public function countCommentsLastActu(){
+        $id=(int)$this->maxId()[0][1];
+        $res = $this->entityManager->createQuery("SELECT count(comment.id)  FROM App\Entity\Comments comment where comment.idArticle= '$id'  ")->getResult();
+        return (int)$res[0][1];
+    }
 }

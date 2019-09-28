@@ -74,11 +74,15 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
+      // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
+       //dd($am->countComments($am->paginationAnchor()));
         return $this->render('actualities/recap_actualities_anchor.html.twig', [
             'articles' => $am->getAllActuAnchor(),
             'buffer'=>$buffer,
             'user'=>$user,
             'id'=>$am->getAllActuAnchor()[0]->getId(),
+            'paginationAnchor'=>$am->paginationAnchor(),
+           // 'count'=>(int)$am->countComments($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId()) ,
             ]);
     }
     /**
@@ -97,6 +101,7 @@ class ActualitiesController extends AbstractController
             'articles' => $am->getAllActuDailyGospels(),
             'buffer'=>$buffer,
             'user'=>$user,
+            'paginationDailyGospels'=>$am->paginationDailyGospels(),
             ]);
     }
     /**
@@ -115,6 +120,7 @@ class ActualitiesController extends AbstractController
             'articles' => $am->getAllActuStOfDay(),
             'buffer'=>$buffer,
             'user'=>$user,
+            'paginationStOfDay'=>$am->paginationStOfDay(),
             ]);
     }
     /**

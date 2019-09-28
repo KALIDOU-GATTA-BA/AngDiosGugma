@@ -48,6 +48,7 @@ class LiveStreamingController extends AbstractController
             'videos' => $vm->getAllVideos(),
              'buffer'=>$buffer,
             'user'=>$user,
+            'pagination'=>$vm->pagination(),
         ]);
     }
     /**
