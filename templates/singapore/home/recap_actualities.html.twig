@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block title %}Actualities{% endblock %}
+
+{% block body %}
+<span style="color:white;background-color:red;font-size:10px">ADG SINGAPORE</span><img style='height:10px;width:10px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"><br>
+<style>
+  body{ 
+      background: url('{{  asset ('images/jesus2.jpg') }}'); 
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFF;          
+      }
+      @media screen and (max-width: 600px) {
+  
+      body{
+         background: url('{{  asset ('images/jesus2.jpg') }}'); 
+          background-repeat: no-repeat;
+          background-size: 100% 85%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;  
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFF;  
+}
+}
+</style> 
+<nobr style=''><button type="submit" style='font-size:13px' class ="btn"><a href="{{path('singapore')}}">Home</a></button>
+  <button type="submit" style='font-size:13px' class ="btn"><a href="{{path('recap_actualities_singapore')}}">News</a></button> <button type="submit" style='font-size:13px' class ="btn"><a href="{{path('live_streaming_singapore')}}">Live streaming</a></button></nobr><br>
+  {%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+  
+<div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
+    <section class ="articles">
+    {% if app.user %}
+        <span>
+          <a href="{{path('actualities_singapore')}}" class="nav-link"  style="color:red;font-size:15px; font-weight:bold"><< Go to articles management</a>
+        </span> 
+    {% endif %}
+      {% for article in articles %}
+        <article> 
+          <h1 style="text-align:center"> {{article.title}} </h1>
+            <div>                           
+                <img id ="img" src="{{  asset ('uploadsSingapore/') }}{{article.id}}/image" style="height:100%;width:100%">
+            </div>
+            <div style ="text-align:justify">
+              {{article.content}}
+            </div><br>  
+            <p style="color:black; text-decoration:underline">{{article.author}} </p>
+            <form action='{{path('comment_actu_singapore')}}' method='GET'>
+              <input type ="text" style='opacity:0' value='{{article.id}}' name="val">
+              <input type="submit" style='color:white;background-color:#503a2c' value='+comment'><i class="fa fa-comment fa-spin" style='color:red;height:20px'></i>
+            </form>
+        </article>
+      {% endfor %}
+    </section>
+</div>
+{% if app.user %}
+  <span>
+    <a href="{{path('actualities_singapore')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
+  </span> 
+{% endif %}
+
+{% block javascript %}
+  <script src={{ asset("build/app.js") }}></script>
+{% endblock %}
+{% endblock %}

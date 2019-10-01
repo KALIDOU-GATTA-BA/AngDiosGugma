@@ -15,13 +15,16 @@
       <div class='toggle_btn'>
             <div id="menuHam" style="margin-left:-180% !important;color:white">Menu</div><span></span>
           </div>
-          <div class='nav nav'><nobr>
-            <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;font-size:18px"></i><span style="font-size:17px">Home</span></a>&nbsp
-            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:17px">News</a>&nbsp
-            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:17px">Donation</a>&nbsp
-            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px">Live streaming</a>&nbsp
+          <div class='nav nav'><div style="height:300px;background-color:#2C3E50">
+            <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i><span style="font-size:17px">Home</span></a>&nbsp<br><br>
+            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a>&nbsp<br><br>
+            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a>&nbsp<br><br>
+            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a>&nbsp<br><br>
+            <a href="{{path('singapore')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore<img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"> </a>&nbsp<br><br>
+            <a href="{{path('hongkong')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></a>&nbsp<br><br>
+            <a href="{{path('canada')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>&nbsp<br><br>
              <!--<a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white;font-size:16px">Chat <i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>-->
-            </nobr>
+            </div>
           </div> </div>
           <style>
           #tr{
@@ -116,7 +119,7 @@
                 text-decoration: none;
               }
               .nav{
-                margin-left: -2000px;
+                margin-left: -20000px;
                 transition-duration:0.2s;
               }
               .nav_open{

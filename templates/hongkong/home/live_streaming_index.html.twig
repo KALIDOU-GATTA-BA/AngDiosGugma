@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ang Dios Gugma{% endblock %}
+  
+{% block body %}
+<span style="color:white;background-color:red;font-size:10px">ADG HONG KONG</span><img style='height:10px;width:10px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"><br>
+<style>
+  .mySlides {display:none}
+     .vid{ 
+        height:600px;       
+        }
+        @media screen and (max-width: 600px) {
+    
+        .vid{
+          height:300px; 
+        }
+  }
+</style>
+<nobr style=''><button type="submit" style='font-size:13px' class ="btn"><a href="{{path('hongkong')}}">Home</a></button>
+  <button type="submit" style='font-size:13px' class ="btn"><a href="{{path('recap_actualities_hongkong')}}">News</a></button> <button type="submit" style='font-size:13px' class ="btn"><a href="{{path('live_streaming_hongkong')}}">Live streaming</a></button></nobr><br>
+
+{%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}<br><br>
+<div class="container"><br> 
+  {% if  app.user %}
+        <span>
+          <a href="{{path('video_hongkong')}}" class="nav-link"  style="color:red;font-size:15px; font-weight:bold"><< Go to videos management</a>
+        </span> 
+    {% endif %}         
+    
+    
+      {% for video in videos %}
+            <article class='mySlides'>
+                    
+                    
+                            <form action='{{path('comment_video_hongkong')}}' method='GET'>
+                        <input type="submit" style='background-color:#503a2c;color:white;font-style:italic' value='+comment' ><i class="fa fa-comment fa-spin" style='color:red;height:20px'></i><br>
+
+                          <input type ="text" style='opacity:0' value='{{video.id}}' name="val">
+                  </form>
+                             <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  15px/30px Georgia, serif;">
+                                   {{video.title}}                                                  
+                             </h3>                    
+                                     <div class='vid'>{{video.link|raw}}
+          
+                        </div>
+                 
+               
+            </article>
+      {% endfor %} 
+</div> <br><br><br>
+                  <div class="w3-center">
+                    <div class="w3-section">
+                      <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮ Prev</button>
+                      <button class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ❯</button>
+                    </div>
+                   
+                    {% for i in 1..pagination%}
+                      <button class="w3-button demo" onclick="currentDiv({{ i }})">{{ i }}</button>
+                    {% endfor %}
+                  </div>
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-red", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-red";
+}
+</script>
+{% endblock %}

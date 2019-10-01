@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% form_theme actualities 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Actualities Singapore{% endblock %}
+{% block body %}
+{%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+
+<h1>Actualities Singapore</h1><nobr><a href="{{path('video_singapore')}}"  style="color:blue;background-color:white"> <mark>>>Switch to videos sections</mark></a></nobr>
+    <h2>Fill the bellow field if you want to delete an article</h2>
+    <form style ='height:100%; width:100%' method ="GET" action="{{path('delete_singapore')}}">
+      Article title:<br>
+      <input type ="text"  style="color:white;background-color:red" name="val" placeholder="Article title"> <nobr><a href="{{path('recap_actualities_singapore')}}"  style="color:blue;background-color:white">>>See all articles</a></nobr><br>
+      <button type="submit" class ="btn">Delete</button><br><br>
+    </form>  <br>
+    <h2>Fill the bellow field if you want to update an article</h2>
+    <form style ='height:100%; width:100%' method ="GET" action="{{path('update_actu_select_singapore')}}">
+      Article title:<br>
+      <input type ="text"  style="color:white;background-color:green" name="val" placeholder="Article title"> <nobr><a href="{{path('update_actu_singapore')}}"  style="color:blue;background-color:white">>>See all articles</a></nobr><br>
+      <button type="submit" class ="btn">Update</button><br><br>
+    </form>  <br>
+       <h2>Fill the bellow form to add an article</h2>
+    {{form_start(actualities)}}
+
+      {{ form_row(actualities.title, {'attr' : { 'placeholder': "Title"}, 'label': 'Title' } ) }}
+      {{ form_row(actualities.image) }}
+
+      {{ form_row(actualities.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
+
+      {{ form_row(actualities.author, {'attr' : { 'placeholder': "Author"},  'label': 'Author'} ) }}
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(actualities)}}
+
+{% endblock %} 

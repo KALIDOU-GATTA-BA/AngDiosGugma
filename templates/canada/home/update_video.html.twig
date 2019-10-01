@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% form_theme update_video 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Actualities{% endblock %}
+{% block body %}
+{%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+
+<h1>Update video</h1><nobr><a href="{{path('actualities_canada')}}"  style="color:blue;background-color:white"> <mark>>>Back to articles sections</mark></a></nobr>
+   
+      
+<br>
+    {{form_start(update_video)}}
+    
+
+    {{ form_row(update_video.title, {'attr' : { 'placeholder': "Title"}, 'label': 'Title','value':title } ) }}
+
+
+    {{ form_row(update_video.link, {'attr' : { 'placeholder': "Link"},  'label': 'Link','value':link} ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(update_video)}}
+
+{% endblock %} 

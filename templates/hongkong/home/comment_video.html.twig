@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+{% form_theme comment_video 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Comments{% endblock %}
+
+{% block body %}  
+
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
+  <div class="news">   
+    <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  15px/30px Georgia, serif;">
+        {{title}}                                                  
+    </h3>  
+    <div style='height:300px;width:100%'>                 
+    {{link|raw}}
+    </div> 
+  </div>
+</div>  
+<br><br>
+{{form_start(comment_video)}}
+
+  {{ form_row(comment_video.name, {'attr' : { 'placeholder': "your name"}, 'label': 'Name', "class":"formulaire", "value":"" } ) }}
+  {{ form_row(comment_video.comment, {'attr' : { 'placeholder': "your comment"}, "value":"" }) }}
+   <button type="submit" style ="font-size:12px;color:white">post<i class="fa fa-send" aria-hidden="false" style="color:beige"></i></button><br><br>
+  <span>{{ form_row(comment_video.idVideo, {'attr' : { 'placeholder': "id"},'value':idVideo} ) }}</span>
+
+{{form_end(comment_video)}}<br>
+   
+<div class="afficher">
+            
+
+      {% for comment in comments %}
+        <p style="text-align:left;color:black"> <span style="font-weight:bold;text-decoration:underline">{{comment.name}}</span> :  <em>{{comment.comment}}</em></p>
+      {% endfor %}
+
+</div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script>  
+
+$(document).ready(function () {
+    $(".afficher").load("http://angdiosgugma.com/show/comments/video");
+    //env=prod :http://angdiosgugma.com;
+    var refreshId = setInterval(function () {
+        $(".afficher").load("http://angdiosgugma.com/show/comments/video");
+    }, 2000);
+    $.ajaxSetup({
+        cache: false 
+    });
+});
+</script>
+<style>
+.formulaire{
+  font-family:verdana, calibri, arial;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+label, #comments_video_hongkong_idVideo{
+  opacity:0;
+}
+input#comments_name.form-control,textarea#comments_comment.form-control{
+  background-color:beige;
+  color:black;
+}
+h2{
+  width:400px;
+  text-align: center;
+}
+
+.nom, .message, .submit{
+  width:400px;
+  padding:5px;
+  margin-bottom: 5px;
+  border: 1px solid #AAA;
+  height: 35px;
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.nom:focus, .message:focus, .submit:focus{
+  box-shadow: 5px 5px 12px lightblue;
+}
+
+.message{
+  height: 70px;
+}
+
+.submit{
+  background-color: #bdc3c7;
+  color:#111;
+}
+
+.return{
+  display: none;
+}
+
+.return span{
+  display: block;
+  width:400px;
+  padding:5px;
+  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  color:#FFF;
+}
+
+.return .error{
+
+  background-color: #e74c3c;
+
+}
+
+.return .success{
+
+  background-color: #27ae60;
+  
+}
+
+.afficher h4{
+  margin-bottom: 0px;
+  margin-top:0;
+}
+
+.afficher p{
+  margin-top:5px;
+}
+
+.afficher{
+  width: 100%;
+  padding:20px;
+  border:1px solid #666;
+  overflow-y:scroll;
+  height: 320px;
+  color:black;
+  background-color:beige;
+}
+  </style>
+{% endblock %}

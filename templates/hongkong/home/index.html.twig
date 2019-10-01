@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ang Dios Gugma{% endblock %}
+	
+{% block body %}
+<h1 style="text-decoration:none"><span style="color:white;background-color:red;font-size:20px">ADG HONG KONG CHAPTER</span><img style='height:25px;width:25px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></h1>
+ <nobr style=''><button type="submit" style='font-size:13px' class ="btn"><a href="{{path('hongkong')}}">Home</a></button>
+  <button type="submit" style='font-size:13px' class ="btn"><a href="{{path('recap_actualities_hongkong')}}">News</a></button> <button type="submit" style='font-size:13px' class ="btn"><a href="{{path('live_streaming_hongkong')}}">Live streaming</a></button></nobr>
+<style>
+#vid{
+  height:400px;
+  width:100%;
+  
+} 
+</style>
+<script>$(document).ready(function(){
+    $("iframe").attr("height", "100%");
+    $("iframe").attr("width", "100%");
+});
+</script>
+  {%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+
+   <div class="container"><br><br> 
+   
+        <div class="row"> 
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
+                       <div class="news" style='border:none'>   
+
+                                         <style>
+.mySlides {display:none;}
+  </style><br>
+  <div class='pic_eg'>
+    <div class="w3-content w3-section" style="width:100%">
+    <img class="mySlides w3-animate-top" src="{{  asset ('imagesHongkong/hk1.jpg') }}" style="width:100%">
+    <img class="mySlides w3-animate-left" src="{{   asset ('imagesHongkong/hk2.jpg')  }}" style="width:100%">
+    <img class="mySlides w3-animate-bottom" src="{{  asset ('imagesHongkong/hk3.jpg')  }}" style="width:100%">
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk5.jpg')  }}" style="width:100%">
+    <img class="mySlides w3-animate-left" src="{{   asset ('imagesHongkong/hk6.jpg')  }}" style="width:100%">
+    <img class="mySlides w3-animate-bottom" src="{{  asset ('imagesHongkong/hk7.jpg') }}" style="width:100%">
+    <img class="mySlides w3-animate-right" src="{{  asset ('imagesHongkong/hk10.jpg')  }}" style="width:100%">
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk11.jpg')  }}" style="width:100%">  
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk12.jpg')  }}" style="width:100%">  
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk13.jpg')  }}" style="width:100%">  
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk14.jpg')  }}" style="width:100%"> 
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk15.jpg')  }}" style="width:100%">  
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk16.jpg')  }}" style="width:100%">  
+    <img class="mySlides w3-animate-top" src="{{   asset ('imagesHongkong/hk17.jpg')  }}" style="width:100%">  
+</div>
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 5000);    
+}
+</script> 
+                       </div><br>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
+                       <div class="news">
+                          <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
+                                  {{ lastActuTitle }} 
+                          </h3>     
+                          <p style="color:black;font:italic  15px/30px Georgia, serif;"><br>
+                                  {{lastActuContent}}
+                          </p>
+                          <p style="color:black;text-align:center;font-size:12px">
+                                 <strong><em style="font: italic  15px/30px Georgia, serif;">Author: <span style="text-decoration:underline;font: italic  15px/30px Georgia, serif;">{{author}}</span></em></strong>
+                          </p>
+                              <span style="color:red">  
+                                  <a href="{{path('recap_actualities_hongkong')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
+                              </span> 
+                       </div><br>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
+                       <div class="news">
+                       <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
+                             {{videoTitle}}                                                  
+                      </h3><br>
+                         <div style="height:100%;width:100%">{{videoLink|raw}}</div>
+                       </div><br>
+                    </div>
+        </div>
+    </div>       
+  
+
+{% endblock %}

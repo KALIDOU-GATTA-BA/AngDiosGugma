@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% form_theme video 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Video Hong kong{% endblock %}
+{% block body %}
+{%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+<h1>Videos Hong kong</h1><nobr><a href="{{path('actualities_hongkong')}}"  style="color:blue;background-color:white"> <mark>>>Switch to articles sections</mark></a></nobr>
+    <h2>Fill the bellow field if you want to delete a video</h2>
+    <form style ='height:100%; width:100%' method ="GET" action="{{path('delete_video_hongkong')}}">
+      Video title:<br>
+      <input type ="text"  style="color:white;background-color:red" name="val" placeholder="Video title"> <nobr><a href="{{path('live_streaming_hongkong')}}"  style="color:blue;background-color:white">>>See all videos</a></nobr><br>
+      <button type="submit" class ="btn">Delete</button><br><br>
+    </form>  <br>
+    <h2>Fill the bellow field if you want to update a video</h2>
+    <form style ='height:100%; width:100%' method ="GET" action="{{path('update_video_select_hongkong')}}">
+      Video title:<br>
+      <input type ="text"  style="color:white;background-color:green" name="val" placeholder="Video title"> <nobr><a href="{{path('live_streaming_hongkong')}}"  style="color:blue;background-color:white">>>See all videos</a></nobr><br>
+      <button type="submit" class ="btn">Update</button><br><br>
+    </form>  <br>
+       <h2>Fill the bellow form to add a video</h2>
+
+    {{form_start(video)}}
+
+    {{ form_row(video.link, {'attr' : { 'placeholder': "Put here the link..."}, 'label': 'Link' } ) }}
+
+    {{ form_row(video.title, {'attr' : { 'placeholder': "Add a title for the video..."},  'label': 'Title'} ) }}
+    
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(video)}}
+
+{% endblock %}
