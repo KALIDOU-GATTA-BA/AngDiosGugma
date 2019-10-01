@@ -70,7 +70,7 @@ class HongKongController extends AbstractController
             $author=$amhk->getLastActuality()[2];
         }
          // return $this->redirectToRoute('maintenance_general') ;
-        return $this->render('Hongkong/home/index.html.twig', [
+        return $this->render('hongkong/home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
             'author' => $author,
@@ -381,7 +381,7 @@ class HongKongController extends AbstractController
         }
         $ss = $this->session;
         $ss->set('idVideo', $_GET['val']);
-        return $this->render('Hongkong/home/comment_video.html.twig', [
+        return $this->render('hongkong/home/comment_video.html.twig', [
             'comment_video' => $formr->createView(),
             'buffer'=>$buffer,
             'user'=>$user,

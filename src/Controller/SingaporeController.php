@@ -70,7 +70,7 @@ class SingaporeController extends AbstractController
             $author=$ams->getLastActuality()[2];
         }
          // return $this->redirectToRoute('maintenance_general') ;
-        return $this->render('Singapore/home/index.html.twig', [
+        return $this->render('singapore/home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
             'author' => $author,
@@ -381,7 +381,7 @@ class SingaporeController extends AbstractController
         }
         $ss = $this->session;
         $ss->set('idVideo', $_GET['val']);
-        return $this->render('Singapore/home/comment_video.html.twig', [
+        return $this->render('singapore/home/comment_video.html.twig', [
             'comment_video' => $formr->createView(),
             'buffer'=>$buffer,
             'user'=>$user,

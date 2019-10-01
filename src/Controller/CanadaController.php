@@ -70,7 +70,7 @@ class CanadaController extends AbstractController
             $author=$amc->getLastActuality()[2];
         }
          // return $this->redirectToRoute('maintenance_general') ;
-        return $this->render('Canada/home/index.html.twig', [
+        return $this->render('canada/home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
             'author' => $author,
@@ -381,7 +381,7 @@ class CanadaController extends AbstractController
         }
         $ss = $this->session;
         $ss->set('idVideo', $_GET['val']);
-        return $this->render('Canada/home/comment_video.html.twig', [
+        return $this->render('canada/home/comment_video.html.twig', [
             'comment_video' => $formr->createView(),
             'buffer'=>$buffer,
             'user'=>$user,
