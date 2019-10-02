@@ -15,14 +15,17 @@
       <div class='toggle_btn'>
             <div id="menuHam" style="margin-left:-180% !important;color:white">Menu</div><span></span>
           </div>
-          <div class='nav nav'><div style="height:300px;background-color:#2C3E50">
+          <div class='nav nav'><div style="height:460px;background-color:#2C3E50">
             <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i><span style="font-size:17px">Home</span></a>&nbsp<br><br>
             <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a>&nbsp<br><br>
             <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a>&nbsp<br><br>
             <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a>&nbsp<br><br>
+             <a href="{{path('security_login')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Catholic school</a>&nbsp<br><br>
+              <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Channel</a>&nbsp<br><br>
             <a href="{{path('singapore')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore<img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"> </a>&nbsp<br><br>
             <a href="{{path('hongkong')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></a>&nbsp<br><br>
-            <a href="{{path('canada')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>&nbsp<br><br>
+            <a href="{{path('canada')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>&nbsp<br><br><a href="{{path('contact')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Contact us</a>&nbsp<br><br>
+                <a href="{{path('about_us')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">About us</a>&nbsp<br><br>
              <!--<a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white;font-size:16px">Chat <i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>-->
             </div>
           </div> </div>
@@ -141,14 +144,20 @@
               }
             }
           </script>          
-        <div id='pic_eg'>
-            <iframe width="100%" height="600px" src="https://www.youtube.com/embed/-vLZ_ur8TUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <br><br>
-       </div>
+       <img id='pic_eg' src="{{  asset ('images/eglise.jpeg') }}"> 
                 <div class="container">
                     {% block body %}{% endblock %}
                 </div><br><br><br><br><br>
-         <img id='pic_eg' src="{{  asset ('images/eglise.jpeg') }}"> 
+         
+          <div id='pic_eg'>
+            <iframe width="100%" height="600px" src="https://www.youtube.com/embed/-vLZ_ur8TUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br><br>
+       </div>
+
+
+
+<!--
+
           <div class="container-fluid" style="background-color:#503a2c;color:white;font: 15px/30px Georgia, serif;">
             <div class="row">
               <div class="col s12 m6 l6 xl5">
@@ -168,21 +177,28 @@
                 <div class="col s12 m6 l6 xl1">
                   <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:12px">Administration</h5>
                
-          {% if  not app.user %}
-          <span>
-              <a href="{{path('security_login')}}" class="nav-link"  style="color:white;font-size:12px">Log in</a>
-          </span></div>
-          {% endif %}
-          {% if  app.user %}
-          <span>
-                  <a href="{{path('security_logout')}}" class="nav-link"  style="color:white;font-size:12px">Log out</a>
-          </span></div>
-          {% endif %}
+
+
+          -->
           
           
-        </div>
+        </div></div>
+
+
+
+
+
     </div>
-    <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
+      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
+        <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
+        {% if  not app.user %}
+          <a href="{{path('security_login')}}" style="color:white;font-size:8px;padding-left:12px"><strong>Administration</strong></a>
+        {% endif %}
+        {% if  app.user %}
+          <a href="{{path('security_logout')}}" style="color:white;font-size:8px;padding-left:12px">Log out</a>
+        {% endif %}</a><br>
+    </p>
+     <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
         All rights Reserved 2019 &#x24B8;<a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a><br>
         Designed by  KALIDOU <strong>GATTA</strong> BA
     </p>
