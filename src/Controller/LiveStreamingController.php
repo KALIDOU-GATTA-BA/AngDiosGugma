@@ -45,10 +45,10 @@ class LiveStreamingController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Video::class);
         $videos = $repo ->findAll() ;
         return $this->render('live_streaming/index.html.twig', [
-            'videos' => $vm->getAllVideos(),
+            'videos' => $vm->getAllVideos()[0],
              'buffer'=>$buffer,
             'user'=>$user,
-            'pagination'=>$vm->pagination(),
+            'pagination'=>$vm->getAllVideos()[1],
         ]);
     }
     /**
@@ -83,7 +83,7 @@ class LiveStreamingController extends AbstractController
             return $this->redirectToRoute('live_streaming');
         }
         return $this->render('live_streaming/update_video.html.twig', [
-            'videos' => $vm->getAllVideos(),
+            'videos' => $vm->getAllVideos()[0],
             'buffer'=>$buffer,
             'user'=>$user,
             'buffer'=>$buffer,

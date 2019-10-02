@@ -34,8 +34,11 @@ class VideoManager
     }
     public function getAllVideos()
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid order by vid.id desc')->getResult();
-        return $res;
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid order by vid.id desc')
+               ->setMaxResults(20)
+               ->getResult();
+               $size=sizeof($res);
+        return [$res, $size];
     }
     public function goToVideo(string $title)
     {
