@@ -33,9 +33,19 @@ class ActualitiesManager
         $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Actualities id')->getResult();
         return $res;
     }
+    public function maxIdADG()
+    {
+        $res = $this->entityManager->createQuery('SELECT max(id) FROM App\Entity\CatholicSchoolActu id')->getResult();
+        return $res;
+    }
     public function getAllActuAnchor()
     {
         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=1 order by actu.id desc')->getResult();
+        return $res;
+    }
+    public function getAllActuADGSchool()
+    {
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\CatholicSchoolActu actu  order by actu.id desc')->getResult();
         return $res;
     }
     public function getAllActuDailyGospels()

@@ -70,6 +70,11 @@ class VideoManager
         $b=$res[0]->getLink();
         return [$a, $b];
     }
+    public function getAllVideoADGSchool()
+    {
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\CatholicSchoolVideo vid  order by vid.id desc')->getResult();
+        return $res;
+    }
     public function getComments(int $id)
     {
         $res = $this->entityManager->createQuery("SELECT comment FROM App\Entity\CommentsVideo comment where comment.idVideo= '$id' order by comment.id asc ")->getResult();

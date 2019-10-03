@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block title %}ADG School{% endblock %}
+{% block body %}
+<style>
+  body{ 
+      background: url('{{  asset ('images/jesus2.jpg') }}'); 
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFF;          
+      }
+      @media screen and (max-width: 600px) {
+  
+      body{
+         background: url('{{  asset ('images/jesus2.jpg') }}'); 
+          background-repeat: no-repeat;
+          background-size: 100% 85%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFF;  
+}
+}
+ .vid{ 
+ 	   height:600px;       
+ }
+ @media screen and (max-width: 600px) { 
+    .vid{
+       height:300px; 
+    }
+  }
+</style> 
+  {%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+<div style="weight:100%">
+  <nobr style=''>
+  	<button type="submit" style='font-size:12px'><a href="{{path('catholic_school_actu')}}">Articles</a></button>
+  	<button type="submit" style='font-size:12px' ><a href="{{path('catholic_school_video')}}">Videos</a></button>
+  </nobr>
+</div>
+<div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
+    <section class ="articles">
+    {% if app.user %}
+        <span>
+          <a href="{{path('actualities')}}" class="nav-link"  style="color:red;font-size:15px; font-weight:bold"><< Go to articles management</a> 
+        </span> 
+    {% endif %}
+      {% for video in videos %}
+        <article> 
+              <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  15px/30px Georgia, serif;">
+  				{{video.videoTitle}}                                                  
+              </h3>                    
+              <div class='vid'>{{video.link|raw}}</div>
+        </article>
+      {% endfor %}
+    </section>
+</div>
+
+{% block javascript %}
+  <script src={{ asset("build/app.js") }}></script>
+{% endblock %}
+{% endblock %}
+
+
+
+
+
