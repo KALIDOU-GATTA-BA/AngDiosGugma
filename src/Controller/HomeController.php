@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Services\ActualitiesManager;
 use App\Services\VideoManager;
+use App\Services\CheckConnectionManager;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
 
@@ -42,7 +43,7 @@ class HomeController extends AbstractController
             $author=$am->getLastActuality()[2];
             $type=$am->getLastActuality()[3];
         }
-         // return $this->redirectToRoute('maintenance_general') ;
+        // return $this->redirectToRoute('maintenance_general') ;
         return $this->render('home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
@@ -69,19 +70,13 @@ class HomeController extends AbstractController
     /**
      * @Route("/adminHome", name="admin_home")
      */
-    public function adminHome()
+    public function adminHome(CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
         ]);
     }
 }

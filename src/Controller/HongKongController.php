@@ -26,6 +26,7 @@ use Symfony\Component\Security\Core\Security;
 use App\Form\CommentsVideoHongkongType;
 use App\Entity\CommentsVideoHongkong;
 use App\Handlers\Form\CommentsVideoFormHandler;
+use App\Services\CheckConnectionManager;
 
 class HongKongController extends AbstractController
 {
@@ -69,7 +70,7 @@ class HongKongController extends AbstractController
             $lastActuContent=substr($lastActuContent, 0, 60).'[...]';
             $author=$amhk->getLastActuality()[2];
         }
-         // return $this->redirectToRoute('maintenance_general') ;
+        // return $this->redirectToRoute('maintenance_general') ;
         return $this->render('hongkong/home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
@@ -95,34 +96,22 @@ class HongKongController extends AbstractController
     /**
      * @Route("/adminHome", name="admin_home")
      */
-    public function adminHome()
+    public function adminHome(CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
         ]);
     }
     
     /**
      * @Route("/actualities/hongkong", name="actualities_hongkong")
      */
-    public function index2(Request $request, ActualitiesManagerHongkong $amhk)
+    public function index2(Request $request, ActualitiesManagerHongkong $amhk, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $formr = $this->createForm(ActualitiesHongkongType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -135,8 +124,8 @@ class HongKongController extends AbstractController
         }
         return $this->render('hongkong/home/actualities_hongkong_admin.html.twig', [
             'actualities' => $formr->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=> $cnm->CheckConnection(),
         ]);
     }
     /**
@@ -151,8 +140,8 @@ class HongKongController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-      // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
-       //dd($am->countComments($am->paginationAnchor()));
+        // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
+        //dd($am->countComments($am->paginationAnchor()));
         return $this->render('hongkong/home/recap_actualities.html.twig', [
             'articles' => $amhk->getAllActu(),
             'buffer'=>$buffer,
@@ -166,16 +155,18 @@ class HongKongController extends AbstractController
     /**
      * @Route("/delete/hongkong", name="delete_hongkong")
      */
-    public function deleteActu(ActualitiesManagerHongkong $amhk)
+    public function deleteActu(ActualitiesManagerHongkong $amhk, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $amhk->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities_hongkong');
     }
     /**
      * @Route("/update/actu/select/hongkong", name="update_actu_select_hongkong")
      */
-    public function selectActuToUpdate(ActualitiesManagerHongkong $amhk)
+    public function selectActuToUpdate(ActualitiesManagerHongkong $amhk, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         if (!$amhk->goToActu($_GET['val'])) {
             return $this->redirectToRoute('update_actu_hongkong');
         }
@@ -188,15 +179,9 @@ class HongKongController extends AbstractController
     /**
      * @Route("/update/actu/hongkong", name="update_actu_hongkong")
      */
-    public function updateActu(ActualitiesManagerHongkong $amhk, Request $request)
+    public function updateActu(ActualitiesManagerHongkong $amhk, Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $ss=new Session();
         $image= $this->getParameter('upload_directory').'Hongkong/'.$ss->get('id').'/image' ;
         $title=$amhk->goToActu(''.$ss->get('title').'')[0];
@@ -211,9 +196,8 @@ class HongKongController extends AbstractController
             return $this->redirectToRoute('recap_actualities');
         }
         return $this->render('hongkong/home/update_actu.html.twig', [
-            'buffer'=>$buffer,
-            'user'=>$user,
-            'buffer'=>$buffer,
+            'user'=> $cnm->CheckConnection(),
+            'buffer'=>true,
             'title'=>$title,
             'content'=>$content,
             'author'=>$author,
@@ -262,15 +246,9 @@ class HongKongController extends AbstractController
     /**
      * @Route("/video/hongkong", name="video_hongkong")
      */
-    public function indexV(Request $request)
+    public function indexV(Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $form = $this->createForm(VideoHongkongType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             //dd($vm->getLastVideo()[0]);
@@ -279,23 +257,25 @@ class HongKongController extends AbstractController
        
         return $this->render('hongkong/home/video_index.html.twig', [
             'video' => $form->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=> $cnm->CheckConnection(),
         ]);
     }
     /**
      * @Route("/delete/video/hongkong", name="delete_video_hongkong")
      */
-    public function deleteVideo(VideoManagerHongkong $vmhk)
+    public function deleteVideo(VideoManagerHongkong $vmhk, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $vmhk->deleteVideo($_GET['val']);
         return $this->redirectToRoute('video_hongkong');
     }
     /**
      * @Route("/update/video/select/hongkong", name="update_video_select_hongkong")
      */
-    public function selectVideoToUpdate(VideoManagerHongkong $vmhk)
-    {  
+    public function selectVideoToUpdate(VideoManagerHongkong $vmhk, CheckConnectionManager $cnm)
+    {
+        $cnm->CheckConnection();
         $vmhk->goToVideo($_GET['val']);
         if (!$vmhk->goToVideo($_GET['val'])) {
             return $this->redirectToRoute('video_hongkong');
@@ -332,15 +312,9 @@ class HongKongController extends AbstractController
     /**
      * @Route("/update/video/hongkong", name="update_video_hongkong")
      */
-    public function updateVideo(VideoManagerHongkong $vmhk, Request $request)
+    public function updateVideo(VideoManagerHongkong $vmhk, Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $ss = $this->session;
 
         $title=$vmhk->goToVideo(''.$ss->get('title').'')[0];
@@ -353,9 +327,8 @@ class HongKongController extends AbstractController
         }
         return $this->render('hongkong/home/update_video.html.twig', [
             'videos' => $vmhk->getAllVideos(),
-            'buffer'=>$buffer,
-            'user'=>$user,
-            'buffer'=>$buffer,
+            'user'=> $cnm->CheckConnection(),
+            'buffer'=>true,
             'title'=>$title,
             'link'=>$link,
             'update_video'=>$form->createView(),

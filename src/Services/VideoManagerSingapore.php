@@ -72,7 +72,8 @@ class VideoManagerSingapore
         $res = $this->entityManager->createQuery("SELECT comment FROM App\Entity\CommentsVideoSingapore comment where comment.idVideo= '$id' order by comment.id asc ")->getResult();
         return $res;
     }
-    public function countComments(int $id){
+    public function countComments(int $id)
+    {
         $res = $this->entityManager->createQuery("SELECT count(comment.id)  FROM App\Entity\CommentsVideoSingapore comment where comment.idVideo= '$id'  ")->getResult();
         return $res[0][1];
     }
@@ -81,7 +82,8 @@ class VideoManagerSingapore
         $res = $this->entityManager->createQuery("SELECT count(vid.id)  FROM App\Entity\VideoSingapore  vid ")->getResult();
         return (int)$res[0][1];
     }
-    public function countCommentsLastVideo(){
+    public function countCommentsLastVideo()
+    {
         $id=(int)$this->maxId()[0][1];
         $res = $this->entityManager->createQuery("SELECT count(comment.id)  FROM App\Entity\CommentsVideoSingapore comment where comment.idVideo= '$id'  ")->getResult();
         return (int)$res[0][1];

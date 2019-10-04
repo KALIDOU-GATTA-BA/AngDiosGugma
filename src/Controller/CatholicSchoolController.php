@@ -13,12 +13,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Form\CatholicSchoolActuType;
 use App\Form\CatholicSchoolVideoType;
 use App\Entity\User;
+use App\Services\CheckConnectionManager;
 
 class CatholicSchoolController extends AbstractController
 {
-
-
-	private $entityManager;
+    private $entityManager;
     private $security;
    
     public function __construct(Security $security, EntityManagerInterface $entityManager)
@@ -29,16 +28,9 @@ class CatholicSchoolController extends AbstractController
     /**
     * @Route("/ADG/school/act", name="adg_school_act")
     */
-    public function indexActu(Request $request, ActualitiesManager $am){
-
-    	$user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
-     
+    public function indexActu(Request $request, ActualitiesManager $am, CheckConnectionManager $cnm)
+    {
+        $cnm->checkConnection();
         $formr = $this->createForm(CatholicSchoolActuType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -50,27 +42,18 @@ class CatholicSchoolController extends AbstractController
             return $this->redirectToRoute('catholic_school_actu');
         }
 
-         return $this->render('catholic_school/indexActu.html.twig', [
+        return $this->render('catholic_school/indexActu.html.twig', [
             'actualities' => $formr->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->checkConnection(),
         ]);
-
     }
-
     /**
     * @Route("/ADG/school/vid", name="adg_school_vid")
     */
-    public function indexVideo(Request $request, ActualitiesManager $am){
-
-    	$user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
-     
+    public function indexVideo(Request $request, ActualitiesManager $am, CheckConnectionManager $cnm)
+    {
+        $cnm->checkConnection();
         $formr = $this->createForm(CatholicSchoolVideoType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -79,21 +62,18 @@ class CatholicSchoolController extends AbstractController
             $this->entityManager->flush();
             return $this->redirectToRoute('catholic_school_video');
         }
-
-         return $this->render('catholic_school/indexVideo.html.twig', [
+        return $this->render('catholic_school/indexVideo.html.twig', [
             'video' => $formr->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->checkConnection(),
         ]);
-
     }
-
 
     /**
      * @Route("/catholic/school/actu", name="catholic_school_actu")
      */
     public function recapActuSchool(ActualitiesManager $am)
-    {	
+    {
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {
@@ -101,8 +81,6 @@ class CatholicSchoolController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-     
-      
         return $this->render('catholic_school/recapActuSchool.html.twig', [
             'controller_name' => 'CatholicSchoolController',
             'buffer'=>$buffer,
@@ -116,7 +94,7 @@ class CatholicSchoolController extends AbstractController
      * @Route("/catholic/school/video", name="catholic_school_video")
      */
     public function recapVideoSchool(VideoManager $vm)
-    {	
+    {
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {
@@ -124,8 +102,6 @@ class CatholicSchoolController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-     
-      
         return $this->render('catholic_school/recapVideoSchool.html.twig', [
             'controller_name' => 'CatholicSchoolController',
             'buffer'=>$buffer,

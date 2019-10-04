@@ -17,6 +17,7 @@ use App\Services\ActualitiesManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
 use App\Entity\User;
+use App\Services\CheckConnectionManager;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -37,17 +38,10 @@ class ActualitiesController extends AbstractController
     /**
      * @Route("/actualities", name="actualities")
      */
-    public function index(Request $request, ActualitiesManager $am)
+    public function index(Request $request, ActualitiesManager $am, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $formr = $this->createForm(ActualitiesType::class)->handleRequest($request);
-
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
             $this->entityManager->persist($form);
@@ -56,10 +50,11 @@ class ActualitiesController extends AbstractController
             $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
             return $this->redirectToRoute('recap_actualities_anchor');
         }
+         
         return $this->render('actualities/index.html.twig', [
             'actualities' => $formr->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
         ]);
     }
     /**
@@ -74,8 +69,8 @@ class ActualitiesController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-      // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
-       //dd($am->countComments($am->paginationAnchor()));
+        // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
+        //dd($am->countComments($am->paginationAnchor()));
         return $this->render('actualities/recap_actualities_anchor.html.twig', [
             'articles' => $am->getAllActuAnchor(),
             'buffer'=>$buffer,
@@ -180,16 +175,18 @@ class ActualitiesController extends AbstractController
     /**
      * @Route("/delete", name="delete")
      */
-    public function deleteActu(ActualitiesManager $am)
+    public function deleteActu(ActualitiesManager $am, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $am->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities');
     }
     /**
      * @Route("/update/actu/select", name="update_actu_select")
      */
-    public function selectActuToUpdate(ActualitiesManager $am)
+    public function selectActuToUpdate(ActualitiesManager $am, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         if (!$am->goToActu($_GET['val'])) {
             return $this->redirectToRoute('actualities');
         }
@@ -202,15 +199,9 @@ class ActualitiesController extends AbstractController
     /**
      * @Route("/update/actu", name="update_actu")
      */
-    public function updateActu(ActualitiesManager $am, Request $request)
+    public function updateActu(ActualitiesManager $am, Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $ss=new Session();
         $image= $this->getParameter('upload_directory').'/'.$ss->get('id').'/image' ;
         $title=$am->goToActu(''.$ss->get('title').'')[0];
@@ -225,9 +216,8 @@ class ActualitiesController extends AbstractController
             return $this->redirectToRoute('recap_actualities_anchor');
         }
         return $this->render('actualities/update_actu.html.twig', [
-            'buffer'=>$buffer,
-            'user'=>$user,
-            'buffer'=>$buffer,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
             'title'=>$title,
             'content'=>$content,
             'author'=>$author,

@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
 use App\Form\CommentsVideoCanadaType;
 use App\Entity\CommentsVideoCanada;
+use App\Services\CheckConnectionManager;
 use App\Handlers\Form\CommentsVideoFormHandler;
 
 class CanadaController extends AbstractController
@@ -69,7 +70,7 @@ class CanadaController extends AbstractController
             $lastActuContent=substr($lastActuContent, 0, 60).'[...]';
             $author=$amc->getLastActuality()[2];
         }
-         // return $this->redirectToRoute('maintenance_general') ;
+        // return $this->redirectToRoute('maintenance_general') ;
         return $this->render('canada/home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
@@ -95,36 +96,23 @@ class CanadaController extends AbstractController
     /**
      * @Route("/adminHome", name="admin_home")
      */
-    public function adminHome()
+    public function adminHome(CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
         ]);
     }
     
     /**
      * @Route("/actualities/canada", name="actualities_canada")
      */
-    public function index2(Request $request, ActualitiesManagerCanada $amc)
+    public function index2(Request $request, ActualitiesManagerCanada $amc, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $formr = $this->createForm(ActualitiesCanadaType::class)->handleRequest($request);
-
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
             $this->entityManager->persist($form);
@@ -135,8 +123,8 @@ class CanadaController extends AbstractController
         }
         return $this->render('canada/home/actualities_canada_admin.html.twig', [
             'actualities' => $formr->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
         ]);
     }
     /**
@@ -151,8 +139,8 @@ class CanadaController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-      // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
-       //dd($am->countComments($am->paginationAnchor()));
+        // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
+        //dd($am->countComments($am->paginationAnchor()));
         return $this->render('canada/home/recap_actualities.html.twig', [
             'articles' => $amc->getAllActu(),
             'buffer'=>$buffer,
@@ -166,16 +154,18 @@ class CanadaController extends AbstractController
     /**
      * @Route("/delete/canada", name="delete_canada")
      */
-    public function deleteActu(ActualitiesManagerCanada $amc)
+    public function deleteActu(ActualitiesManagerCanada $amc, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $amc->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities_canada');
     }
     /**
      * @Route("/update/actu/select/canada", name="update_actu_select_canada")
      */
-    public function selectActuToUpdate(ActualitiesManagerCanada $amc)
+    public function selectActuToUpdate(ActualitiesManagerCanada $amc, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         if (!$amc->goToActu($_GET['val'])) {
             return $this->redirectToRoute('update_actu_canada');
         }
@@ -188,15 +178,9 @@ class CanadaController extends AbstractController
     /**
      * @Route("/update/actu/canada", name="update_actu_canada")
      */
-    public function updateActu(ActualitiesManagerCanada $amc, Request $request)
+    public function updateActu(ActualitiesManagerCanada $amc, Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $ss=new Session();
         $image= $this->getParameter('upload_directory').'Canada/'.$ss->get('id').'/image' ;
         $title=$amc->goToActu(''.$ss->get('title').'')[0];
@@ -211,9 +195,8 @@ class CanadaController extends AbstractController
             return $this->redirectToRoute('recap_actualities');
         }
         return $this->render('canada/home/update_actu.html.twig', [
-            'buffer'=>$buffer,
-            'user'=>$user,
-            'buffer'=>$buffer,
+            'buffer'=>true,
+            'user'=> $cnm->CheckConnection(),
             'title'=>$title,
             'content'=>$content,
             'author'=>$author,
@@ -262,40 +245,34 @@ class CanadaController extends AbstractController
     /**
      * @Route("/video/canada", name="video_canada")
      */
-    public function indexV(Request $request)
+    public function indexV(Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $form = $this->createForm(VideoCanadaType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-            //dd($vm->getLastVideo()[0]);
             return $this->redirectToRoute('canada');
         }
-       
         return $this->render('canada/home/video_index.html.twig', [
             'video' => $form->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
         ]);
     }
     /**
      * @Route("/delete/video/canada", name="delete_video_canada")
      */
-    public function deleteVideo(VideoManagerCanada $vmc)
+    public function deleteVideo(VideoManagerCanada $vmc, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $vmc->deleteVideo($_GET['val']);
         return $this->redirectToRoute('video_canada');
     }
     /**
      * @Route("/update/video/select/canada", name="update_video_select_canada")
      */
-    public function selectVideoToUpdate(VideoManagerCanada $vmc)
-    {  
+    public function selectVideoToUpdate(VideoManagerCanada $vmc, CheckConnectionManager $cnm)
+    {
+        $cnm->CheckConnection();
         $vmc->goToVideo($_GET['val']);
         if (!$vmc->goToVideo($_GET['val'])) {
             return $this->redirectToRoute('video_canada');
@@ -332,17 +309,10 @@ class CanadaController extends AbstractController
     /**
      * @Route("/update/video/canada", name="update_video_canada")
      */
-    public function updateVideo(VideoManagerCanada $vmc, Request $request)
+    public function updateVideo(VideoManagerCanada $vmc, Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $ss = $this->session;
-
         $title=$vmc->goToVideo(''.$ss->get('title').'')[0];
         $link=$vmc->goToVideo(''.$ss->get('title').'')[1];
         $form = $this->createForm(VideoCanadaType::class)->handleRequest($request);
@@ -353,9 +323,8 @@ class CanadaController extends AbstractController
         }
         return $this->render('canada/home/update_video.html.twig', [
             'videos' => $vmc->getAllVideos(),
-            'buffer'=>$buffer,
-            'user'=>$user,
-            'buffer'=>$buffer,
+            'user'=>$cnm->CheckConnection(),
+            'buffer'=>true,
             'title'=>$title,
             'link'=>$link,
             'update_video'=>$form->createView(),

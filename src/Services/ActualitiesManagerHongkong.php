@@ -85,7 +85,8 @@ class ActualitiesManagerHongkong
         return (int)$res[0][1];
     }
     
-    public function countCommentsLastActu(){
+    public function countCommentsLastActu()
+    {
         $id=(int)$this->maxId()[0][1];
         $res = $this->entityManager->createQuery("SELECT count(comment.id)  FROM App\Entity\CommentsHongkong comment where comment.idArticle= '$id'  ")->getResult();
         return (int)$res[0][1];

@@ -26,10 +26,11 @@ use Symfony\Component\Security\Core\Security;
 use App\Form\CommentsVideoSingaporeType;
 use App\Entity\CommentsVideoSingapore;
 use App\Handlers\Form\CommentsVideoFormHandler;
+use App\Services\CheckConnectionManager;
 
 class SingaporeController extends AbstractController
 {
-	private $entityManager;
+    private $entityManager;
     private $formHandler;
     private $cfh;
     private $cvsfh;
@@ -69,7 +70,7 @@ class SingaporeController extends AbstractController
             $lastActuContent=substr($lastActuContent, 0, 60).'[...]';
             $author=$ams->getLastActuality()[2];
         }
-         // return $this->redirectToRoute('maintenance_general') ;
+        // return $this->redirectToRoute('maintenance_general') ;
         return $this->render('singapore/home/index.html.twig', [
             'lastActuContent' => $lastActuContent,
             'lastActuTitle' => $lastActuTitle,
@@ -95,34 +96,22 @@ class SingaporeController extends AbstractController
     /**
      * @Route("/adminHome", name="admin_home")
      */
-    public function adminHome()
+    public function adminHome(CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
         ]);
     }
     
     /**
      * @Route("/actualities/singapore", name="actualities_singapore")
      */
-    public function index2(Request $request, ActualitiesManagerSingapore $ams)
+    public function index2(Request $request, ActualitiesManagerSingapore $ams, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $formr = $this->createForm(ActualitiesSingaporeType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -135,8 +124,8 @@ class SingaporeController extends AbstractController
         }
         return $this->render('singapore/home/actualities_singapore_admin.html.twig', [
             'actualities' => $formr->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=> $cnm->CheckConnection(),
         ]);
     }
     /**
@@ -151,8 +140,8 @@ class SingaporeController extends AbstractController
             $user = $this->getUser()->getUsername();
             $buffer=true;
         }
-      // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
-       //dd($am->countComments($am->paginationAnchor()));
+        // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
+        //dd($am->countComments($am->paginationAnchor()));
         return $this->render('singapore/home/recap_actualities.html.twig', [
             'articles' => $ams->getAllActu(),
             'buffer'=>$buffer,
@@ -166,16 +155,18 @@ class SingaporeController extends AbstractController
     /**
      * @Route("/delete/singapore", name="delete_singapore")
      */
-    public function deleteActu(ActualitiesManagerSingapore $ams)
+    public function deleteActu(ActualitiesManagerSingapore $ams, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $ams->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities_singapore');
     }
     /**
      * @Route("/update/actu/select/singapore", name="update_actu_select_singapore")
      */
-    public function selectActuToUpdate(ActualitiesManagerSingapore $ams)
+    public function selectActuToUpdate(ActualitiesManagerSingapore $ams, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         if (!$ams->goToActu($_GET['val'])) {
             return $this->redirectToRoute('update_actu_singapore');
         }
@@ -188,15 +179,9 @@ class SingaporeController extends AbstractController
     /**
      * @Route("/update/actu/singapore", name="update_actu_singapore")
      */
-    public function updateActu(ActualitiesManagerSingapore $ams, Request $request)
+    public function updateActu(ActualitiesManagerSingapore $ams, Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $ss=new Session();
         $image= $this->getParameter('upload_directory').'Singapore/'.$ss->get('id').'/image' ;
         $title=$ams->goToActu(''.$ss->get('title').'')[0];
@@ -211,9 +196,8 @@ class SingaporeController extends AbstractController
             return $this->redirectToRoute('recap_actualities');
         }
         return $this->render('singapore/home/update_actu.html.twig', [
-            'buffer'=>$buffer,
-            'user'=>$user,
-            'buffer'=>$buffer,
+            'user'=> $cnm->CheckConnection(),
+            'buffer'=>true,
             'title'=>$title,
             'content'=>$content,
             'author'=>$author,
@@ -262,15 +246,9 @@ class SingaporeController extends AbstractController
     /**
      * @Route("/video/singapore", name="video_singapore")
      */
-    public function indexV(Request $request)
+    public function indexV(Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $form = $this->createForm(VideoSingaporeType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             //dd($vm->getLastVideo()[0]);
@@ -279,23 +257,25 @@ class SingaporeController extends AbstractController
        
         return $this->render('singapore/home/video_index.html.twig', [
             'video' => $form->createView(),
-            'buffer'=>$buffer,
-            'user'=>$user,
+            'buffer'=>true,
+            'user'=> $cnm->CheckConnection(),
         ]);
     }
     /**
      * @Route("/delete/video/singapore", name="delete_video_singapore")
      */
-    public function deleteVideo(VideoManagerSingapore $vms)
+    public function deleteVideo(VideoManagerSingapore $vms, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $vms->deleteVideo($_GET['val']);
         return $this->redirectToRoute('video_singapore');
     }
     /**
      * @Route("/update/video/select/singapore", name="update_video_select_singapore")
      */
-    public function selectVideoToUpdate(VideoManagerSingapore $vms)
-    {  
+    public function selectVideoToUpdate(VideoManagerSingapore $vms, CheckConnectionManager $cnm)
+    {
+        $cnm->CheckConnection();
         $vms->goToVideo($_GET['val']);
         if (!$vms->goToVideo($_GET['val'])) {
             return $this->redirectToRoute('video_singapore');
@@ -332,15 +312,9 @@ class SingaporeController extends AbstractController
     /**
      * @Route("/update/video/singapore", name="update_video_singapore")
      */
-    public function updateVideo(VideoManagerSingapore $vms, Request $request)
+    public function updateVideo(VideoManagerSingapore $vms, Request $request, CheckConnectionManager $cnm)
     {
-        $user='';
-        $buffer=false;
-        if ($this->security->getUser()!=null) {
-            $user=new User();
-            $user = $this->getUser()->getUsername();
-            $buffer=true;
-        }
+        $cnm->CheckConnection();
         $ss = $this->session;
 
         $title=$vms->goToVideo(''.$ss->get('title').'')[0];
@@ -353,9 +327,8 @@ class SingaporeController extends AbstractController
         }
         return $this->render('singapore/home/update_video.html.twig', [
             'videos' => $vms->getAllVideos(),
-            'buffer'=>$buffer,
-            'user'=>$user,
-            'buffer'=>$buffer,
+            'user'=> $cnm->CheckConnection(),
+            'buffer'=>true,
             'title'=>$title,
             'link'=>$link,
             'update_video'=>$form->createView(),

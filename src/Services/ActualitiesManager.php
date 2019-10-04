@@ -130,7 +130,8 @@ class ActualitiesManager
         $res = $this->entityManager->createQuery("SELECT count(actu.id)  FROM App\Entity\Actualities  actu  where actu.type = 3")->getResult();
         return (int)$res[0][1];
     }
-     public function countCommentsLastActu(){
+    public function countCommentsLastActu()
+    {
         $id=(int)$this->maxId()[0][1];
         $res = $this->entityManager->createQuery("SELECT count(comment.id)  FROM App\Entity\Comments comment where comment.idArticle= '$id'  ")->getResult();
         return (int)$res[0][1];
