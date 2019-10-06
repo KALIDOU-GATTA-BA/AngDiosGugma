@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use App\Repository\StudentAddRepository;
 use App\Handlers\Form\StudentAddFormHandler;
+use App\Services\CheckConnectionManager;
 
 class StudentAddController extends AbstractController
 {
@@ -24,8 +25,9 @@ class StudentAddController extends AbstractController
     /**
      * @Route("/student/add", name="student_add")
      */
-    public function studentAdd(Request $request)
+    public function studentAdd(Request $request, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
         $form = $this->createForm(StudentAddType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('home');

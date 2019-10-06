@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Repository\StudentsRepository;
 use App\Services\StudentsManager;
 use App\Handlers\Form\StudentsFormHandler;
+use App\Services\CheckConnectionManager;
 
 class StudentsController extends AbstractController
 {
@@ -24,8 +25,9 @@ class StudentsController extends AbstractController
     /**
      * @Route("/students", name="students")
      */
-    public function students(Request $request, StudentsManager $sm)
+    public function students(Request $request, StudentsManager $sm, CheckConnectionManager $cnm)
     {
+       
         $form = $this->createForm(StudentsType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             if ($sm->findStudent()==1) {
