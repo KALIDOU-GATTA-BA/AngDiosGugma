@@ -59,7 +59,7 @@
             <p style="color:black; text-decoration:underline">{{article.author}} </p>
           <form action='{{path('comment_actu')}}' method='GET'>
               <input type ="text" style='opacity:0' value='{{article.id}}' name="val">
-              <input type="submit" style='color:white;background-color:#503a2c' value='+comment'><i class="fa fa-comment fa-spin" style='color:red;height:20px'></i>
+              <input type="submit" style='color:white;background-color:#503a2c' value='+comment'>
             </form>
         </article>
       {% endfor %}
