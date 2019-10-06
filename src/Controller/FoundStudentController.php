@@ -14,18 +14,18 @@ class FoundStudentController extends AbstractController
 
     public function index(StudentsManager $sm)
     {
-        $fn=$sm->getAllStudentData()[0];
-        $ln=$sm->getAllStudentData()[1];
-        $city=$sm->getAllStudentData()[2];
-        $level=$sm->getAllStudentData()[3];
-        $birthDate=$sm->getAllStudentData()[4];
 
         return $this->render('found_student/index.html.twig', [
-            'fn' => $fn,
-            'ln' => $ln,
-            'city' => $city,
-            'level' => $level,
-            'birthDate' => $birthDate,
+            'age'=>$sm->getAllStudentData()[0]->getAge(),
+            'representative'=>$sm->getAllStudentData()[0]->getRepresentative(),
+            'grade'=>$sm->getAllStudentData()[0]->getGrade(),
+            'status'=>$sm->getAllStudentData()[0]->getStatus(),
+            'ADGWorkerOrIndigent'=>$sm->getAllStudentData()[0]->getADGWorkerOrIndigent(),
+            'Address'=>$sm->getAllStudentData()[0]->getAddress(),
+            'lastName'=>$sm->getAllStudentData()[0]->getLastName(),
+            'firstName'=>$sm->getAllStudentData()[0]->getFirstName(),
+            'birthDate'=>$sm->getAllStudentData()[0]->getBirthDate(),
+            'contactNumber'=>$sm->getAllStudentData()[0]->getContactNumber(),
         ]);
     }
 }

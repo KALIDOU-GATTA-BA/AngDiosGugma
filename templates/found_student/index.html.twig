@@ -7,13 +7,18 @@
     <h1 class='resa_recap'>Student</h1>
         <pre class='recap'>
 
- 			First Name: {{ fn }} <br>
- 			Last Name: {{ ln }} <br>
- 			City: {{ city }} <br>
- 			Date of birth: {{birthDate}}<br>
- 			Level: {{ level }} 
+ 		<span style="text-decoration:underline">First Name</span>: <b>{{ firstName }}</b> <br>
+ 		<span style="text-decoration:underline">Last Name</span>: <b>{{ lastName }}</b> <br>
+ 		<span style="text-decoration:underline">Date of birth</span>: <b>{{birthDate}}</b><br>
+ 		<span style="text-decoration:underline">Grade</span>: <b>{{ grade }}</b><br>
+ 		<span style="text-decoration:underline">ADG Worker or Indigent</span>: <b>{{ADGWorkerOrIndigent}}</b><br>
+ 		<span style="text-decoration:underline">Status</span>: <b>{{status}}</b><br>
+ 		<span style="text-decoration:underline">Address</span>: <b>{{ Address }}</b> <br>
+ 		<span style="text-decoration:underline">Age</span>: <b>{{age}}</b><br>
+ 		<span style="text-decoration:underline">Representative</span>: <b>{{representative}}</b><br>
+ 		<span style="text-decoration:underline">Contact Number</span>: <b>{{contactNumber}}</b><br>
 
- 			<a href="{{path('students')}}" class ="btn">Back</a>
+ 		<a href="{{path('students')}}" class ="btn">Back</a>
 
 		</pre>
 		<br><br> 

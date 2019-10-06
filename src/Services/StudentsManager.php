@@ -30,14 +30,9 @@ class StudentsManager
 
         if ($this->findStudent()==1) {
             $res1 = $this->entityManager->createQuery(" SELECT r FROM App\Entity\StudentAdd r where r.FirstName =  '$fn' ")->getResult();
-            $a=$res1[0]->getFirstName();
-            $b=$res1[0]->getLastName();
-            $c=$res1[0]->getCity();
-            $d=$res1[0]->getLevel();
-            $e=$res1[0]->getBirthDate();
-
-            return [$a, $b, $c, $d, $e];
+            return $res1;
         }
+
     }
 
     public function findStudent()
@@ -49,10 +44,11 @@ class StudentsManager
         $buffer=0;
       
         foreach ($res as $_res) {
-            $i=$this->getStudent()->getFirstName();
-            $j=$this->getStudent()->getLastName();
 
-            if ($_res->getFirstName()==$i && $_res->getLastName()==$j) {
+            $i=strtolower($this->getStudent()->getFirstName());
+            $j=strtolower($this->getStudent()->getLastName());
+
+            if (strtolower($_res->getFirstName())==$i && strtolower($_res->getLastName())==$j) {
                 $buffer=1;
             }
         }

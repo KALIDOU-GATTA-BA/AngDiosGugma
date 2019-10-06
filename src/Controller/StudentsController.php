@@ -36,6 +36,6 @@ class StudentsController extends AbstractController
         }
         return $this->render('students/index.html.twig', [
                            'students' => $form->createView(),
-                      ]);
+        ]);
     }
 }

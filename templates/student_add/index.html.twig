@@ -9,9 +9,19 @@
     {{ form_row(student_add.firstName, {'attr' : { 'placeholder': "First Name"}, 'label': 'First Name' } ) }}
 
     {{ form_row(student_add.lastName, {'attr' : { 'placeholder': "Last Name"},  'label': 'Last Name'} ) }}
-    {{ form_row(student_add.level, {'attr' : { 'placeholder': "Level"},  'label': 'Level'} ) }}
+    {{ form_row(student_add.grade, {'attr' : { 'placeholder': "Grade"},  'label': 'Grade'} ) }}
 
-    {{ form_row(student_add.city, {'attr' : { 'placeholder': "City"},  'label': 'City'} ) }}
+    {{ form_row(student_add.status, {'attr' : { 'placeholder': "Status"},  'label': 'Status'} ) }}
+
+    {{ form_row(student_add.age, {'attr' : { 'placeholder': "Age"},  'label': 'Age'} ) }}
+
+    {{ form_row(student_add.representative, {'attr' : { 'placeholder': "Representative"},  'label': 'Representative'} ) }}
+
+    {{ form_row(student_add.adgWorkerOrIndigent, { 'label': 'ADG Worker/Indigent'} ) }}
+
+    {{ form_row(student_add.contactNumber, {'attr' : { 'placeholder': "Contact Number"},  'label': 'Contact Number'} ) }}
+
+    {{ form_row(student_add.address, {'attr' : { 'placeholder': "Address"},  'label': 'Address'} ) }}
 
     {{ form_row(student_add.birthDate, {'attr' : { 'placeholder': "yyyy/mm/dd"},  'label': 'Date of birth'} ) }}
 

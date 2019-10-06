@@ -6,6 +6,7 @@ use App\Entity\StudentAdd;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class StudentAddType extends AbstractType
 {
@@ -14,9 +15,18 @@ class StudentAddType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('city')
-            ->add('level')
-            ->add('birthDate');
+            ->add('status')
+            ->add('address')
+            ->add('age')
+            ->add('birthDate')
+            ->add('grade')
+            ->add('representative')
+            ->add('adgWorkerOrIndigent', ChoiceType::class, [
+                'choices' => [
+                    'ADG WORKER' => 'ADG WORKER',
+                    'INDIGENT' => 'INDIGENT',
+                ], ])
+             ->add('contactNumber');
     }
 
     public function configureOptions(OptionsResolver $resolver)
