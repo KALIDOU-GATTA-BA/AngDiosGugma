@@ -162,7 +162,7 @@
             <div class="row">
               <div class="col s12 m6 l6 xl5">
                 <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:12px">More</h5>
-                  <a href="{{path('security_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Catholic school</div></a>  
+                  <a href="{{path('app_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Catholic school</div></a>  
                   <a href="{{path('about_us')}}" class="nav-link"  style="color:white;font-size:12px"><div class="menu">About us</div> </a>
               </div>
               <div class="col s12 m6 l6 xl2">
@@ -192,7 +192,7 @@
       <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
         <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
         {% if  not app.user %}
-          <a href="{{path('security_login')}}" style="color:white;font-size:8px;padding-left:12px"><strong>Administration</strong></a>
+          <a href="{{path('app_login')}}" style="color:white;font-size:8px;padding-left:12px"><strong>Administration</strong></a>
         {% endif %}
         {% if  app.user %}
           <a href="{{path('security_logout')}}" style="color:white;font-size:8px;padding-left:12px">Log out</a>

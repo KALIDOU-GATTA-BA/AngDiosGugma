@@ -2,6 +2,9 @@
 {% form_theme actualities 'bootstrap_4_layout.html.twig'  %}
 {% block title %}Actualities{% endblock %}
 {% block body %}
+<script src="https://cdn.tiny.cloud/1/pquxczxn6i4o7t6zj5kxs5h50baglxu6g3pzk0h2q7bw37xu
+/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({selector:'textarea'});</script>
 {%if buffer==1 %}
       <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
 <br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
