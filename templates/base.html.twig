@@ -13,21 +13,22 @@
     <body>     
    <div id='tr'>
       <div class='toggle_btn'>
-            <div id="menuHam" style="margin-left:-180% !important;color:white">Menu</div><span></span>
+            <div id="menuHam" style="margin-left:-180% !important;color:white">Menu</div><span class="cross"></span>
           </div>
-          <div class='nav nav'><div style="height:460px;background-color:#503a2c">
-            <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i><span style="font-size:17px">Home</span></a>&nbsp<br><br>
-            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a>&nbsp<br><br>
-            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a>&nbsp<br><br>
-            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a>&nbsp<br><br>
-             <a href="{{path('catholic_school_actu')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Catholic school</a>&nbsp<br><br>
-              <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Channel</a>&nbsp<br><br>
-            <a href="{{path('singapore')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore<img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"> </a>&nbsp<br><br>
-            <a href="{{path('hongkong')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></a>&nbsp<br><br>
-            <a href="{{path('canada')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>&nbsp<br><br><a href="{{path('contact')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Contact us</a>&nbsp<br><br>
-                <a href="{{path('about_us')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">About us</a>&nbsp<br><br>
+          <nobr>
+          <div class='nav nav'><div style="background-color:#503a2c">
+            <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i><span style="font-size:17px">Home</span></a>&nbsp<br>
+            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a>&nbsp<br>
+            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a>&nbsp<br>
+            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a>&nbsp<br>
+             <a href="{{path('catholic_school_actu')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Catholic school</a>&nbsp<br>
+              <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Channel</a>&nbsp<br>
+            <a href="{{path('singapore')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"> </a>&nbsp<br>
+            <a href="{{path('hongkong')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></a>&nbsp<br>
+            <a href="{{path('canada')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>&nbsp<br><a href="{{path('contact')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Contact us</a>&nbsp<br>
+                <a href="{{path('about_us')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">About us</a>&nbsp </nobr> 
              <!--<a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white;font-size:16px">Chat <i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>-->
-            </div>
+            </div><br>
           </div> </div>
           <style>
           #tr{
@@ -126,8 +127,11 @@
                 transition-duration:0.2s;
               }
               .nav_open{
-                margin-left: 0px;
-                transition-duration:0.2s;
+                margin-left: 0%;
+                margin-top: 40px;
+                bottom: -10px;
+                display: inline-block;
+                transition-duration:0s;
               }
           </style> 
           <script>
@@ -136,7 +140,7 @@
             var nav =document.querySelector('.nav');
             btn.onclick=function(){
               nav.classList.toggle('nav_open');
-                //alert('ok');
+               
               if (x.style.display === "none") {
                 x.style.display = "block";
               } else {
