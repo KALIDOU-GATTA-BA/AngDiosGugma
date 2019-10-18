@@ -5,211 +5,39 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-        <title>{% block title %}                    Ang Dios Gugma  IJKH                       {% endblock %}</title>
+        <title>{% block title %} {% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-    </head>          
-    <body>     
-   <div id='tr'>
-      <div class='toggle_btn'>
-            <div id="menuHam" style="margin-left:-180% !important;color:white">Menu</div><span class="cross"></span>
-          </div>
-          <nobr>
-          <div class='nav nav'><div style="background-color:#503a2c;">
-            <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i><span style="font-size:17px">Home</span></a> &nbsp <hr>
-            <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a> <hr> 
-            <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a> &nbsp <hr>
-            <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a> &nbsp <hr>
-             <a href="{{path('catholic_school_actu')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Catholic school</a> &nbsp <hr>
-              <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Channel</a> &nbsp <hr>
-            <a href="{{path('singapore')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"> </a> &nbsp <hr>
-            <a href="{{path('hongkong')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></a> &nbsp <hr>
-            <a href="{{path('canada')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a> &nbsp <hr><a href="{{path('contact')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Contact us</a> &nbsp</nobr>
-              <!--  <a href="{{path('about_us')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">About us</a> <br> &nbsp </nobr> 
-             <a href="{{path('live_chat')}}" class="item_5" role="button" aria-expanded="false" style="color:white;font-size:16px">Chat <i class="fa fa-comment" aria-hidden="false" style="color:red"></i></a>-->
-            </div><br>
-          </div> </div>
-          <style>
-          #tr{
-            background-color: #503a2c;
-            position: fixed;
-            width: 100%;
-            z-index: 3;
-            opacity: 0.98;
-          }
-              .toggle_btn{
-                height: 30px;
-                width: 30px;
-                position: relative;
-                float: right;
-                margin-right: 10px;
-                margin-top: 5px;
-                cursor: pointer;
-                background-color: none;
-              }
-              .toggle_btn span{
-                height: 3px;
-                background-color: white;
-                width: 100%;
-                position: absolute;
-                top: 10px;
-                left: 0;
-              }
-              .toggle_btn span:before{
-                content: '';
-                height: 3px;
-                background-color: white;
-                width: 100%;
-                position: absolute;
-                top: -10px;
-                
-              }
-              .toggle_btn span:after{
-                content: '';
-                height: 3px;
-                background-color: white;
-                width: 100%;
-                position: absolute;
-                top: 10px;
-                left: 0;
-              }
-              .nav{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-size: 12px;
-              }
-              .nav .item_1:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .nav .item_2:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .nav .item_3:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .nav .item_4:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .nav .item_5:hover{
-                height: 10px;
-                background-color: none;
-                width: 200px;
-                font-weight: bold;
-                text-decoration: underline;
-              }
-              .nav a {
-                color: white;
-                font-family: sans-serif;
-                text-align: center;
-                
-                padding-top: 30px;
-                text-decoration: none;
-              }
-              .nav{
-                margin-left: -20000px;
-                transition-duration:0.2s;
-              }
-              .nav_open{
-                z-index: 3;
-                margin-left: 0%;
-                margin-top: 20px;
-                bottom: -10px;
-                display: inline-block;
-                transition-duration:0s;
-              }
-          </style> 
-          <script>
-          var x=document.getElementById('menuHam');
-            var btn =document.querySelector('.toggle_btn');
-            var nav =document.querySelector('.nav');
-            btn.onclick=function(){
-              nav.classList.toggle('nav_open');
-               
-              if (x.style.display === "none") {
-                x.style.display = "block";
-              } else {
-                        x.style.display = "none";
-              }
-            }
-          </script>          
-       <img id='pic_eg' src="{{  asset ('images/p35.jpg') }}"> 
-                <div class="container">
-                    {% block body %}{% endblock %}
-                </div><br><br><br><br><br>
-         
-          <div id='pic_eg_yt'>
-            <iframe width="100%" height="600px" src="https://www.youtube.com/embed/-vLZ_ur8TUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <br><br>
-       </div>
-
-
-
-<!--
-
-          <div class="container-fluid" style="background-color:#503a2c;color:white;font: 15px/30px Georgia, serif;">
-            <div class="row">
-              <div class="col s12 m6 l6 xl5">
-                <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:12px">More</h5>
-                  <a href="{{path('app_login')}}" class="nav-link" role="button" aria-expanded="false" style="color:white"><div class="menu">Catholic school</div></a>  
-                  <a href="{{path('about_us')}}" class="nav-link"  style="color:white;font-size:12px"><div class="menu">About us</div> </a>
-              </div>
-              <div class="col s12 m6 l6 xl2">
-                <h5 class="blue-grey-text text-darken-3" style="opacity:0;color:white;font-size:12px">More</h5>
-                    <a href="{{path('contact')}}" class="nav-link"  style="color:white"><div class="menu">Contact us</div> </a>       
-              </div>
-                <div class="col s12 m6 l6 xl1">
-                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:15px">Social networks</h5>
-                    <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" style='background-color:#3b5998; color:white;font-weight:bold'>facebook</a><br> 
-                    <a href="https://www.youtube.com/channel/UCf5qwwCzUoenGKvt9mi06dQ" target="_blank" style='background-color:red; color:white;font-weight:bold'>YouTube</a><br>             
-                </div>
-                <div class="col s12 m6 l6 xl1">
-                  <h5 class="blue-grey-text text-darken-3" style="text-decoration:underline;color:white;font-size:12px">Administration</h5>
-               
-
-
-          -->
-          
-          
-        </div></div>
-
-
-
-
-
-    </div>
-      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
-        <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
-        {% if  not app.user %}
-          <a href="{{path('app_login')}}" style="color:white;font-size:8px;padding-left:12px"><strong>Administration</strong></a>
-        {% endif %}
-        {% if  app.user %}
-          <a href="{{path('security_logout')}}" style="color:white;font-size:8px;padding-left:12px">Log out</a>
-        {% endif %}</a><br>
-    </p>
-     <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
-        All rights Reserved 2019 &#x24B8;<a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a><br>
-        Designed by  KALIDOU <strong>GATTA</strong> BA
-    </p>
-</body>
-<style>
+    </head>    
+    <style>
+ .navbar.navbar-1 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger6.svg?color=503a2c');
+}
+.navbar.navbar-2 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
+}
+.navbar.navbar-3 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger1.svg?color=6a1b9a');
+}
+.navbar.navbar-4 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger7.svg?color=BFE100');
+}
+.navbar.navbar-5 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger5.svg?color=f3e5f5');
+}
+.navbar.navbar-6 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger8.svg?color=E3005C');
+}
+.navbar.navbar-7 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger9.svg?color=FF2C00');
+}
+.navbar.navbar-8 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger4.svg?color=1729B0');
+}
+.navbar.navbar-9 .navbar-toggler-icon {
+background-image: url('https://mdbootstrap.com/img/svg/hamburger3.svg?color=00FBD8');
+}
 #pic_eg{
    width:100%;
     height:500px;
@@ -313,7 +141,87 @@ border: 2px solid blue;
 border-radius: 12px;
 font-size: 15px;
 } 
-</style>
+</style>      
+    <body>   
+<div style="position:fixed; height:100%;width:100%; z-index:3">
+  <nav class="navbar navbar-light navbar-1 white" style="background-color:#503a2c">
+
+    <!-- Navbar brand -->
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" style="background-color:none" data-toggle="collapse" data-target="#navbarSupportedContent15"
+      aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><span style="color:white;font-size:15px">Menu</span></button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><br>
+          <a href="{{path('home')}}" class="item_1"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i>Home <span class="sr-only">(current)</span></a><hr>
+        </li>
+        <li class="nav-item">
+          <a href="{{path('recap_actualities_anchor')}}" class="item_2" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a><hr>
+        </li>
+        <li class="nav-item">
+          <a href="{{path('donationProcess_1')}}" class="item_3" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a><hr>
+        </li>
+         <li class="nav-item">
+           <a href="{{path('live_streaming')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a><hr>
+        </li>
+         <li class="nav-item">
+          <a href="{{path('catholic_school_actu')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Catholic school</a><hr>
+        </li>
+         <li class="nav-item">
+          <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Channel</a><hr>
+        </li>
+         <li class="nav-item">
+            <a href="{{path('singapore')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"></a><hr>
+        </li>
+         <li class="nav-item">
+           <a href="{{path('hongkong')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></a><hr>
+        </li>
+         <li class="nav-item">
+            <a href="{{path('canada')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a><hr>
+        </li>
+         <li class="nav-item">
+            <a href="{{path('contact')}}" class="item_4" role="button" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Contact us</a><hr>
+        </li>
+      </ul>
+      <!-- Links -->
+
+    </div>
+    <!-- Collapsible content -->
+
+  </nav>
+</div>
+<!--/.Navbar-->
+  
+       <img id='pic_eg' src="{{  asset ('images/p35.jpg') }}"> 
+                <div class="container">
+                    {% block body %}{% endblock %}
+                </div><br><br><br><br><br>
+         
+          <div id='pic_eg_yt'>
+            <iframe width="100%" height="600px" src="https://www.youtube.com/embed/-vLZ_ur8TUI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br><br>
+       </div>          
+        </div></div>
+
+    </div>
+      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
+        <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
+        {% if  not app.user %}
+          <a href="{{path('app_login')}}" style="color:white;font-size:8px;padding-left:12px"><strong>Administration</strong></a>
+        {% endif %}
+        {% if  app.user %}
+          <a href="{{path('security_logout')}}" style="color:white;font-size:8px;padding-left:12px">Log out</a>
+        {% endif %}</a><br>
+    </p>
+     <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
+        All rights Reserved 2019 &#x24B8;<a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a><br>
+        Designed by  KALIDOU <strong>GATTA</strong> BA
+    </p>
+</body>
         {% block footer %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
