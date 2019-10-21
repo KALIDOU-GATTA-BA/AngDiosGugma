@@ -10,7 +10,7 @@
     <img id ="img" src="{{  asset ('uploads/') }}{{idArticle}}/image" style="height:100%;width:100%">
    </div>
    <div style ="text-align:justify">
-      {{content}}
+      {{content|raw}}
    </div><br>  
    <p style="color:black; text-decoration:underline">{{author}} </p>
 </article>
