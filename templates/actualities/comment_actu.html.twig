@@ -3,13 +3,17 @@
 {% block title %}Comments{% endblock %}
 
 {% block body %} 
-
+<style>
+  article .content p{
+  color: black;
+}
+</style>
 <article> 
   <h1 style="text-align:center"> {{title}} </h1>
    <div style='width:30%'>                           
     <img id ="img" src="{{  asset ('uploads/') }}{{idArticle}}/image" style="height:100%;width:100%">
    </div>
-   <div style ="text-align:justify">
+   <div class="content" style ="text-align:justify">
       {{content|raw}}
    </div><br>  
    <p style="color:black; text-decoration:underline">{{author}} </p>
