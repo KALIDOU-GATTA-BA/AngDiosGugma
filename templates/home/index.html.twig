@@ -3,6 +3,7 @@
 {% block title %}Ang Dios Gugma{% endblock %}
   
 {% block body %}
+
 <style>
 #vid{
   height:400px;
@@ -12,6 +13,8 @@
 p, .news{
   color:black;
 }
+
+.mySlides {display:none;}
 </style>
 <script>$(document).ready(function(){
     $("iframe").attr("height", "100%");
@@ -22,118 +25,110 @@ p, .news{
       <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
 <br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
   {% endif %}
-   <div class="container-fluid"><br><br> 
-   
+    <div class="container"><br><br> 
         <div class="row"> 
-                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
-                       <div class="news" style='border:none'>   
-
-                                         <style>
-.mySlides {display:none;}
-  </style><br>
-  <div class='pic_eg'>
-  <div class="w3-content w3-section" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/p33.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p32.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p31.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p34.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/p30.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p36.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p22.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p15.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/p38.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p39.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p14.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p41.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/p12.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p17.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p26.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p23.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/adg3.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p1.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p2.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p3.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/adg1.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p5.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p10.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p7.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/p8.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p9.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p11.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p16.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/p13.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p19.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p20.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p21.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-left" src="{{  asset ('images/p24.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p25.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-right" src="{{  asset ('images/p28.jpg') }}" style="width:100%">
-  <img class="mySlides w3-animate-top" src="{{  asset ('images/p29.jpg') }}" style="width:100%">
-  
-
-
-
-  
-</div>
-</div>
-
-<script>
-var myIndex = 0;
-carousel();
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}    
-  x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 5000);    
-}
-</script> 
-                       </div><br><br><br>
-                    </div>
-                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
-                       <div class="news">
-                          <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
-                                  {{ lastActuTitle |raw}} 
-                          </h3>     
-                          <p style="color:black;font:italic  15px/30px Georgia, serif;"><br>
-                                  {{lastActuContent|raw}}
-                          </p>
-                          <p style="color:black;text-align:center;font-size:12px">
-                                 <strong><em style="font: italic  15px/30px Georgia, serif;">Author: <span style="text-decoration:underline;font: italic  15px/30px Georgia, serif;">{{author}}</span></em></strong>
-                          </p> 
-                          {% if type == 1 %}
-                              <span style="color:red">  
-                                  <a href="{{path('recap_actualities_anchor')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
-                              </span> 
-                          {% endif %}
-
-                          {% if type == 2 %}
-                              <span style="color:red">  
-                                  <a href="{{path('recap_actualities_dailyGospels')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
-                              </span> 
-                          {% endif %}
-
-                          {% if type == 3 %}
-                              <span style="color:red">  
-                                  <a href="{{path('recap_actualities_st_of_day')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
-                              </span> 
-                          {% endif %}
-                       </div><br>
-                    </div>
-                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-4">
-                       <div class="news">
-                       <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
-                             {{videoTitle}}                                                  
-                      </h3><br><br>
-                         <div style="height:100%;width:100%">{{videoLink|raw}}</div>
-                       </div><br>
-                    </div>
+          <div class="col-md-6">
+            <div class="news">
+              <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
+                {{ lastActuTitle |raw}} 
+              </h3>     
+              <p style="color:black;font:italic  15px/30px Georgia, serif;"><br>
+                {{lastActuContent|raw}}
+              </p>
+              <p style="color:black;text-align:center;font-size:12px">
+                <strong><em style="font: italic  15px/30px Georgia, serif;">Author: <span style="text-decoration:underline;font: italic  15px/30px Georgia, serif;">{{author}}</span></em></strong>
+              </p> 
+                {% if type == 1 %}
+                  <span style="color:red">  
+                    <a href="{{path('recap_actualities_anchor')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
+                  </span> 
+                {% endif %}
+                {% if type == 2 %}
+                  <span style="color:red">  
+                    <a href="{{path('recap_actualities_dailyGospels')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
+                  </span> 
+                {% endif %}
+                {% if type == 3 %}
+                  <span style="color:red">  
+                    <a href="{{path('recap_actualities_st_of_day')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more</em></a>
+                  </span> 
+                {% endif %}
+              </div><br><br>
+          </div>
+          <div class="col-md-6">
+            <div class="news">
+              <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
+                {{videoTitle}}                                                  
+              </h3><br><br>
+              <div style="height:100%;width:100%">
+                {{videoLink|raw}}
+              </div>
+            </div><br>
+          </div><br><br><br>
+    </div><br><br>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div class="" style='border:none'><br>  
+            <div class='pic_eg'>
+              <div class="w3-content w3-section" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/p33.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p32.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p31.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p34.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/p30.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p36.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p22.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p15.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/p38.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p39.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p14.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p41.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/p12.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p17.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p26.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p23.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/adg3.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p1.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p2.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p3.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/adg1.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p5.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p10.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p7.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/p8.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p9.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p11.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p16.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/p13.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p19.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p20.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p21.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-left" src="{{  asset ('images/p24.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-bottom" src="{{  asset ('images/p25.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-right" src="{{  asset ('images/p28.jpg') }}" style="width:100%">
+                <img class="mySlides w3-animate-top" src="{{  asset ('images/p29.jpg') }}" style="width:100%">
+                <!-- JS -->
+                  <script>
+                        var myIndex = 0;
+                        carousel();
+                        function carousel() {
+                          var i;
+                          var x = document.getElementsByClassName("mySlides");
+                          for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";  
+                          }
+                          myIndex++;
+                          if (myIndex > x.length) {myIndex = 1}    
+                          x[myIndex-1].style.display = "block";  
+                          setTimeout(carousel, 5000);    
+                        }
+                  </script>
+              <!-- ENDJS -->
+              </div>
+            </div>
+          </div>
         </div>
-    </div>       
-  
+      </div>                
+  </div>               
 
 {% endblock %}
