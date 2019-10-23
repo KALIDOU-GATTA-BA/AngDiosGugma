@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MoreController!{% endblock %}
+
+{% block body %}
+<style>
+    
+</style>
+
+<div>
+	{% for article in more %}
+		 <article> 
+          <h1 style="text-align:center"> {{article.title|raw}} </h1>
+            <div>        
+            	<img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image" style="height:100%;width:100%">                   
+            </div>
+            <div style ="text-align:justify;font-style:initial; font-size:default">
+              {{article.content|raw}}
+            </div><br>  
+            <p style="color:black; text-decoration:underline">{{article.author}} </p>
+        </article>
+	{% endfor %}
+</div>
+{% endblock %}

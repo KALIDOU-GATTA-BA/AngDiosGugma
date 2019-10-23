@@ -23,6 +23,7 @@ class HomeController extends AbstractController
      */
     public function index(ActualitiesManager $am, VideoManager $vm)
     {
+       dd($am->getAllActuAnchor()[0][0]);
         $user='';
         $buffer=false;
         $author='';

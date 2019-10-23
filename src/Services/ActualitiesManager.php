@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class ActualitiesManager
 {
-    // private $request;
     public function __construct(ObjectManager $entityManager)
     {
         $this->entityManager = $entityManager;
@@ -40,9 +39,20 @@ class ActualitiesManager
     }
     public function getAllActuAnchor()
     {
-        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=1 order by actu.id desc')->getResult();
-        return $res;
+        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=1 order by actu.id desc') ->setMaxResults(7)
+              ->getResult();
+
+        $res2 = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=1 order by actu.id desc')->getResult();
+        $i=0;
+       foreach ($res2 as $key) {
+            $i++;
+       }
+
+        $size=sizeof($res);
+        $count=$i-$size;
+        return [$res, $size, $count];
     }
+
     public function getAllActuADGSchool()
     {
         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\CatholicSchoolActu actu  order by actu.id desc')->getResult();
@@ -50,13 +60,33 @@ class ActualitiesManager
     }
     public function getAllActuDailyGospels()
     {
-        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=2 order by actu.id desc')->getResult();
-        return $res;
+         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=2 order by actu.id desc') ->setMaxResults(7)
+              ->getResult();
+
+        $res2 = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=2 order by actu.id desc')->getResult();
+        $i=0;
+        foreach ($res2 as $key){
+            $i++;
+        }
+
+        $size=sizeof($res);
+        $count=$i-$size;
+        return [$res, $size, $count];
     }
     public function getAllActuStOfDay()
     {
-        $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu where actu.type=3 order by actu.id desc ')->getResult();
-        return $res;
+         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=3 order by actu.id desc') ->setMaxResults(7)
+              ->getResult();
+
+        $res2 = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=3 order by actu.id desc')->getResult();
+        $i=0;
+       foreach ($res2 as $key) {
+            $i++;
+       }
+
+        $size=sizeof($res);
+        $count=$i-$size;
+        return [$res, $size, $count];
     }
     public function getAllActuRadioProg()
     {
@@ -135,5 +165,20 @@ class ActualitiesManager
         $id=(int)$this->maxId()[0][1];
         $res = $this->entityManager->createQuery("SELECT count(comment.id)  FROM App\Entity\Comments comment where comment.idArticle= '$id'  ")->getResult();
         return (int)$res[0][1];
+    }
+    public function moreGospels(){
+         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=2 order by actu.id asc') ->setMaxResults($this->getAllActuDailyGospels()[2])
+               ->getResult();
+               return $res;
+    }
+     public function moreSaints(){
+         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=3 order by actu.id asc') ->setMaxResults($this->getAllActuStOfDay()[2])
+               ->getResult();
+               return $res;
+    }
+    public function moreAnchors(){
+         $res = $this->entityManager->createQuery('SELECT actu FROM App\Entity\Actualities actu  where actu.type=1 order by actu.id asc') ->setMaxResults($this->getAllActuAnchor()[2])
+               ->getResult();
+               return $res;
     }
 }

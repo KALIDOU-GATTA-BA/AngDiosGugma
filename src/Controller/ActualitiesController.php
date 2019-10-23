@@ -58,7 +58,7 @@ class ActualitiesController extends AbstractController
         ]);
     }
     /**
-    * @Route("/recap_actualities_anchor", name="recap_actualities_anchor")
+    * @Route("/anchor", name="recap_actualities_anchor")
     */
     public function recapActualitiesAnchor(Request $request, ActualitiesManager $am)
     {
@@ -72,16 +72,16 @@ class ActualitiesController extends AbstractController
         // dd($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId());
         //dd($am->countComments($am->paginationAnchor()));
         return $this->render('actualities/recap_actualities_anchor.html.twig', [
-            'articles' => $am->getAllActuAnchor(),
+            'articles' => $am->getAllActuAnchor()[0],
             'buffer'=>$buffer,
             'user'=>$user,
-            'id'=>$am->getAllActuAnchor()[0]->getId(),
+            'id'=>$am->getAllActuAnchor()[0][0]->getId(),
             'paginationAnchor'=>$am->paginationAnchor(),
            // 'count'=>(int)$am->countComments($am->getAllActuAnchor()[$am->paginationAnchor()-($am->paginationAnchor()-1)]->getId()) ,
             ]);
     }
     /**
-    * @Route("/recap_actualities_dailyGolspels", name="recap_actualities_dailyGospels")
+    * @Route("/gospel", name="recap_actualities_dailyGospels")
     */
     public function recapActualitiesDailyGospels(Request $request, ActualitiesManager $am)
     {
@@ -93,14 +93,14 @@ class ActualitiesController extends AbstractController
             $buffer=true;
         }
         return $this->render('actualities/recap_actualities_dailyGospels.html.twig', [
-            'articles' => $am->getAllActuDailyGospels(),
+            'articles' => $am->getAllActuDailyGospels()[0],
             'buffer'=>$buffer,
             'user'=>$user,
             'paginationDailyGospels'=>$am->paginationDailyGospels(),
             ]);
     }
     /**
-    * @Route("/recap_actualities_st_of_day", name="recap_actualities_st_of_day")
+    * @Route("/saint", name="recap_actualities_st_of_day")
     */
     public function recapActualitiesStOfDay(Request $request, ActualitiesManager $am)
     {
@@ -112,14 +112,14 @@ class ActualitiesController extends AbstractController
             $buffer=true;
         }
         return $this->render('actualities/recap_actualities_st_of_day.html.twig', [
-            'articles' => $am->getAllActuStOfDay(),
+            'articles' => $am->getAllActuStOfDay()[0],
             'buffer'=>$buffer,
             'user'=>$user,
             'paginationStOfDay'=>$am->paginationStOfDay(),
             ]);
     }
     /**
-    * @Route("/recap_actualities_radio_prog", name="recap_actualities_radio_prog")
+    * @Route("/radio", name="recap_actualities_radio_prog")
     */
     public function recapActualitiesRadioProg(Request $request, ActualitiesManager $am)
     {
@@ -137,7 +137,7 @@ class ActualitiesController extends AbstractController
             ]);
     }
     /**
-    * @Route("/recap_actualities_tv_prog", name="recap_actualities_tv_prog")
+    * @Route("/tv", name="recap_actualities_tv_prog")
     */
     public function recapActualitiesTVProg(Request $request, ActualitiesManager $am)
     {
@@ -155,7 +155,7 @@ class ActualitiesController extends AbstractController
             ]);
     }
     /**
-    * @Route("/recap_actualities_uyas", name="recap_actualities_uyas")
+    * @Route("/uyas", name="recap_actualities_uyas")
     */
     public function recapActualitiesUyas(Request $request, ActualitiesManager $am)
     {
