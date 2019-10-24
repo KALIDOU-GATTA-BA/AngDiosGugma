@@ -4,9 +4,11 @@
 
 {% block body %}
 <style>
-    
+<style>
+    .recap p{
+      color: black;
+    }
 </style>
-
 <div>
 	{% for article in more %}
 		 <article> 
@@ -14,7 +16,7 @@
             <div>        
             	<img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image" style="height:100%;width:100%">                   
             </div>
-            <div style ="text-align:justify;font-style:initial;color:black; font-size:default">
+            <div class='recap' style ="text-align:justify;font-style:initial;color:black; font-size:default">
               {{article.content|raw}}
             </div><br>  
             <p style="color:black; text-decoration:underline">{{article.author}} </p>
