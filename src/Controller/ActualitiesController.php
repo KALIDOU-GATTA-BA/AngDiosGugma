@@ -41,6 +41,23 @@ class ActualitiesController extends AbstractController
     public function index(Request $request, ActualitiesManager $am, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $admin=$cnm->CheckConnection();
+       switch ($admin) {
+            case 'Elva':
+               $admin='Sis Elva Montales';
+               break;
+            case 'ninoyJ':
+               $admin='Bro Ninoy';
+
+            case 'arielSteve':
+               $admin='Bro Ariel Steve';
+               break;
+           case 'Mary Jane':
+               $admin='Sis Mary Jane';
+           default:
+               $admin='ADG';
+               break;
+       }
         $formr = $this->createForm(ActualitiesType::class)->handleRequest($request);
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
@@ -55,6 +72,7 @@ class ActualitiesController extends AbstractController
             'actualities' => $formr->createView(),
             'buffer'=>true,
             'user'=>$cnm->CheckConnection(),
+            'admin'=>$admin,
         ]);
     }
     /**

@@ -17,6 +17,7 @@ class ActualitiesType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
+            ->add('admin')
             ->add('author')
             ->add('type', ChoiceType::class, [
                 'label' => 'Article type',

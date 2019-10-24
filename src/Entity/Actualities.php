@@ -41,6 +41,11 @@ class Actualities
      */
     private $type;
 
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     */
+    private $admin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Actualities
     public function setType(int $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getAdmin(): ?string
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?string $admin): self
+    {
+        $this->admin = $admin;
 
         return $this;
     }

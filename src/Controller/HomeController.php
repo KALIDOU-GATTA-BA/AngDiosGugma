@@ -43,6 +43,7 @@ class HomeController extends AbstractController
             $lastActuContent=substr($lastActuContent, 0, 70).'[...]';
             $author=$am->getLastActuality()[2];
             $type=$am->getLastActuality()[3];
+            $admin=$am->getLastActuality()[4];
         }
         // return $this->redirectToRoute('maintenance_general') ;
         return $this->render('home/index.html.twig', [
@@ -54,6 +55,7 @@ class HomeController extends AbstractController
             'buffer'=>$buffer,
             'user'=>$user,
             'type'=>$type,
+            'admin'=>$admin,
             'countComments'=>$am->countCommentsLastActu(),
             'countCommentsVideo'=>$vm->countCommentsLastVideo(),
         ]);

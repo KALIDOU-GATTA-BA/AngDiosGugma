@@ -22,7 +22,8 @@ class ActualitiesManager
             $b=$res1[0]->getContent();
             $c=$res1[0]->getAuthor();
             $d=$res1[0]->getType();
-            return [$a, $b, $c, $d];
+            $e=$res1[0]->getAdmin();
+            return [$a, $b, $c, $d, $e];
         } else {
             return false;
         }

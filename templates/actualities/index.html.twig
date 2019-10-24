@@ -2,6 +2,11 @@
 {% form_theme actualities 'bootstrap_4_layout.html.twig'  %}
 {% block title %}Actualities{% endblock %}
 {% block body %}
+<style>
+  #actualities_admin.form-control{
+    opacity: 0;
+  }
+</style>
 <script>
 var user='{{user}}:\n';
   alert(user + 'If you post here an article and you post the same on Facebook you will put the website and Facebook page in concurrence...\nPlease check again the management Document that I sent to you');
@@ -31,7 +36,10 @@ var user='{{user}}:\n';
        <h2>Fill the bellow form to add an article</h2>
       {{ form_start(actualities, {'attr': {'novalidate': 'novalidate'}}) }}
 
+      {{ form_row(actualities.admin, {'attr' : { 'placeholder': "admin"},'value':admin, 'label': ' '} ) }}
+
       {{ form_row(actualities.title, {'attr' : { 'placeholder': "Title"}, 'label': 'Title' } ) }}
+
       {{ form_row(actualities.image) }}
 
       {{ form_row(actualities.content, {'attr' : { 'placeholder': "Content"},  'label': 'Content'} ) }}
