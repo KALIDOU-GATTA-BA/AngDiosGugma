@@ -48,7 +48,7 @@ class ActualitiesController extends AbstractController
                break;
             case 'ninoyJ':
                $admin='Bro Ninoy';
-
+               break;
             case 'arielSteve':
                $admin='Bro Ariel Steve';
                break;
