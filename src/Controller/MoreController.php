@@ -15,7 +15,7 @@ class MoreController extends AbstractController
     public function moreActuGospels(ActualitiesManager $am)
     {
         return $this->render('more/actu_gospel.html.twig', [
-            'more'=>$am->moreGospels(),
+            'more'=>array_reverse($am->moreGospels()),
         ]);
     }
 
@@ -25,7 +25,7 @@ class MoreController extends AbstractController
     public function moreActuSaint(ActualitiesManager $am)
     {
         return $this->render('more/actu_saint.html.twig', [
-            'more'=>$am->moreSaints(),
+            'more'=>array_reverse($am->moreSaints()),
         ]);
     }
 
@@ -35,7 +35,7 @@ class MoreController extends AbstractController
     public function moreAnchors(ActualitiesManager $am)
     {
         return $this->render('more/actu_anchor.html.twig', [
-            'more'=>$am->moreAnchors(),
+            'more'=>array_reverse($am->moreAnchors()),
         ]);
     }
 
