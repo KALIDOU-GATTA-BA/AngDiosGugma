@@ -27,7 +27,6 @@ class StudentsController extends AbstractController
      */
     public function students(Request $request, StudentsManager $sm, CheckConnectionManager $cnm)
     {
-       
         $form = $this->createForm(StudentsType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             if ($sm->findStudent()==1) {

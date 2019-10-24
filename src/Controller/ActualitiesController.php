@@ -42,7 +42,7 @@ class ActualitiesController extends AbstractController
     {
         $cnm->CheckConnection();
         $admin=$cnm->CheckConnection();
-       switch ($admin) {
+        switch ($admin) {
             case 'Elva':
                $admin='Sis Elva Montales';
                break;

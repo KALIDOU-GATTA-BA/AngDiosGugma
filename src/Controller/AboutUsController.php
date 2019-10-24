@@ -20,17 +20,17 @@ class AboutUsController extends AbstractController
      composer create-project symfony/website-skeleton my_project_name
 
     <form action="test.php" method="get">
-	    <div>
-	        <label for="store">store :</label>
-	        <input type="number" id="name" name="store">
-	    </div>
-		<div>
-	        <label for="region">region :</label>
-	        <input type="number" id="name" name="region">
-	    </div>
-	    <input type='submit' value='Go' />
-	    
-	</form>
+        <div>
+            <label for="store">store :</label>
+            <input type="number" id="name" name="store">
+        </div>
+        <div>
+            <label for="region">region :</label>
+            <input type="number" id="name" name="region">
+        </div>
+        <input type='submit' value='Go' />
+
+    </form>
 
 */
 }

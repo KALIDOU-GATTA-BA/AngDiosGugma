@@ -14,7 +14,6 @@ class FoundStudentController extends AbstractController
 
     public function index(StudentsManager $sm)
     {
-
         return $this->render('found_student/index.html.twig', [
             'age'=>$sm->getAllStudentData()[0]->getAge(),
             'representative'=>$sm->getAllStudentData()[0]->getRepresentative(),

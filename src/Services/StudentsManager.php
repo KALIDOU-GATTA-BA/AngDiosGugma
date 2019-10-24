@@ -32,7 +32,6 @@ class StudentsManager
             $res1 = $this->entityManager->createQuery(" SELECT r FROM App\Entity\StudentAdd r where r.FirstName =  '$fn' ")->getResult();
             return $res1;
         }
-
     }
 
     public function findStudent()
@@ -44,7 +43,6 @@ class StudentsManager
         $buffer=0;
       
         foreach ($res as $_res) {
-
             $i=strtolower($this->getStudent()->getFirstName());
             $j=strtolower($this->getStudent()->getLastName());
 
