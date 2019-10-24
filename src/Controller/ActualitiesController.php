@@ -54,6 +54,7 @@ class ActualitiesController extends AbstractController
                break;
            case 'Mary Jane':
                $admin='Sis Mary Jane';
+               break;
            default:
                $admin='ADG';
                break;
