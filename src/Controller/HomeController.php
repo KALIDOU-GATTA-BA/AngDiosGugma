@@ -21,9 +21,11 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ActualitiesManager $am, VideoManager $vm)
+    public function index(ActualitiesManager $am, VideoManager $vm, CheckConnectionManager $cnm)
     {
-        //dd($am->getAllActuAnchor()[0][0]);
+       // dd(array_reverse($am->moreAnchors()));
+     //  dd($cnm->roleTeacher());
+        
         $user='';
         $buffer=false;
         $author='';
@@ -76,10 +78,37 @@ class HomeController extends AbstractController
     public function adminHome(CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        dd($cnm->roleAdmin());
+        if (!$cnm->roleAdmin()) {
+            return $this->redirectToRoute('error_admin');
+        }
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
             'buffer'=>true,
             'user'=>$cnm->CheckConnection(),
         ]);
+    }
+    /**
+     * @Route("/adminHomeTeacher", name="admin_home_teacher")
+     */
+    public function adminHomeTeacher(CheckConnectionManager $cnm)
+    {
+
+        $cnm->CheckConnection();
+        if (!$cnm->roleTeacher()) {
+            return $this->redirectToRoute('error_teacher');
+        }
+        return $this->render('home/adminHomeTeacher.html.twig', [
+            'buffer'=>true,
+            'user'=>$cnm->CheckConnection(),
+        ]);
+    }
+    /**
+     * @Route("/interval", name="interval")
+     */
+    public function interval(CheckConnectionManager $cnm)
+    {
+        $cnm->CheckConnection();
+        return $this->render('home/interval.html.twig');
     }
 }

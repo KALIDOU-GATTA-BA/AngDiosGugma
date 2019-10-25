@@ -96,4 +96,8 @@ class VideoManager
         $res = $this->entityManager->createQuery("SELECT count(comment.id)  FROM App\Entity\CommentsVideo comment where comment.idVideo= '$id'  ")->getResult();
         return (int)$res[0][1];
     }
+    public function moreVideos()
+    {
+        
+    }
 }

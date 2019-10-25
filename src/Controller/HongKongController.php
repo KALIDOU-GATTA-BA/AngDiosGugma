@@ -99,6 +99,9 @@ class HongKongController extends AbstractController
     public function adminHome(CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        if (!$cnm->roleAdmin()) {
+            return $this->redirectToRoute('error_admin');
+        }
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
             'buffer'=>true,
@@ -112,6 +115,7 @@ class HongKongController extends AbstractController
     public function index2(Request $request, ActualitiesManagerHongkong $amhk, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $formr = $this->createForm(ActualitiesHongkongType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -158,6 +162,7 @@ class HongKongController extends AbstractController
     public function deleteActu(ActualitiesManagerHongkong $amhk, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $amhk->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities_hongkong');
     }
@@ -167,6 +172,7 @@ class HongKongController extends AbstractController
     public function selectActuToUpdate(ActualitiesManagerHongkong $amhk, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         if (!$amhk->goToActu($_GET['val'])) {
             return $this->redirectToRoute('update_actu_hongkong');
         }
@@ -182,6 +188,7 @@ class HongKongController extends AbstractController
     public function updateActu(ActualitiesManagerHongkong $amhk, Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $ss=new Session();
         $image= $this->getParameter('upload_directory').'Hongkong/'.$ss->get('id').'/image' ;
         $title=$amhk->goToActu(''.$ss->get('title').'')[0];
@@ -249,6 +256,7 @@ class HongKongController extends AbstractController
     public function indexV(Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $form = $this->createForm(VideoHongkongType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             //dd($vm->getLastVideo()[0]);
@@ -267,6 +275,7 @@ class HongKongController extends AbstractController
     public function deleteVideo(VideoManagerHongkong $vmhk, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $vmhk->deleteVideo($_GET['val']);
         return $this->redirectToRoute('video_hongkong');
     }
@@ -276,6 +285,7 @@ class HongKongController extends AbstractController
     public function selectVideoToUpdate(VideoManagerHongkong $vmhk, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $vmhk->goToVideo($_GET['val']);
         if (!$vmhk->goToVideo($_GET['val'])) {
             return $this->redirectToRoute('video_hongkong');
@@ -315,6 +325,7 @@ class HongKongController extends AbstractController
     public function updateVideo(VideoManagerHongkong $vmhk, Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $ss = $this->session;
 
         $title=$vmhk->goToVideo(''.$ss->get('title').'')[0];

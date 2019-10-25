@@ -27,6 +27,10 @@ class StudentsController extends AbstractController
      */
     public function students(Request $request, StudentsManager $sm, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
+        if (!$cnm->roleTeacher()) {
+            return $this->redirectToRoute('error_teacher');
+        }
         $form = $this->createForm(StudentsType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             if ($sm->findStudent()==1) {

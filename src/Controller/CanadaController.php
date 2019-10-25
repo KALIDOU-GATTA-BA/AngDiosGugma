@@ -99,6 +99,9 @@ class CanadaController extends AbstractController
     public function adminHome(CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        if (!$cnm->roleAdmin()) {
+            return $this->redirectToRoute('error_admin');
+        }
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
             'buffer'=>true,
@@ -112,6 +115,7 @@ class CanadaController extends AbstractController
     public function index2(Request $request, ActualitiesManagerCanada $amc, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $formr = $this->createForm(ActualitiesCanadaType::class)->handleRequest($request);
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
@@ -157,6 +161,7 @@ class CanadaController extends AbstractController
     public function deleteActu(ActualitiesManagerCanada $amc, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $amc->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities_canada');
     }
@@ -166,6 +171,7 @@ class CanadaController extends AbstractController
     public function selectActuToUpdate(ActualitiesManagerCanada $amc, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         if (!$amc->goToActu($_GET['val'])) {
             return $this->redirectToRoute('update_actu_canada');
         }
@@ -181,6 +187,7 @@ class CanadaController extends AbstractController
     public function updateActu(ActualitiesManagerCanada $amc, Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $ss=new Session();
         $image= $this->getParameter('upload_directory').'Canada/'.$ss->get('id').'/image' ;
         $title=$amc->goToActu(''.$ss->get('title').'')[0];
@@ -248,6 +255,7 @@ class CanadaController extends AbstractController
     public function indexV(Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $form = $this->createForm(VideoCanadaType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('canada');
@@ -264,6 +272,7 @@ class CanadaController extends AbstractController
     public function deleteVideo(VideoManagerCanada $vmc, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $vmc->deleteVideo($_GET['val']);
         return $this->redirectToRoute('video_canada');
     }
@@ -273,6 +282,7 @@ class CanadaController extends AbstractController
     public function selectVideoToUpdate(VideoManagerCanada $vmc, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $vmc->goToVideo($_GET['val']);
         if (!$vmc->goToVideo($_GET['val'])) {
             return $this->redirectToRoute('video_canada');
@@ -312,6 +322,7 @@ class CanadaController extends AbstractController
     public function updateVideo(VideoManagerCanada $vmc, Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $ss = $this->session;
         $title=$vmc->goToVideo(''.$ss->get('title').'')[0];
         $link=$vmc->goToVideo(''.$ss->get('title').'')[1];

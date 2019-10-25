@@ -29,6 +29,16 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $admin;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $teacher;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,5 +76,29 @@ class User implements UserInterface
     }
     public function getSalt()
     {
+    }
+
+    public function getAdmin(): ?bool
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(bool $admin): self
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    public function getTeacher(): ?bool
+    {
+        return $this->teacher;
+    }
+
+    public function setTeacher(bool $teacher): self
+    {
+        $this->teacher = $teacher;
+
+        return $this;
     }
 }

@@ -99,6 +99,9 @@ class SingaporeController extends AbstractController
     public function adminHome(CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        if (!$cnm->roleAdmin()) {
+            return $this->redirectToRoute('error_admin');
+        }
         return $this->render('home/adminHome.html.twig', [
             'lastActuContent' => 'adminHome',
             'buffer'=>true,
@@ -112,6 +115,7 @@ class SingaporeController extends AbstractController
     public function index2(Request $request, ActualitiesManagerSingapore $ams, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $formr = $this->createForm(ActualitiesSingaporeType::class)->handleRequest($request);
 
         if ($formr->isSubmitted() && $formr->isValid()) {
@@ -158,6 +162,7 @@ class SingaporeController extends AbstractController
     public function deleteActu(ActualitiesManagerSingapore $ams, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $ams->deleteActu($_GET['val']);
         return $this->redirectToRoute('actualities_singapore');
     }
@@ -167,6 +172,7 @@ class SingaporeController extends AbstractController
     public function selectActuToUpdate(ActualitiesManagerSingapore $ams, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         if (!$ams->goToActu($_GET['val'])) {
             return $this->redirectToRoute('update_actu_singapore');
         }
@@ -182,6 +188,7 @@ class SingaporeController extends AbstractController
     public function updateActu(ActualitiesManagerSingapore $ams, Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $ss=new Session();
         $image= $this->getParameter('upload_directory').'Singapore/'.$ss->get('id').'/image' ;
         $title=$ams->goToActu(''.$ss->get('title').'')[0];
@@ -249,6 +256,7 @@ class SingaporeController extends AbstractController
     public function indexV(Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $form = $this->createForm(VideoSingaporeType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             //dd($vm->getLastVideo()[0]);
@@ -267,6 +275,7 @@ class SingaporeController extends AbstractController
     public function deleteVideo(VideoManagerSingapore $vms, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $vms->deleteVideo($_GET['val']);
         return $this->redirectToRoute('video_singapore');
     }
@@ -276,6 +285,7 @@ class SingaporeController extends AbstractController
     public function selectVideoToUpdate(VideoManagerSingapore $vms, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $vms->goToVideo($_GET['val']);
         if (!$vms->goToVideo($_GET['val'])) {
             return $this->redirectToRoute('video_singapore');
@@ -315,6 +325,7 @@ class SingaporeController extends AbstractController
     public function updateVideo(VideoManagerSingapore $vms, Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $ss = $this->session;
 
         $title=$vms->goToVideo(''.$ss->get('title').'')[0];

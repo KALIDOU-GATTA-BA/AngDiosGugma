@@ -41,6 +41,7 @@ class ActualitiesController extends AbstractController
     public function index(Request $request, ActualitiesManager $am, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $admin=$cnm->CheckConnection();
         switch ($admin) {
             case 'Elva':

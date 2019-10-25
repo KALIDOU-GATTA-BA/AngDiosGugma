@@ -28,6 +28,9 @@ class StudentAddController extends AbstractController
     public function studentAdd(Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        if (!$cnm->roleTeacher()) {
+            return $this->redirectToRoute('error_teacher');
+        }
         $form = $this->createForm(StudentAddType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
             return $this->redirectToRoute('home');
