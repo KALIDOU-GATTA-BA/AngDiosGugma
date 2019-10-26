@@ -224,7 +224,8 @@ font-size: 15px;
        <img id='pic_eg' src="{{  asset ('images/p35.jpg') }}"> 
                 <div class="container">
                     {% block body %}{% endblock %}
-                </div>        
+                </div>  
+
         </div></div>
 
     </div>
@@ -235,7 +236,7 @@ font-size: 15px;
         {% endif %}
         {% if  app.user %}
           <a href="{{path('security_logout')}}" style="color:white;font-size:8px;padding-left:12px">Log out</a>
-        {% endif %}</a><br>
+        {% endif %}</a>
     </p>
      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
         All rights Reserved 2019 &#x24B8;<a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a><br>
