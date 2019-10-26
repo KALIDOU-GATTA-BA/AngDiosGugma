@@ -7,11 +7,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use App\Entity\User;
 
-
 class ErrorController extends AbstractController
 {
-
-	public function __construct(Security $security)
+    public function __construct(Security $security)
     {
         $this->security = $security;
     }
@@ -20,8 +18,8 @@ class ErrorController extends AbstractController
      */
     public function admin()
     {
-    	$user=new User();
-    	$user=$this->getUser()->getUsername();
+        $user=new User();
+        $user=$this->getUser()->getUsername();
 
         return $this->render('error/admin.html.twig', [
             'user' => $user,
@@ -32,8 +30,8 @@ class ErrorController extends AbstractController
      */
     public function teacher()
     {
-    	$user=new User();
-    	$user=$this->getUser()->getUsername();
+        $user=new User();
+        $user=$this->getUser()->getUsername();
         return $this->render('error/teacher.html.twig', [
              'user' => $user,
         ]);

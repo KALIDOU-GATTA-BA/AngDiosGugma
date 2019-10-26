@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Services\CheckConnectionManager;
 
-
 class NotFoundStudentController extends AbstractController
 {
     /**
@@ -14,7 +13,7 @@ class NotFoundStudentController extends AbstractController
      */
     public function index(CheckConnectionManager $cnm)
     {
-    	$cnm->CheckConnection();
+        $cnm->CheckConnection();
         if (!$cnm->roleTeacher()) {
             return $this->redirectToRoute('error_teacher');
         }

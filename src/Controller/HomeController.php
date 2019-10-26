@@ -23,9 +23,6 @@ class HomeController extends AbstractController
      */
     public function index(ActualitiesManager $am, VideoManager $vm, CheckConnectionManager $cnm)
     {
-       // dd(array_reverse($am->moreAnchors()));
-     //  dd($cnm->roleTeacher());
-        
         $user='';
         $buffer=false;
         $author='';
@@ -93,7 +90,6 @@ class HomeController extends AbstractController
      */
     public function adminHomeTeacher(CheckConnectionManager $cnm)
     {
-
         $cnm->CheckConnection();
         if (!$cnm->roleTeacher()) {
             return $this->redirectToRoute('error_teacher');

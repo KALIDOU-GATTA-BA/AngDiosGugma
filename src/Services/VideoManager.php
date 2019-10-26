@@ -98,6 +98,5 @@ class VideoManager
     }
     public function moreVideos()
     {
-        
     }
 }
