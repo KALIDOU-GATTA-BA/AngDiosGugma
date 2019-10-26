@@ -42,7 +42,7 @@ class HomeController extends AbstractController
         if ($am->getLastActuality()) {
             $lastActuTitle=$am->getLastActuality()[0];
             $lastActuContent=strip_tags($am->getLastActuality()[1]);
-            $lastActuContent=substr($lastActuContent, 0, 70).'[...]';
+            $lastActuContent=substr($lastActuContent, 0, 150).'[...]';
             $author=$am->getLastActuality()[2];
             $type=$am->getLastActuality()[3];
             $admin=$am->getLastActuality()[4];
