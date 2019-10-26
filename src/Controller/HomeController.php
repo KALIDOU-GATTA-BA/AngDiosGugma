@@ -41,10 +41,8 @@ class HomeController extends AbstractController
         $videoLink= $vm->getLastVideo()[1];
         if ($am->getLastActuality()) {
             $lastActuTitle=$am->getLastActuality()[0];
-            $lastActuContent=$am->getLastActuality()[1];
+            $lastActuContent=strip_tags($am->getLastActuality()[1]);
             $lastActuContent=substr($lastActuContent, 0, 70).'[...]';
-           // htmlspecialchars(string)
-           // $lastActuContent=ltrim($lastActuContent);
             $author=$am->getLastActuality()[2];
             $type=$am->getLastActuality()[3];
             $admin=$am->getLastActuality()[4];
