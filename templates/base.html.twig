@@ -11,6 +11,31 @@
         {% endblock %}
     </head>    
     <style>
+    body{ 
+      background: url('{{  asset ('images/jesus2.jpg') }}'); 
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFF;          
+      }
+      @media screen and (max-width: 600px) {
+  
+      body{
+         background: url('{{  asset ('images/jesus2.jpg') }}'); 
+          background-repeat: no-repeat;
+          background-size: 100% 85%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFF;  
+}
+}
  .navbar.navbar-1 .navbar-toggler-icon {
 background-image: url('https://mdbootstrap.com/img/svg/hamburger6.svg?color=503a2c');
 }
