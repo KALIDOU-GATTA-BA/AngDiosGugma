@@ -48,7 +48,7 @@ class MoreController extends AbstractController
         $j=0;
         foreach ($vm->moreVideos() as $key) {
             $j++;
-            $i[$j]=$key->getTitle();     
+            $i[$j]=$key->getTitle();
         }
 
         return $this->render('more/video.html.twig', [
