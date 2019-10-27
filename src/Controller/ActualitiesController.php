@@ -67,7 +67,15 @@ class ActualitiesController extends AbstractController
             $this->entityManager->flush();
             $fileName = 'image';
             $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
-            return $this->redirectToRoute('recap_actualities_anchor');
+            if ($form->getType()==1) {
+                return $this->redirectToRoute('recap_actualities_anchor');
+            }
+            if ($form->getType()==2) {
+                return $this->redirectToRoute('recap_actualities_dailyGospels');
+            }
+            if ($form->getType()==3) {
+                return $this->redirectToRoute('recap_actualities_st_of_day');
+            }
         }
          
         return $this->render('actualities/index.html.twig', [
