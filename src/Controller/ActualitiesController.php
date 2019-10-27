@@ -45,16 +45,16 @@ class ActualitiesController extends AbstractController
         $admin=$cnm->CheckConnection();
         switch ($admin) {
             case 'Elva':
-               $admin='Sis Elva Montales';
+               $admin='Sis. Elva Montales';
                break;
             case 'ninoyJ':
-               $admin='Bro Ninoy';
+               $admin='Bro. Ninoy';
                break;
             case 'arielSteve':
-               $admin='Bro Ariel Steve';
+               $admin='Bro. Ariel Steve';
                break;
            case 'Mary Jane':
-               $admin='Sis Mary Jane';
+               $admin='Sis. Mary Jane';
                break;
            default:
                $admin='ADG';
