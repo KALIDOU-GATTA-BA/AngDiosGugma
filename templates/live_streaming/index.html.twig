@@ -71,7 +71,6 @@
           
                         </div>
                  
-               
             </article>
       {% endfor %} 
 </div> <br><br><br>
@@ -83,8 +82,9 @@
                    
                     {% for i in 1..pagination%}
                       <button class="w3-button demo" onclick="currentDiv({{ i }})">{{ i }}</button>
-                    {% endfor %}
-                  </div>
+                    {% endfor %}<br><br><a href="{{path('more_videos')}}"> <mark style="color:white; background-color:red"><b>More videos >></b></mark></a> <br><br><br>
+                  </div> 
+                  
 <script>
 var slideIndex = 1;
 showDivs(slideIndex);

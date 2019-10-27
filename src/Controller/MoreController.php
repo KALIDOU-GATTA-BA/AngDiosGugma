@@ -5,10 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Services\ActualitiesManager;
+use App\Services\VideoManager;
 
 class MoreController extends AbstractController
 {
-    
     /**
      * @Route("/more/gospels", name="more_gospels")
      */
@@ -40,12 +40,29 @@ class MoreController extends AbstractController
     }
 
     /**
-     * @Route("/more/video", name="more_video")
+     * @Route("/more/videos", name="more_videos")
      */
-    public function moreVideo()
+    public function moreVideos(VideoManager $vm)
     {
-        return $this->render('more/video.html.twig', [
+        $i=[];
+        $j=0;
+        foreach ($vm->moreVideos() as $key) {
+            $j++;
+            $i[$j]=$key->getTitle();     
+        }
 
+        return $this->render('more/video.html.twig', [
+            'more'=> $i,
+        ]);
+    }
+    /**
+     * @Route("/show", name="show_more_video")
+     */
+    public function showMoreVideo(VideoManager $vm)
+    {
+        return $this->render('more/show_more_video.html.twig', [
+            'videoTitle'=> $vm->showMoreVideo($_GET['index'])[0]->getTitle(),
+            'videoLink'=> $vm->showMoreVideo($_GET['index'])[0]->getLink(),
         ]);
     }
 }

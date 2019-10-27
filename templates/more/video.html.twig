@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MoreController!{% endblock %}
+{% block title %}Saints{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .recap p{
+      color: black;
+    }
 </style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/adgs/src/Controller/MoreController.php'|file_link(0) }}">src/Controller/MoreController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/adgs/templates/more/index.html.twig'|file_link(0) }}">templates/more/index.html.twig</a></code></li>
-    </ul>
+<div>
+	{% for videoTitle in more %}
+		<article> 
+        	<span>{{videoTitle}}</span>
+        	<form  method='GET' action='{{path('show_more_video')}}'>
+        		<input type="submit" style="color:white; background-color:red" value="See">
+        		<input style='opacity:0' type="text" value="{{videoTitle}}"  name="index" />
+        	</form><br>
+        </article>
+	{% endfor %}
 </div>
 {% endblock %}

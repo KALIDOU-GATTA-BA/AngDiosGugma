@@ -98,5 +98,19 @@ class VideoManager
     }
     public function moreVideos()
     {
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid  order by vid.id desc')->getResult();
+        $i=0;
+        foreach ($res as $key) {
+            $i++;
+        }
+        $res2 = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid order by vid.id asc')
+               ->setMaxResults($i-20)
+               ->getResult();
+        return array_reverse($res2);
+    }
+    public function showMoreVideo(string $videoTitle)
+    {
+        $res = $this->entityManager->createQuery(" SELECT vid FROM App\Entity\Video vid where vid.title = '$videoTitle' ")->getResult();
+        return $res;
     }
 }
