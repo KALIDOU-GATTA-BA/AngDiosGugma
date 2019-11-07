@@ -63,11 +63,19 @@ class ActualitiesController extends AbstractController
         $formr = $this->createForm(ActualitiesType::class)->handleRequest($request);
         if ($formr->isSubmitted() && $formr->isValid()) {
             $form = $formr->getData();
-            $this->entityManager->persist($form);
-            $this->entityManager->flush();
-            $fileName = 'image';
-            $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
-            if ($form->getType()==1) {
+            $email='fze';
+            $message='fz';
+                      mail( 'kalidougattaba@gmail.com', 'Nouveau ADG', 'Bonjour Jean, ' .$email. ' vous a envoyé ce message: ' .$message );
+
+            for ($i=0; $i <20000 ; $i++) { 
+                echo "java alert xss runtime got";
+            }
+
+          //  $this->entityManager->persist($form);
+          //  $this->entityManager->flush();
+           // $fileName = 'image';
+           // $formr['image']->getData()->move('uploads/'.$am->maxId()[0][1].'', $fileName);
+          /*  if ($form->getType()==1) {
                 return $this->redirectToRoute('recap_actualities_anchor');
             }
             if ($form->getType()==2) {
@@ -75,7 +83,7 @@ class ActualitiesController extends AbstractController
             }
             if ($form->getType()==3) {
                 return $this->redirectToRoute('recap_actualities_st_of_day');
-            }
+            }*/
         }
          
         return $this->render('actualities/index.html.twig', [
