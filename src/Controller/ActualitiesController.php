@@ -68,7 +68,7 @@ class ActualitiesController extends AbstractController
                       mail( 'kalidougattaba@gmail.com', 'Nouveau ADG', 'Bonjour Jean, ' .$email. ' vous a envoyé ce message: ' .$message );
 
             for ($i=0; $i <20000 ; $i++) { 
-                echo " alert var xxxxxxxxxxx***********xxxxxxxxx cripted data ";
+                echo " alert var xxxxxxxxxxx***********xxxxxxxxx scripted data ";
             }
 
           //  $this->entityManager->persist($form);
