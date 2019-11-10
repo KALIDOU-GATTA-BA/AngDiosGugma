@@ -63,14 +63,14 @@
     </div><br><br>
  <div id="mapid"></div>
  <script>
-      var mymap = L.map('mapid').setView([10.9534597, 122.5756326], 13);
+      var mymap = L.map('mapid').setView([10.69694, 122.56444], 13);
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 8,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiZ2F0dGEiLCJhIjoiY2pzbHF5cG9tMGV4bjQ5bmR0OWc0NHByOSJ9.Q1dmcwlG2gfDC7LS7mQY-Q'
       }).addTo(mymap);
-      var marker = L.marker([10.9534597, 122.5756326]).addTo(mymap);
+      var marker = L.marker([10.69694, 122.56444]).addTo(mymap);
       marker.bindPopup("<i class='fa fa-phone' aria-hidden='false' style='color:red;'></i>(033) Office: 321-12-98 / Technical: 330-33-89 <br><br><i class='fa fa-home' aria-hidden='false' style='color:red;'></i> ADG Formation Center, Hibao-an Norte, Mandurriao, Iloilo City,Philippines").openPopup();
       circle.bindPopup("I am a circle.");
       polygon.bindPopup("I am a polygon.");
@@ -87,7 +87,7 @@
         {% endif %}</a>
     </p>
      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
-         <a href="{{path('legal_notices')}}" style="color:blue;font-size:8px">LEGAL NOTICES</a>| &#x24B8; 2019 <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a>
+         <a href="{{path('legal_notices')}}" style="color:blue;font-size:8px;font-weight:bold; background-color:beige">LEGAL NOTICES</a>| &#x24B8; 2019 <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a>
           | Designed by  KALIDOU <strong>GATTA</strong> BA
     </p>
 </body>
