@@ -19,6 +19,13 @@ class HomeController extends AbstractController
         $this->security = $security;
     }
     /**
+     * @Route("/LN", name="legal_notices")
+     */
+    public function legalNotices()
+    {
+        return $this->render('home/legal_notices.html.twig');
+    }
+    /**
      * @Route("/", name="home")
      */
     public function index(ActualitiesManager $am, VideoManager $vm, CheckConnectionManager $cnm)
