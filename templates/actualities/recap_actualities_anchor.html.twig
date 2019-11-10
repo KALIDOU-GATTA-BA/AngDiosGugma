@@ -52,7 +52,7 @@ article p {
     {% endif %}
       {% for article in articles %}
         <article> 
-          <h1 style="text-align:center"> {{article.title|raw}} </h1>
+          <h1 style="text-align:center; font-style:initial; font-size:17px"> {{article.title|raw}} </h1>
             <div>                           
                 <img id ="img" src="{{  asset ('uploads/') }}{{article.id}}/image" style="height:100%;width:100%">
             </div>
@@ -63,7 +63,7 @@ article p {
             <p style="color:black; text-decoration:none"><em style="font-size:12px">Posted by</em>:<strong style="font-size:12px">{{article.admin}}</strong></p>
           <form action='{{path('comment_actu')}}' method='GET'>
               <input type ="text" style='opacity:0' value='{{article.id}}' name="val">
-              <input type="submit" style='color:white;background-color:#503a2c' value='+comment'>
+              <input type="submit" style='color:white;background-color:#503a2c' value='+comment'><br>
             </form>
         </article>
       {% endfor %}
