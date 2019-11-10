@@ -14,8 +14,8 @@ background: url('../../public/images/36295287_2025187550833951_67533353227229593
 
 .container{
 	
-	opacity: 0.9;
-	background-color:white;
+	opacity: none;
+	background-color:none;
 }
 a{
 	color: #503a2c;
@@ -177,7 +177,7 @@ h1{
 .news
 {
 
-    background-color:white ;
+    background-color:none ;
     margin-top:10px;
     height:100px;
     border: 2px  ;
@@ -218,7 +218,7 @@ text-decoration: underline;
 @media screen and (max-width: 399px) {
 	.news 
 	{
-	    background-color:white;
+	    background-color:none;
 	    margin-top:0px;
 	    border: 2px solid blue;
 	}

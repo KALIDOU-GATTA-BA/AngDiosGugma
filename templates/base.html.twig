@@ -5,6 +5,12 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="icon" href="{{  asset ('images/36295287_2025187550833951_675333532272295936_n.jpg') }}" />
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
         <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
         <title>{% block title %} {% endblock %}</title>
         {% block stylesheets %}
@@ -12,8 +18,9 @@
         {% endblock %}
     </head>    
     <style>
+    #mapid { height: 400px; }
     body{ 
-      background: url('{{  asset ('images/jesus2.jpg') }}'); 
+      background: none; 
           background-repeat: no-repeat;
           background-size: 100% 100%;
           background-position: center;
@@ -21,12 +28,12 @@
           display: flex;
           min-height: 100vh;
           flex-direction: column;
-          background-color:#FFF;          
+          background-color:#FFFfE0;          
       }
       @media screen and (max-width: 600px) {
   
       body{
-         background: url('{{  asset ('images/jesus2.jpg') }}'); 
+         background: none; 
           background-repeat: no-repeat;
           background-size: 100% 85%;
           background-position: center;
@@ -34,7 +41,7 @@
           display: flex;
           min-height: 100vh;
           flex-direction: column;
-          background-color:#FFF;  
+          background-color:#FFFfE0;  
 }
 }
  .navbar.navbar-1 .navbar-toggler-icon {
@@ -89,13 +96,13 @@ margin-top: -50px;
 }
 .news:hover
 {
-background-color: #fff  ;
+background-color: none  ;
 color: white;
 }
 @media screen and (max-width: 600px) {
   .new, .new h3
       {
-      background-color:white;
+      background-color:none;
       margin-left: 0px;
       margin-right: 0px;
       padding-left: 0px;
@@ -123,10 +130,10 @@ padding-bottom: 10px;
 @media screen and (min-width: 400px) {
       .news 
       {
-          background-color:white;
+          background-color:none;
           margin-top:0px;
           height:300px;
-          border: 2px solid #FFF;
+          border: none;
           padding: 10px;
        
           border-top-left-radius: 50px 20px;
@@ -138,7 +145,7 @@ padding-bottom: 10px;
 @media screen and (max-width: 399px) {
       .news 
       {
-          background-color:white;
+          background-color:none;
           margin-top:0px;
           border: 2px solid red;
       }
@@ -210,28 +217,34 @@ font-size: 15px;
         </li>
          <li class="nav-item">
             <a href="{{path('canada')}}" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a><hr>
-        </li
-         <li class="nav-item">
-            <a href="{{path('contact')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Contact us</a><hr>
         </li>
+        
       </ul>
        
 
     </div>
-    <!-- Collapsible content -->
-
   </nav>
 </span>
-<!--/.Navbar-->
-  
-       <img id='pic_eg' src="{{  asset ('images/p35.jpg') }}"> 
-                <div class="container">
-                    {% block body %}{% endblock %}
-                </div>  
-
-        </div></div>
-
-    </div>
+<img id='pic_eg' src="{{  asset ('images/jesus2.jpg') }}"> 
+    <div class="container">
+          {% block body %}{% endblock %}
+    </div><br><br>
+ <div id="mapid"></div>
+ <script>
+      var mymap = L.map('mapid').setView([10.9534597, 122.5756326], 13);
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 8,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoiZ2F0dGEiLCJhIjoiY2pzbHF5cG9tMGV4bjQ5bmR0OWc0NHByOSJ9.Q1dmcwlG2gfDC7LS7mQY-Q'
+      }).addTo(mymap);
+      var marker = L.marker([10.9534597, 122.5756326]).addTo(mymap);
+      marker.bindPopup("<i class='fa fa-phone' aria-hidden='false' style='color:red;'></i>(033) Office: 321-12-98 / Technical: 330-33-89 <br><br><i class='fa fa-home' aria-hidden='false' style='color:red;'></i> ADG Formation Center, Hibao-an Norte, Mandurriao, Iloilo City,Philippines").openPopup();
+      circle.bindPopup("I am a circle.");
+      polygon.bindPopup("I am a polygon.");
+ </script>
+</div></div>
+  </div>
       <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
         <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
         {% if  not app.user %}
