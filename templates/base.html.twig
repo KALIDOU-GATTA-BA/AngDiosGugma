@@ -18,7 +18,7 @@
         {% endblock %}
     </head>    
     <body>   
-    <nav class="navbar navbar-light navbar-1 white" style="background-color:#503a2c">
+    <nav class="navbar navbar-light navbar-1 white" style="background-color:#503a2c; position:fixed; width:100%;z-index:3">
       <button class="navbar-toggler" type="button" style="" data-toggle="collapse" data-target="#navbarSupportedContent15"
         aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><span style="color:white;font-size:15px">Menu</span></button>
         <img src="{{asset('images/36295287_2025187550833951_675333532272295936_n.jpg')}}" style="height:40px" alt="logo">
@@ -59,7 +59,7 @@
     <div class="container">
           {% block body %}{% endblock %}
     </div><br><br>
- <div id="mapid"></div>
+ <div id="mapid" style="z-index:1"></div>
  <script>
       var mymap = L.map('mapid').setView([10.69694, 122.56444], 13);
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
