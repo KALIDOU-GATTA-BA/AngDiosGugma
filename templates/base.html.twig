@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,53 +11,51 @@
    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
    crossorigin=""></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %} {% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>    
     <body>   
-<span style=" height:100%;width:100% ; z-index:3 ;overflow: scroll">
-  <nav class="navbar navbar-light navbar-1 white" style="background-color:#503a2c">
-    <button class="navbar-toggler" type="button" style="background-color:none" data-toggle="collapse" data-target="#navbarSupportedContent15"
-      aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><span style="color:white;font-size:15px">Menu</span></button>
-      <img src="{{asset('images/36295287_2025187550833951_675333532272295936_n.jpg')}}" style="height:40px">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent15">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"><br>
-          <a href="{{path('home')}}"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i>Home <span class="sr-only">(current)</span></a><hr>
-        </li>
-        <li class="nav-item">
-          <a href="{{path('recap_actualities_anchor')}}"   aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a><hr>
-        </li>
-        <li class="nav-item">
-          <a href="{{path('donationProcess_1')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a><hr>
-        </li>
-         <li class="nav-item">
-           <a href="{{path('live_streaming')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a><hr>
-        </li> 
-         <li class="nav-item">
-          <a href="{{path('catholic_school_actu')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Catholic school</a><hr>
-        </li>
-         <li class="nav-item">
-          <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Channel</a><hr>
-        </li>
-       
-         <li class="nav-item">
-            <a href="{{path('singapore')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/singapore.gif') }}"></a><hr>
-        </li>
-         <li class="nav-item">
-           <a href="{{path('hongkong')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/hongkong.gif') }}"></a><hr>
-        </li>
-         <li class="nav-item">
-            <a href="{{path('canada')}}" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</span>
-<img id='pic_eg' src="{{  asset ('images/jesus2.jpg') }}"> 
+    <nav class="navbar navbar-light navbar-1 white" style="background-color:#503a2c">
+      <button class="navbar-toggler" type="button" style="" data-toggle="collapse" data-target="#navbarSupportedContent15"
+        aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span><span style="color:white;font-size:15px">Menu</span></button>
+        <img src="{{asset('images/36295287_2025187550833951_675333532272295936_n.jpg')}}" style="height:40px" alt="logo">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active"><br>
+            <a href="{{path('home')}}"  style="color:white"><i class="fa fa-home" aria-hidden="false" style="color:white;;padding-left:12px;font-size:18px"></i>Home <span class="sr-only">(current)</span></a><hr>
+          </li>
+          <li class="nav-item">
+            <a href="{{path('recap_actualities_anchor')}}"   aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">News</a><hr>
+          </li>
+          <li class="nav-item">
+            <a href="{{path('donationProcess_1')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Donation</a><hr>
+          </li>
+           <li class="nav-item">
+             <a href="{{path('live_streaming')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">Live streaming</a><hr>
+          </li> 
+           <li class="nav-item">
+            <a href="{{path('catholic_school_actu')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Catholic school</a><hr>
+          </li>
+           <li class="nav-item">
+            <a href="https://web.facebook.com/arielsteve.arorong.10" target="_blank"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Channel</a><hr>
+          </li>
+         
+           <li class="nav-item">
+              <a href="{{path('singapore')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore <img style='height:15px;width:15px' id='pic_eg' alt="" src="{{  asset ('images/singapore.gif') }}"></a><hr>
+          </li>
+           <li class="nav-item">
+             <a href="{{path('hongkong')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' alt="" src="{{  asset ('images/hongkong.gif') }}"></a><hr>
+          </li>
+           <li class="nav-item">
+              <a href="{{path('canada')}}" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' alt="" id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<img id='pic_eg' src="{{  asset ('images/jesus2.jpg') }}" alt=""> 
     <div class="container">
           {% block body %}{% endblock %}
     </div><br><br>
@@ -72,12 +70,8 @@
       }).addTo(mymap);
       var marker = L.marker([10.69694, 122.56444]).addTo(mymap);
       marker.bindPopup("<i class='fa fa-phone' aria-hidden='false' style='color:red;'></i>(033) Office: 321-12-98 / Technical: 330-33-89 <br><br><i class='fa fa-home' aria-hidden='false' style='color:red;'></i> ADG Formation Center, Hibao-an Norte, Mandurriao, Iloilo City,Philippines").openPopup();
-      circle.bindPopup("I am a circle.");
-      polygon.bindPopup("I am a polygon.");
  </script>
-</div></div>
-  </div>
-      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
+    <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
         <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
         {% if  not app.user %}
           <a href="{{path('app_login')}}" style="color:white;font-size:8px;padding-left:12px"><strong>Administration</strong></a>
