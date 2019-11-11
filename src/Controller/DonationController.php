@@ -207,4 +207,11 @@ class DonationController extends AbstractController
             'currency' => $currency,
         ]);
     }
+    /**
+     * @Route("/transfer", name="money_transfer")
+     */
+    public function bankTransfer()
+    {
+        return $this->render('donation/bank_transfer.html.twig');
+    }
 }

@@ -114,4 +114,11 @@ class HomeController extends AbstractController
         $cnm->CheckConnection();
         return $this->render('home/interval.html.twig');
     }
+    /**
+     * @Route("/method", name="donation_method")
+     */
+    public function donationMethod()
+    {
+        return $this->render('home/donation_method.html.twig');
+    }
 }
