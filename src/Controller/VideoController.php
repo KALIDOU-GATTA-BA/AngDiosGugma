@@ -11,6 +11,7 @@ use App\Repository\VideoRepository;
 use App\Handlers\Form\VideoFormHandler;
 use App\Entity\Video;
 use App\Services\VideoManager;
+use App\Services\CheckConnectionManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
@@ -31,8 +32,10 @@ class VideoController extends AbstractController
     /**
      * @Route("/video", name="video")
      */
-    public function index(Request $request)
+    public function index(Request $request, CheckConnectionManager $cnm)
     {
+        $cnm->CheckConnection();
+        $cnm->roleAdmin();
         $user='';
         $buffer=false;
         if ($this->security->getUser()!=null) {

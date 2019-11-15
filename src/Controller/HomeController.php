@@ -1,5 +1,19 @@
 <?php
-
+/*
+htaccess file for rewrite HTTP to HTTPS
+#SetEnv SHORT_OPEN_TAGS 0
+#SetEnv REGISTER_GLOBALS 0
+#SetEnv MAGIC_QUOTES 0
+#SetEnv SESSION_AUTOSTART 0
+#SetEnv ZEND_OPTIMIZER 1
+#SetEnv PHP_VER 7_2
+RewriteEngine on
+RewriteBase /
+RewriteCond %{SERVER_PORT} 80
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+*/
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,7 +96,7 @@ class HomeController extends AbstractController
     public function adminHome(CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
-        dd($cnm->roleAdmin());
+        $cnm->roleAdmin();
         if (!$cnm->roleAdmin()) {
             return $this->redirectToRoute('error_admin');
         }
