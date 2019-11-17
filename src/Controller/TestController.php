@@ -14,10 +14,10 @@ class TestController extends AbstractController
      */
     public function getLocalisation(GeolocalisationManager $glm)
     {
-    	$glm->getLocalisation(48.913945,2.3268777,'GOOGLEMAP',"AIzaSyBplNoUjYJSMG8eJmfCjq29cwAIj9Ixekw");
+    	$glm->getLocalisation(48.913945,2.3268777,'GOOGLEMAP',"kljh");
     
         return $this->render('test/index.html.twig', [
-            'controller_name' => $glm->getLocalisation(48.913945,2.3268777,'GOOGLEMAP',"AIzaSyBplNoUjYJSMG8eJmfCjq29cwAIj9Ixekw"),
+            'controller_name' => $glm->getLocalisation(48.913945,2.3268777,'GOOGLEMAP',"koljh"),
         ]);
     }
 }
