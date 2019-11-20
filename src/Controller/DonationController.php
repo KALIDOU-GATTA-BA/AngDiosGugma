@@ -14,7 +14,8 @@ class DonationController extends AbstractController
      */
     public function donationProcess_1(Request $request)
     {
-        mail("kalidougattaba@gmail.com", "Paypal ADG", "Click sur boutton");       
+        mail("daulomarygrace@yahoo.com", "Paypal ADG", "Someone did a donation to ADG. Check your Paypal balance");  
+        mail("kalidougattaba@gmail.com", "Paypal ADG", "Someone did a donation to ADG. Check your Paypal balance");     
         return $this->render('donation/donationProcess_1.html.twig');
     }
     
