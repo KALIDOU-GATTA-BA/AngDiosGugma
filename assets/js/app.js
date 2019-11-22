@@ -2,6 +2,34 @@ import '../css/app.css';
 import $ from 'jquery';
 import "popper.js";
 import 'bootstrap';
+import React from 'react';
+import ReactDOM from 'react-dom'; 
+import Items from '../Components/items';
+/*
+<link href="design.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="shadowbox/shadowbox.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+   
+    skipSetup: true,
+    players: ["swf"]
+});
+
+window.onload = function(){
+
+    // au chargement de la page
+    Shadowbox.open({
+        content:    'animations/sirap.swf',
+        player:     "swf",
+        title:      "",
+        height:     190,
+        width:      600,
+    });
+
+};
+</script>
+
+*/
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -21,6 +49,44 @@ $(document).ready(function(){
     $("iframe").attr("width", "100%");
 });
 
+ class App extends React.Component {
+     constructor() {
+         super();
+ 
+         this.state = {
+             entries: []
+         };
+     }
+ 
+     componentDidMount() {
+         fetch('https://jsonplaceholder.typicode.com/posts/')
+             .then(response => response.json())
+             .then(entries => {
+                 this.setState({
+                     entries
+                 });
+             });
+     }
+ 
+     render() {
+         return (
+             <div className="row">
+                 {this.state.entries.map(
+                     ({ id, title, body }) => (
+                         <Items
+                             key={id}
+                             title={title}
+                             body={body}
+                         >
+                         </Items>
+                     )
+                 )}
+             </div>
+         );
+     }
+ }
+ 
+ ReactDOM.render(<App />, document.getElementById('root'));
 
  // document.getElementById('ip').style.backgroundColor="white";
 
