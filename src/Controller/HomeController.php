@@ -1,6 +1,6 @@
 <?php
 /*
-htaccess file for rewrite HTTP to HTTPS
+htaccess file for rewriting HTTP to HTTPS
 #SetEnv SHORT_OPEN_TAGS 0
 #SetEnv REGISTER_GLOBALS 0
 #SetEnv MAGIC_QUOTES 0
@@ -21,6 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Services\ActualitiesManager;
 use App\Services\VideoManager;
 use App\Services\CheckConnectionManager;
+use App\Services\YouTubeManager;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
 
@@ -28,8 +29,6 @@ class HomeController extends AbstractController
 {
     public function __construct(Security $security)
     {
-        // Avoid calling getUser() in the constructor: auth may not
-        // be complete yet. Instead, store the entire Security object.
         $this->security = $security;
     }
     /**
@@ -42,7 +41,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ActualitiesManager $am, VideoManager $vm, CheckConnectionManager $cnm)
+    public function index(ActualitiesManager $am, VideoManager $vm, CheckConnectionManager $cnm, YouTubeManager $yt)
     {
         $user='';
         $buffer=false;
@@ -78,6 +77,7 @@ class HomeController extends AbstractController
             'admin'=>$admin,
             'countComments'=>$am->countCommentsLastActu(),
             'countCommentsVideo'=>$vm->countCommentsLastVideo(),
+            'youtube'=>$yt->getLastYouTube(),
         ]);
     }
     /**

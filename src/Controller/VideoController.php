@@ -11,10 +11,14 @@ use App\Repository\VideoRepository;
 use App\Handlers\Form\VideoFormHandler;
 use App\Entity\Video;
 use App\Services\VideoManager;
+use App\Handlers\Form\YouTubeFormHandler;
+use App\Form\YouTubeType;
 use App\Services\CheckConnectionManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
+use App\Services\YouTubeManager;
+
 
 class VideoController extends AbstractController
 {
@@ -45,12 +49,16 @@ class VideoController extends AbstractController
         }
         $form = $this->createForm(VideoType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-            //dd($vm->getLastVideo()[0]);
             return $this->redirectToRoute('home');
         }
        
+        $formYT = $this->createForm(YouTubeType::class)->handleRequest($request);
+        if ($this->formHandler->handle($formYT)) {
+            return $this->redirectToRoute('home');
+        }
         return $this->render('video/index.html.twig', [
             'video' => $form->createView(),
+            'videoYT' => $formYT->createView(),
             'buffer'=>$buffer,
             'user'=>$user,
         ]);
