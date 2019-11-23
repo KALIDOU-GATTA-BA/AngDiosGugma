@@ -28,12 +28,12 @@ class SecurityController extends AbstractController
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute('security_login');
+            return $this->redirectToRoute('home');
         }
 
-        return $this->render('security/index.html.twig', [
+        return $this->render('regis/index.html.twig', [
             'form' =>  $form->createView(),
-        ]);
+        ]); //Shandy angdiosguma_shandy2019
     }
     
     /**
