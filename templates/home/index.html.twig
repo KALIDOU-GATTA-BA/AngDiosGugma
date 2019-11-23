@@ -3,6 +3,19 @@
 {% block title %}Ang Dios Gugma{% endblock %}
   
 {% block body %}
+ 
+
+<style>
+    .vid{ 
+        height:600px;       
+        }
+        @media screen and (max-width: 600px) {
+    
+        .vid{
+          height:300px; 
+        }
+  }
+</style>
 <script>$(document).ready(function(){
     $("iframe").attr("height", "100%");
     $("iframe").attr("width", "100%");
@@ -62,10 +75,24 @@
               </div>
             </div><br>
           </div>
-          <div style="height:200px; width:200px"> 
-              <p><br></p><i class="fa fa-hand-o-right" style="font-size:24px;color:red"></i><a href="{{path('donation_method')}}"> <button style="color:white; background-color:orange">Make a donation</button></a>
-          </div>               
-  </div>        
+           
+                    
+  </div>  
+<br>
+  <p style="text-align:center; color:red;font-weight:bold;font-size:8px;margin-bottom:0px">
+         <i class="fa fa-hand-o-right" style="font-size:24px;color:red"></i><a href="{{path('donation_method')}}"> <button style="color:white;font-size:16px; background-color:orange">Make a donation</button></a>
+    </p>   <br> 
+  <!---  -->  
+  <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  15px/30px Georgia, serif;">
+      {{videoTitle}}                                                  
+  </h3>                    
+  <div class='vid'>
+    <iframe width="424" height="238" src="https://www.youtube.com/embed/Mm0mXDC_sQM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     
+  </div>
+  
+       <div class="sharethis-inline-follow-buttons"></div>
+  </p>
+  <!-- --> 
 </div>       
 
 {% endblock %}
