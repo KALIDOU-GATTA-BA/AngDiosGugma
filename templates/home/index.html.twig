@@ -15,6 +15,9 @@
           height:300px; 
         }
   }
+  div span {
+    color: black;
+  }
 </style>
 <script>$(document).ready(function(){
     $("iframe").attr("height", "100%");
@@ -45,23 +48,17 @@
                 {% if type == 1 %}
                   <span style="color:red">  
                     <a href="{{path('recap_actualities_anchor')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more </em></a>
-                  </span> <br><br> <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
-<div class="fb-share-button" data-href="https://angdiosgugma.com/anchor" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                  </span> <br><br> <div class="sharethis-inline-follow-buttons"></div>
                 {% endif %}
                 {% if type == 2 %}
                  <span style="color:red">  
                     <a href="{{path('recap_actualities_dailyGospels')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more </em></a>
-                  </span><br><br><div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
-<div class="fb-share-button" data-href="https://angdiosgugma.com/gospel/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                  </span><br><br><div class="sharethis-inline-follow-buttons"></div>
                 {% endif %}
                 {% if type == 3 %}
                   <span style="color:red">  
                     <a href="{{path('recap_actualities_st_of_day')}}"><em style="text-align:center;border-radius:7px;text-decoration:none;color:red;background-color:white;border:2px solid;">Read more </em></a>
-                  </span> <br><br> <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
-<div class="fb-share-button" data-href="https://angdiosgugma.com/saint/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                  </span> <br><br> <div class="sharethis-inline-follow-buttons"></div>
                 {% endif %}
               </div><br><br>
           </div>
@@ -87,7 +84,7 @@
     {{youtube|raw}}    
   </div>
 
-       <div class="sharethis-inline-follow-buttons"></div>
+       
   </p>
   <!-- --> 
 </div>       
