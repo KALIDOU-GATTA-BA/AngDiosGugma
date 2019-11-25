@@ -17,11 +17,16 @@ class YouTubeFormHandler
 
     public function handle(FormInterface $form)
     {
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {    
             $form = $form->getData();
+            if (!preg_match('/youtube/', $form->getLink())) {
+                return false;
+            }
+            else{
             $this->entityManager->persist($form);
             $this->entityManager->flush();
-            return true;
+            return true;            
+            }
         }
     }
     

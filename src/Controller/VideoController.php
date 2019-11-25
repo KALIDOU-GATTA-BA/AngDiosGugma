@@ -27,9 +27,10 @@ class VideoController extends AbstractController
     /**
      * @var ContactFormHandler
      */
-    public function __construct(VideoFormHandler $formHandler, Security $security)
+    public function __construct(VideoFormHandler $formHandler, YouTubeFormHandler $YTformHandler, Security $security)
     {
         $this->formHandler = $formHandler;
+        $this->YTformHandler = $YTformHandler;
         $this->security = $security;
     }
 
@@ -39,6 +40,7 @@ class VideoController extends AbstractController
     public function index(Request $request, CheckConnectionManager $cnm)
     {
         $cnm->CheckConnection();
+        $temp=0;
         $cnm->roleAdmin();
         $user='';
         $buffer=false;
@@ -53,14 +55,19 @@ class VideoController extends AbstractController
         }
        
         $formYT = $this->createForm(YouTubeType::class)->handleRequest($request);
-        if ($this->formHandler->handle($formYT)) {
+        if ($this->YTformHandler->handle($formYT)) {
             return $this->redirectToRoute('home');
+        }
+        else{
+            $temp=1;
+            mail("kalidougattaba@gmail.com", "YT", $user);     
         }
         return $this->render('video/index.html.twig', [
             'video' => $form->createView(),
             'videoYT' => $formYT->createView(),
             'buffer'=>$buffer,
             'user'=>$user,
+            'temp'=>$temp,
         ]);
     }
     /**
