@@ -60,7 +60,7 @@ class VideoController extends AbstractController
         }
         else{
             $temp=1;
-            mail("kalidougattaba@gmail.com", "YT", $user);     
+           // mail("kalidougattaba@gmail.com", "YT", $user);     
         }
         return $this->render('video/index.html.twig', [
             'video' => $form->createView(),
