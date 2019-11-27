@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% form_theme gam 'bootstrap_4_layout.html.twig'  %}
+{% block title %}gam{% endblock %}
+{% block body %}
+<style>
+  #gospel_album_admin{
+    opacity: 0;
+  }
+</style>
+
+{%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %} 
+
+<h1>Gospel album</h1>
+    <form style ='height:100%; width:100%' method ="GET" action="{{path('gospel_album_remove')}}">
+      Photo identifiant:<br>
+      <input type ="text"  style="color:white;background-color:red" name="val" placeholder="idPhoto"> <nobr><a href="{{path('gospel_album')}}"  style="color:blue;background-color:white">>>Go to album</a></nobr><br>
+      <button type="submit" class ="btn">Delete</button><br><br>
+    </form>  <br>
+       <h2>Fill the bellow form to add a new photo<br></h2>
+      {{ form_start(gam, {'attr': {'novalidate': 'novalidate'}}) }}
+
+      {{ form_row(gam.admin, {'attr' : { 'placeholder': "admin"},'value':admin, 'label': ' '} ) }}
+
+      {{ form_row(gam.author, {'attr' : { 'placeholder': "author"},'value':'ADG MEDIA','label': 'Author'} ) }}
+      <b><em style="color:red; font-size:12px">Note: because of the runtime of one script, the image name will not appear in the field if you fill it but don't worry it's there!!!</em></b>
+      {{ form_row(gam.image, {'attr' : { }, 'label': 'Image' } ) }}
+
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(gam)}}
+
+{% endblock %} 

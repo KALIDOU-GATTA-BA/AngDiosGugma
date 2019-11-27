@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block title %}Gospel album{% endblock %}
+{% block body %}
+<style>
+  body{ 
+      background: none; 
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFFfE0;          
+      }
+      @media screen and (max-width: 600px) {
+  
+      body{
+         background:none; 
+          background-repeat: no-repeat;
+          background-size: 100% 85%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFFfE0;  
+}
+}
+article p {
+  color: black;
+}
+</style> 
+  {%if buffer==1 %}
+      <span>Hi <mark>{{user}}</mark>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+
+<div style="padding-left:12px;padding-right:12px;padding-bottom:12px;padding-top:12px;font: italic  15px/30px Georgia, serif">   
+    <section class ="articles">
+    {% if app.user %}
+        <span>
+          <a href="{{path('actualities')}}" class="nav-link"  style="color:red;font-size:15px; font-weight:bold"><< Go to articles management</a> 
+        </span> 
+    {% endif %}
+      {% for gam in gams %}
+        <article> 
+            <p style="text-align:center">                           
+                <img id ="img" src="{{  asset ('uploads/gospel/album/') }}{{gam.id}}/image" style="height:100%;width:100%">
+            </p>
+            
+            <p style="color:black; font-weight:bold">{{gam.author}}, 
+            <span style="color:black; text-decoration:none"><em style="font-size:12px">Posted by</em>:<strong style="font-size:12px">{{gam.admin}}</strong>
+              {% if app.user %}
+                <br>photo_Id = <em style="color:red; text-decoration:none">{{gam.id}}</em>
+              {% endif %}
+              <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
+<div class="fb-share-button" data-href="https://angdiosgugma.com/anchor/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+           </p>
+        </article>
+      {% endfor %}
+    </section>
+</div>
+{% if app.user %}
+  <span>
+    <a href="{{path('actualities')}}" class="nav-link"  style="color:white;font-size:15px; font-weight:bold"><mark>Post a new article</mark></a>
+  </span> 
+{% endif %}
+
+{% block javascript %}
+  <script src={{ asset("build/app.js") }}></script>
+{% endblock %}
+{% endblock %}
