@@ -6,19 +6,7 @@
  
 
 <style>
-    .vid{ 
-        height:600px;       
-        }
-        @media screen and (max-width: 600px) {
-    
-        .vid{
-          height:300px; 
-        }
-  }
-  div span {
-    color: black;
-  }
-  
+ 
 </style>
 <script>$(document).ready(function(){
     $("iframe").attr("height", "90%");
@@ -68,22 +56,32 @@
                 {{videoLink|raw}}
               </div>
             </div><br>
-          </div>
-           
-                    
+          </div>    
   </div>  
-<br><br>
-  <p style="text-align:center; color:red;font-weight:bold;font-size:8px;margin-bottom:0px">
-         <i class="fa fa-hand-o-right" style="font-size:24px;color:red"></i><a href="{{path('donation_method')}}"> <button style="color:white;font-size:16px; background-color:orange">Make a donation</button></a>
-    </p>   <br> 
-  <!---  -->                     
-  <div class='vid'>
-    {{youtube|raw}}    
-  </div>
+  <!-- -->
 
-       
-  </p>
-  <!-- --> 
+<div class="row"> 
+          <div class="col-md-6">
+            <div class="news">
+              <div style="height:90%;width:100%">
+                  {{youtube|raw}}
+              </div>
+            </div><br>
+          </div>
+          <div class="col-md-6">
+            <div class="news">
+              <div style="text-align:center;color:black">              
+                <b>ANG DIOS GUGMA COMMUNITY, INC <br></b>
+                <b style="text-decoration:underline">H I S T O R Y</b><br>
+              </div>
+              <p style="color:black;text-align:center;font-size:15px">
+                The foundation which led to the conception of the “Ang Dios Gugma Catholic Ministries, Inc.” community was due to a man’s quest for peace, happiness, love and forgiveness.
+                Burdened and pressured with too many problems in life, he was physically, mentally, emotionally and spiritually exhausted. His life was miserable as he experienced sleepless nights, coupled with nightmares and nervousness 
+              
+                <a href="{{path('about_us')}}"><em>more</em></a>
+            </p><br> 
+            </div><br>
+          </div>
+</div>
 </div>       
-
 {% endblock %}
