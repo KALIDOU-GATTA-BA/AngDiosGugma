@@ -59,11 +59,11 @@
                     
                     
                             <form action='{{path('comment_video')}}' method='GET'>
-                        <input type="submit" style='background-color:#503a2c;color:white;font-style:italic' value='+comment' ><br>
+                        <input type="submit" style='background-color:lightgray;color:black;font-style:italic' value='+comment' ><br>
 
                           <input type ="text" style='opacity:0' value='{{video.id}}' name="val">
                   </form>
-                             <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  15px/30px Georgia, serif;">
+                             <h3 style="text-align:center;border-radius: 12px; background-color:lightgray;color:black; border: 2px ;font: italic  15px/30px Georgia, serif;">
                                    {{video.title}}                                                  
                              </h3>                    
                                      <div class='vid'>{{video.link|raw}}
