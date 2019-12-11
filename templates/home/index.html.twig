@@ -21,11 +21,11 @@
         <div class="row"> 
           <div class="col-md-6">
             <div class="news">
-              <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
-                {{ lastActuTitle|raw}} 
+              <h3 style="text-align:center;background-color:lightgray; border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
+                <span style="color:black">{{ lastActuTitle|raw}} </span>
               </h3><br>
               <p style="color:black;text-align:center;font-size:15px">
-                <b>{{lastActuContent|raw}}</b>
+                <b style="color:black">{{lastActuContent|raw}}</b>
               </p>
               <p style="color:black;text-align:center;font-size:12px">
                 <strong><em style="font: italic  12px/30px Georgia, serif;">Posted by: <span style="text-decoration:underline;font: italic  12px/30px Georgia, serif;color:darkblue"><b>{{admin}}</b></span></em></strong>
@@ -49,8 +49,8 @@
           </div>
           <div class="col-md-6">
             <div class="news">
-              <h3 style="text-align:center;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
-                {{videoTitle}}                                                  
+              <h3 style="text-align:center;background-color:lightgray;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
+                <span style="color:black">{{videoTitle}}</span>                                                
               </h3><br><br>
               <div style="height:90%;width:100%">
                 {{videoLink|raw}}
