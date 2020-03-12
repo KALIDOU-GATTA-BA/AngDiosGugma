@@ -13,7 +13,6 @@
     $("iframe").attr("width", "100%");
 });
 </script>
-
   {%if buffer==1 %}
 <br> <a href="{{path('video')}}"><mark style='color:white; background-color:rebecapurple'><em><< BACK</em></mark></a></span><br>
 <a href="{{path('security_logout')}}"><mark style='color:white; background-color:none'><em><< LOG OUT</em></mark></a>
@@ -29,17 +28,17 @@
                 <b style="color:black">{{lastActuContent|raw}}</b>
                 {% if type == 1 %}
                   <span style="color:red">  
-                    <a href="{{path('recap_actualities_anchor')}}"><em style="text-align:center;text-decoration:none;color:blue">[...] </em></a>
+                    <a href="{{path('recap_actualities_anchor')}}"><em style="text-align:center;text-decoration:none;color:blue">...more </em></a>
                   </span> <br><br> 
                 {% endif %}
                 {% if type == 2 %}
                  <span style="color:red">  
-                    <a href="{{path('recap_actualities_dailyGospels')}}"><em style="text-align:center;text-decoration:none;color:blue">[...]</em></a>
+                    <a href="{{path('recap_actualities_dailyGospels')}}"><em style="text-align:center;text-decoration:none;color:blue">...more</em></a>
                   </span><br><br>
                 {% endif %}
                 {% if type == 3 %}
                   <span style="color:red">  
-                    <a href="{{path('recap_actualities_st_of_day')}}"><em style="text-align:center;text-decoration:none;color:blue">[...]</em></a>
+                    <a href="{{path('recap_actualities_st_of_day')}}"><em style="text-align:center;text-decoration:none;color:blue">...more</em></a>
                   </span> <br><br>
                 {% endif %}
               </p>
@@ -54,6 +53,7 @@
               <h3 style="text-align:center;background-color:lightgray;border-radius: 12px;border: 2px solid;font: italic  12px/30px Georgia, serif;">
                 <span style="color:black">{{videoTitle}}</span>                                                
               </h3><br><br>
+                {{videoLink|raw}}
               </div>
             </div><br>
           </div>    
