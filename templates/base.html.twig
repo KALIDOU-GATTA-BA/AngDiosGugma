@@ -21,7 +21,12 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>    
-    <body>   
+    <body>  
+    <style>
+    body {
+      background-color: #FFFAFA;
+    }
+    </style> 
       <!-- <span style="color:black" class="navbar-toggler-icon"></span>-->
     <nav class="navbar navbar-light navbar-1 white" style="background-color:lightgray; position:fixed; width:100%;z-index:3">
       <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:black" data-target="#navbarSupportedContent15"
@@ -45,7 +50,10 @@
           </li> 
            <li class="nav-item">
             <a href="{{path('gospel_album')}}" aria-expanded="false" style="color:black;font-size:17px;padding-left:12px">Gospel album</a>
-          </li>
+           </li><hr>
+           <li class="nav-item">
+            <a href="{{path('t_v_prog')}}" aria-expanded="false" style="color:black;font-size:17px;padding-left:12px">ADG TV program</a>
+           </li>
          
          <!--  <li class="nav-item">
               <a href="{{path('singapore')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore <img style='height:15px;width:15px' id='pic_eg' alt="" src="{{  asset ('images/singapore.gif') }}"></a><hr>
@@ -88,7 +96,7 @@
         {% endif %}</a>
     </p>
      <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
-         <a href="{{path('legal_notices')}}" style="color:blue;font-size:10px;font-weight:bold; background-color:beige; color:red">LEGAL NOTICES</a> | &#x24B8; 2019 <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a>
+         <a href="{{path('legal_notices')}}" style="color:blue;font-size:10px;font-weight:bold; background-color:beige; color:red">LEGAL NOTICES</a> | &#x24B8; 2019 - 2020 <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a>
           | Designed by  KALIDOU <strong>GATTA</strong> BA
     </p>
 </body>

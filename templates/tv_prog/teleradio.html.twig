@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teleradio{% endblock %}
+  
+{% block body %}
+<style>
+  .mySlides {display:none}
+     .vid{ 
+        height:600px;       
+        }
+        @media screen and (max-width: 600px) {
+    
+        .vid{
+          height:300px; 
+        }
+  }
+   body{ 
+      background: none; 
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFFfE0;          
+      }
+      @media screen and (max-width: 600px) {
+  
+      body{
+         background:none; 
+          background-repeat: no-repeat;
+          background-size: 100% 85%;
+          background-position: center;
+          overflow-x: hidden; 
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+          background-color:#FFFfE0; 
+}
+}
+ 
+</style>
+
+{%if buffer==1 %}
+      <span>Hi <mark>{{app.user.username}}</mark>  <i class="fa fa-smile-o" style="font-size:48px;color:red"></i>
+<br> You can log out <a href="{{path('security_logout')}}"><mark style='color:white; background-color:red'><em> >>here</em></mark></a></span>
+  {% endif %}
+<div class="container"><br> 
+  {% if  app.user %}
+        <span>
+          <a href="{{path('video')}}" class="nav-link"  style="color:red;font-size:15px; font-weight:bold"><< Go to videos management</a>
+        </span> 
+    {% endif %}         
+    
+    {% for video in videos %}
+            <article class='mySlides'>
+
+                             <h3 style="text-align:center;border-radius: 12px; background-color:lightgray;color:black; border: 2px ;font: italic  15px/30px Georgia, serif;">
+                                   {{video.title}}                                                  
+                             </h3>                    
+                                     <div class='vid'>{{video.link|raw}}
+          
+                        </div>
+                 
+            </article>
+  {% endfor %} 
+</div> <br><br><br>
+                  <div class="w3-center">
+                    <div class="w3-section">
+                      <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮ Prev</button>
+                      <button class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ❯</button>
+                    </div>
+                   
+                    {% for i in 1..pagination%}
+                      <button class="w3-button demo" onclick="currentDiv({{ i }})">{{ i }}</button>
+                    {% endfor %}
+                  </div> <br>
+                  
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-red", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-red";
+}
+</script>
+{% endblock %}
