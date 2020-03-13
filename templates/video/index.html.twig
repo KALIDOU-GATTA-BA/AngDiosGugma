@@ -28,8 +28,6 @@
 
     {{ form_row(video.title, {'attr' : { 'placeholder': "Add a title for the video..."},  'label': 'Title'} ) }}
     
-    {{ form_row(video.type ) }}
-
     
     <button type="submit" class ="btn">Save</button><br><br>
 
@@ -42,6 +40,8 @@
 
     {{ form_row(videoYT.link, {'attr' : { 'placeholder': "Put here the link..."}, 'label': 'Link' } ) }}    
     
+    {{ form_row(videoYT.type) }}    
+
     <button type="submit" class ="btn">Save</button><br><br>
     
     <script> if ({{temp==1}}) {
