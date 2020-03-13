@@ -17,7 +17,7 @@ class VideoManagerTVProg
 
     public function getAllVideosAmligan()//18
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=18 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=18 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -26,7 +26,7 @@ class VideoManagerTVProg
 
     public function getAllVideosToday()//1
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=1 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=1 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -35,7 +35,7 @@ class VideoManagerTVProg
 
     public function getAllVideosIpm()//9
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid  where vid.type=9 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid  where vid.type=9 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -44,7 +44,7 @@ class VideoManagerTVProg
 
     public function getAllVideosTeleradio()// 2
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid  where vid.type=2 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid  where vid.type=2 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -53,7 +53,7 @@ class VideoManagerTVProg
 
     public function getAllVideosBahaghari() //3
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=3 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=3 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -62,7 +62,7 @@ class VideoManagerTVProg
 
     public function getAllVideosWorship()//4
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=4 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=4 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -71,7 +71,7 @@ class VideoManagerTVProg
 
     public function getAllVideosManunodlo()//5
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid  where vid.type=5 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid  where vid.type=5 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -80,7 +80,7 @@ class VideoManagerTVProg
 
     public function getAllVideosKubos()//6
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=6 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=6 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -89,7 +89,7 @@ class VideoManagerTVProg
 
     public function getAllVideosMool()//7
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=7 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=7 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -98,7 +98,7 @@ class VideoManagerTVProg
 
     public function getAllVideosGpm()//8
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=8 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=8 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -107,7 +107,7 @@ class VideoManagerTVProg
 
     public function getAllVideosMass()//10
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=10 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=10 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -116,7 +116,7 @@ class VideoManagerTVProg
 
     public function getAllVideosFad()//11
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid  where vid.type=11 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid  where vid.type=11 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -125,7 +125,7 @@ class VideoManagerTVProg
 
     public function getAllVideosLd()//12
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid  where vid.type=12 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid  where vid.type=12 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -134,7 +134,7 @@ class VideoManagerTVProg
 
     public function getAllVideosKristo()//13
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=13 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=13 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -142,7 +142,7 @@ class VideoManagerTVProg
     }
     public function getAllVideosKaupod()//14
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=14 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=14 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -151,7 +151,7 @@ class VideoManagerTVProg
 
     public function getAllVideosLaiko()//15
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=15 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=15 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -160,7 +160,7 @@ class VideoManagerTVProg
 
     public function getAllVideosGiving()//16
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=16 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=16 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -169,7 +169,7 @@ class VideoManagerTVProg
 
     public function getAllVideosMaria()//17
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=17 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=17 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -178,7 +178,7 @@ class VideoManagerTVProg
 
     public function getAllVideosOutreach()//19
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid  where vid.type=19 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid  where vid.type=19 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
@@ -187,7 +187,7 @@ class VideoManagerTVProg
 
     public function getAllVideosSpecialEvents()//20
     {
-        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\Video vid where vid.type=20 order by vid.id desc')
+        $res = $this->entityManager->createQuery('SELECT vid FROM App\Entity\YouTube vid where vid.type=20 order by vid.id desc')
                ->setMaxResults(20)
                ->getResult();
         $size=sizeof($res);
