@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% form_theme rs 'bootstrap_4_layout.html.twig'  %}
+{% block title %}Radio sponsorship{% endblock %}
+{% block body %}
+<style>
+  #actualities_admin.form-control{
+    opacity: 0;
+  }
+</style><br>
+		<div style="text-align:center;color:black">    
+		 <img src="{{asset('images/adg-international-amfmph.png')}}" style="border-top-left-radius: 50% 50%;border-top-right-radius: 50% 50%;border-bottom-right-radius: 50% 50%;border-bottom-left-radius: 50% 50%;border-radius: 50%;width: 60px;
+       height: 60px" /><br> 
+                <b>ANG DIOS GUGMA MEDIA PHILIPPINES, INC <br></b>
+                 <b>ADG Formation Center<br></b>
+                 <b>Brgy. Hibao-an Norte, Mandurriao, Iloilo City<br></b>
+                 <b>Sec. Reg.  No. CN20115408<br></b>
+                 <b>TIN: 405-894-624-000<br></b>
+        </div><br>
+
+       <h2 style="text-align:center">RADIO SPONSORSHIP PER GEOGRAPHICAL CATEGORY</h2>
+       <h4 style="text-decoration:underline">Add a new sponsorhip</h4>
+	      {{ form_start(rs, {'attr': {'novalidate': 'novalidate'}}) }}
+	      {{ form_row(rs.solicitor, {'label': 'Solicitor'} ) }}
+	      {{ form_row(rs.numberOfWeek, {'label': 'No of week/s '} ) }}
+	      {{ form_row(rs.a1, {'label': 'Category AI'} ) }}
+	      {{ form_row(rs.a2, {'label': 'Category AII'} ) }}
+	      {{ form_row(rs.a3, {'label': ' Category AIII'} ) }}
+	      {{ form_row(rs.rp120, {'label': 'RP1-20'} ) }}
+	      {{ form_row(rs.adName, {'label': 'AD Name'} ) }}
+	      {{ form_row(rs.amount, {'label': 'Amount'} ) }}
+	      {{ form_row(rs.arDiese, {'label': 'AR#'} ) }}
+	      {{ form_row(rs.ar, {'label': 'AR Date'} ) }}
+	      {{ form_row(rs.date, {'label': 'Date  Received'} ) }}
+	      {{ form_row(rs.adDateFrom, {'label': 'AD Date from'} ) }}
+	      {{ form_row(rs.adDateTo, {'label': 'AD Date to'} ) }}
+	      {{ form_row(rs.renewDate, {'label': 'Renew date' } ) }}
+	      {{ form_row(rs.contactNumber) }}
+	      {{ form_row(rs.area, {'label': 'Area'} ) }}
+
+    
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {% block javascript %}
+    <script src={{ asset("build/app.js") }}></script>
+	{% endblock %}
+
+    {{form_end(rs)}}
+
+{% endblock %} 
