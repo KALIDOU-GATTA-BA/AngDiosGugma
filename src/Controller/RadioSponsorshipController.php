@@ -90,8 +90,8 @@ class RadioSponsorshipController extends AbstractController
      */
     public function update(CheckConnectionManager $cnm)
     {
-        $cnm->CheckConnection();
-        $cnm->roleAdmin();
+        //$cnm->CheckConnection();
+        //$cnm->roleAdmin();
         return $this->render('radio_sponsorship/update.html.twig', [
             'controller_name' => 'RadioSponsorshipController',
         ]);
