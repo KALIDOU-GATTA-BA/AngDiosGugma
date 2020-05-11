@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
 use App\Services\YouTubeManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 class VideoController extends AbstractController
@@ -27,11 +28,12 @@ class VideoController extends AbstractController
     /**
      * @var ContactFormHandler
      */
-    public function __construct(VideoFormHandler $formHandler, YouTubeFormHandler $YTformHandler, Security $security)
+    public function __construct(VideoFormHandler $formHandler, YouTubeFormHandler $YTformHandler, Security $security, EntityManagerInterface $entityManager)
     {
         $this->formHandler = $formHandler;
         $this->YTformHandler = $YTformHandler;
         $this->security = $security;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -50,8 +52,16 @@ class VideoController extends AbstractController
             $buffer=true;
         }
         $form = $this->createForm(VideoType::class)->handleRequest($request);
-        if ($this->formHandler->handle($form)) {
-            return $this->redirectToRoute('home');
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $form = $form->getData();
+            if (!preg_match('/<iframe/', $form->getLink())) {
+                return $this->redirectToRoute('errorLink');
+            }else{ 
+                $this->entityManager->persist($form);
+                $this->entityManager->flush();
+            return $this->redirectToRoute('home'); 
+            }  
         }
        
         $formYT = $this->createForm(YouTubeType::class)->handleRequest($request);
@@ -70,6 +80,19 @@ class VideoController extends AbstractController
             'temp'=>$temp,
         ]);
     }
+    /**
+     * @Route("/errorLink", name="errorLink")
+     */
+    public function errorLink(CheckConnectionManager $cnm)
+    {
+        $cnm->CheckConnection();
+        $cnm->roleAdmin();
+        mail("kalidougattaba@gmail.com", "Error in the Link", $this->security->getUser()->getUsername());
+        return $this->render('video/errorLink.html.twig', [
+            'user' => $this->security->getUser()->getUsername(),
+        ]);
+    }
+    
     /**
      * @Route("/delete/video", name="delete_video")
      */
