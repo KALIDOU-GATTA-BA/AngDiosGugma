@@ -1,109 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5dd9a509b1d22100127bb752&product=inline-follow-buttons" async="async"></script>
- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-
+   <head>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+         crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="icon" href="{{  asset ('images/79036420_775796406216460_29571159070605312_n.png') }}" />
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %} {% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-    </head>    
-    <body>  
-    <style>
-    body {
-      background-color: #FFFAFA;
-    }
-#st_gdpr_iframe {display: none!important;}
-
-    </style> 
-      <!-- <span style="color:black" class="navbar-toggler-icon"></span>-->
-    <nav class="navbar navbar-light navbar-1 white" style="background-color:lightgray; position:fixed; width:100%;z-index:3">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:black" data-target="#navbarSupportedContent15"
-        aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span style="color:black;font-size:15px; font-weight:bold">Menu</span></button><p style="text-align:center; color:red;font-weight:bold;font-size:8px;margin-bottom:0px">
-    </p>
-    <button class="navbar-toggler" type="button" style="" data-toggle="collapse"aria-expanded="false"><span style="color:black;background-color:none;font-size:13px;font-weight:bold"><span style='font-size:12px;'>&#8224;</span>
-<a href="{{path('donation_method')}}" style="color:black">| DONATE NOW</a></span></button><p style="text-align:center; color:red;font-weight:bold;font-size:8px;margin-bottom:0px">
-    </p>
-        <img src="{{asset('images/79036420_775796406216460_29571159070605312_n.png')}}" style="border-top-left-radius: 50% 50%;border-top-right-radius: 50% 50%;border-bottom-right-radius: 50% 50%;border-bottom-left-radius: 50% 50%;border-radius: 50%;width: 40px;
-       height: 40px" />
-      <div class="collapse navbar-collapse" id="navbarSupportedContent15">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active"><br>
-            <a href="{{path('home')}}"  style="color:black"><i class="fa fa-home" aria-hidden="false" style="color:black;;padding-left:12px;font-size:18px"></i>Home <span class="sr-only">(current)</span></a><hr>
-          </li>
-          <li class="nav-item">
-            <a href="{{path('recap_actualities_anchor')}}"   aria-expanded="false" style="color:black;font-size:17px;padding-left:12px">News</a><hr>
-          </li>
-           <li class="nav-item">
-             <a href="{{path('live_streaming')}}"  aria-expanded="false" style="color:black;font-size:17px;padding-left:12px">Live streaming</a><hr>
-          </li> 
-           <li class="nav-item">
-            <a href="{{path('gospel_album')}}" aria-expanded="false" style="color:black;font-size:17px;padding-left:12px">Gospel album</a>
-           </li><hr>
-           <li class="nav-item">
-            <a href="{{path('t_v_prog')}}" aria-expanded="false" style="color:black;font-size:17px;padding-left:12px">ADG TV program</a>
-           </li>
-         
-         <!--  <li class="nav-item">
-              <a href="{{path('singapore')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Singapore <img style='height:15px;width:15px' id='pic_eg' alt="" src="{{  asset ('images/singapore.gif') }}"></a><hr>
-          </li>
-           <li class="nav-item">
-             <a href="{{path('hongkong')}}"  aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Hong Kong <img style='height:15px;width:15px' id='pic_eg' alt="" src="{{  asset ('images/hongkong.gif') }}"></a><hr>
-          </li>
-           <li class="nav-item">
-              <a href="{{path('canada')}}" aria-expanded="false" style="color:white;font-size:17px;padding-left:12px">ADG Canada <img style='height:15px;width:15px' alt="" id='pic_eg' src="{{  asset ('images/canada.gif') }}"></a>
-          </li>-->
-        </ul>
+         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+         crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+         crossorigin=""></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{% block title %} {% endblock %}</title>
+      {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+      {% endblock %}
+   </head>
+   <body>
+      <header>
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position:fixed; width:100%;z-index:3">
+            <a class="navbar-brand" href="#"><img src="{{  asset ('images/79036420_775796406216460_29571159070605312_n.png') }}"style="border-top-left-radius: 50% 50%;border-top-right-radius: 50% 50%;border-bottom-right-radius: 50% 50%;border-bottom-left-radius: 50% 50%;border-radius: 50%;width: 40px;
+               height: 40px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                  </li>
+                  <li class="nav-item active">
+                     <a class="nav-link" href="{{path('home')}}">Home<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{path('recap_actualities_anchor')}}">News</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{path('live_streaming')}}">Live streaming</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{path('gospel_album')}}">Gospel album</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{path('t_v_prog')}}">ADG TV program</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{path('donation_method')}}"><span style='font-size:12px;color:white'>&#8224;</span>| Donate now</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </header>
+      <br><br>
+      <img id='pic_eg' src="{{  asset ('images/ed3.png') }}" alt=""> 
+      <div class="container">
+         {% block body %}{% endblock %}
       </div>
-    </nav>
-<br><br>
-  <img id='pic_eg' src="{{  asset ('images/ed3.png') }}" alt=""> 
-
-    <div class="container">
-          {% block body %}{% endblock %}
-    </div>
-
- <div id="mapid" style="z-index:1"></div>
- <script>//http://leaflet-extras.github.io/leaflet-providers/preview/
-      var mymap = L.map('mapid').setView([10.69694, 122.56444], 13);
-      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 8,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZ2F0dGEiLCJhIjoiY2pzbHF5cG9tMGV4bjQ5bmR0OWc0NHByOSJ9.Q1dmcwlG2gfDC7LS7mQY-Q'
-      }).addTo(mymap);
-      var marker = L.marker([10.69694, 122.56444]).addTo(mymap);
-      marker.bindPopup("<i class='fa fa-phone' aria-hidden='false' style='color:red;'></i>(033) Office: 321-12-98 / Technical: 330-33-89 <br><br><i class='fa fa-home' aria-hidden='false' style='color:red;'></i> ADG Formation Center, Hibao-an Norte, Mandurriao, Iloilo City,Philippines.").openPopup();
- </script>
-    <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;text-decoration:underline;background-color:black;margin-bottom:0px">
-        <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">
-        {% if  not app.user %}
-          <a href="{{path('app_login')}}" style="color:white;font-size:8px;padding-left:12px"><strong>Administration</strong></a>
-        {% endif %}
-        {% if  app.user %}
-          <a href="{{path('security_logout')}}" style="color:white;font-size:8px;padding-left:12px">Log out</a>
-        {% endif %}</a>
-    </p>
-     <p style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black;margin-bottom:0px">
-         <a href="{{path('legal_notices')}}" style="color:blue;font-size:10px;font-weight:bold; background-color:beige; color:red">LEGAL NOTICES</a> | &#x24B8; 2019 - 2020 <a href="{{path('home')}}" style="text-align:center; color:#fff;font-weight:bold;font-size:8px;background-color:black">angdiosgugma.com</a>
-          | Designed by  KALIDOU <strong>GATTA</strong> BA
-    </p>
-</body>
-        {% block footer %}{% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+      <div id="mapid" style="z-index:1"></div>
+      <script>//http://leaflet-extras.github.io/leaflet-providers/preview/
+         var mymap = L.map('mapid').setView([10.69694, 122.56444], 13);
+         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+           maxZoom: 8,
+           id: 'mapbox.streets',
+           accessToken: 'pk.eyJ1IjoiZ2F0dGEiLCJhIjoiY2pzbHF5cG9tMGV4bjQ5bmR0OWc0NHByOSJ9.Q1dmcwlG2gfDC7LS7mQY-Q'
+         }).addTo(mymap);
+         var marker = L.marker([10.69694, 122.56444]).addTo(mymap);
+         marker.bindPopup("<i class='fa fa-phone' aria-hidden='false' style='color:red;'></i>(033) Office: 321-12-98 / Technical: 330-33-89 <br><br><i class='fa fa-home' aria-hidden='false' style='color:red;'></i> ADG Formation Center, Hibao-an Norte, Mandurriao, Iloilo City,Philippines.").openPopup();
+      </script>
+      <div class="site-footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12 col-md-6">
+                  <h6>About us</h6>
+                  <p style="color:white">
+                     The foundation which led to the conception of the “Ang Dios Gugma Catholic Ministries, Inc.” community was due to a man’s quest for peace, happiness, love and forgiveness.
+                     Burdened and pressured with too many problems in life, he was physically, mentally, emotionally and spiritually exhausted. 
+                  </p>
+               </div>
+               <div class="col-xs-6 col-md-3">
+                  {% if  not app.user %}
+                  <a href="{{path('app_login')}}" >
+                     <h6>Administration</h6>
+                  </a>
+                  {% endif %}
+                  {% if  app.user %}
+                  <a href="{{path('security_logout')}}">
+                     <h6>Log out</h6>
+                  </a>
+                  {% endif %}
+               </div>
+               <div class="col-xs-6 col-md-3">
+                  <h6>QUICK LINKS</h6>
+                  <ul class="footer-links">
+                     <li><a href="https://angdiosgugma.com/donation">Online payment</a></li>
+                     <!--<li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>-->
+                     <li><a href="{{path('legal_notices')}}">Legal notices</a></li>
+                  </ul>
+               </div>
+            </div>
+            <hr>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8 col-sm-6 col-xs-12">
+                  <p class="copyright-text" style="color:white">Copyright &copy; 2020 All rights reserved | 
+                     <a href="#" style="color:white">GattaWeb France</a>.
+                  </p>
+               </div>
+               <div class="col-md-4 col-sm-6 col-xs-12">
+                  <ul class="social-icons">
+                     <li><a class="facebook" target="blank" href="https://www.facebook.com/Angdiosgugmacommunityofficial?epa=SEARCH_BOX"><i class="fa fa-facebook"></i></a></li>
+                     <li><a class="twitter" target="blank" href="https://twitter.com/adgofficial10?fbclid=IwAR1LrwtFz-73DjmwNGcwPse0tyV9FKuuXKzVqj5j93XCSaQhypGVimKCy2A"><i class="fa fa-twitter"></i></a></li>
+                     <li><a class="youtube" target="blank" href="https://www.youtube.com/channel/UCcgEDkJzRi-CXDN9lT7e-6Q?sub_confirmation=1"><i class="fa fa-youtube"></i></a></li>
+                     <li><a class="instagram" target="blank" href="https://www.instagram.com/angdiosgugmaofficial/?fbclid=IwAR2gMt7ybNjshAFFLMDhDPFNkpYBZCwRDepY352it7SFthf29JU5sU-Mthg"><i class="fa fa-instagram"></i></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <style>
+         .site-footer
+         {
+         background-color:#26272b;
+         padding:45px 0 20px;
+         font-size:15px;
+         line-height:24px;
+         color:#737373;
+         }
+         .site-footer hr
+         {
+         border-top-color:#bbb;
+         opacity:0.5
+         }
+         .site-footer hr.small
+         {
+         margin:20px 0
+         }
+         .site-footer h6
+         {
+         color:#fff;
+         font-size:16px;
+         text-transform:uppercase;
+         margin-top:5px;
+         letter-spacing:2px
+         }
+         .site-footer a
+         {
+         color:#737373;
+         }
+         .site-footer a:hover
+         {
+         color:#3366cc;
+         text-decoration:none;
+         }
+         .footer-links
+         {
+         padding-left:0;
+         list-style:none
+         }
+         .footer-links li
+         {
+         display:block
+         }
+         .footer-links a
+         {
+         color:#737373
+         }
+         .footer-links a:active,.footer-links a:focus,.footer-links a:hover
+         {
+         color:#3366cc;
+         text-decoration:none;
+         }
+         .footer-links.inline li
+         {
+         display:inline-block
+         }
+         .site-footer .social-icons
+         {
+         text-align:right
+         }
+         .site-footer .social-icons a
+         {
+         width:40px;
+         height:40px;
+         line-height:40px;
+         margin-left:6px;
+         margin-right:0;
+         border-radius:100%;
+         background-color:#33353d
+         }
+         .copyright-text
+         {
+         margin:0
+         }
+         body {
+         background-color: #FFFAFA;
+         }
+         #st_gdpr_iframe {display: none!important;}
+         @media (max-width:991px)
+         {
+         .site-footer [class^=col-]
+         {
+         margin-bottom:30px
+         }
+         }
+         @media (max-width:767px)
+         {
+         .site-footer
+         {
+         padding-bottom:0
+         }
+         .site-footer .copyright-text,.site-footer .social-icons
+         {
+         text-align:center
+         }
+         }
+         .social-icons
+         {
+         padding-left:0;
+         margin-bottom:0;
+         list-style:none
+         }
+         .social-icons li
+         {
+         display:inline-block;
+         margin-bottom:4px
+         }
+         .social-icons li.title
+         {
+         margin-right:15px;
+         text-transform:uppercase;
+         color:#96a2b2;
+         font-weight:700;
+         font-size:13px
+         }
+         .social-icons a{
+         background-color:#eceeef;
+         color:#818a91;
+         font-size:16px;
+         display:inline-block;
+         line-height:44px;
+         width:44px;
+         height:44px;
+         text-align:center;
+         margin-right:8px;
+         border-radius:100%;
+         -webkit-transition:all .2s linear;
+         -o-transition:all .2s linear;
+         transition:all .2s linear
+         }
+         .social-icons a:active,.social-icons a:focus,.social-icons a:hover
+         {
+         color:#fff;
+         background-color:#29aafe
+         }
+         .social-icons.size-sm a
+         {
+         line-height:34px;
+         height:34px;
+         width:34px;
+         font-size:14px
+         }
+         .social-icons a.facebook:hover
+         {
+         background-color:#3b5998
+         }
+         .social-icons a.twitter:hover
+         {
+         background-color:#00aced
+         }
+         .social-icons a.linkedin:hover
+         {
+         background-color:#007bb6
+         }
+         .social-icons a.youtube:hover
+         {
+         background-color:#c4302b
+         }
+         .social-icons a.instagram:hover
+         {
+         background-color:#8a3ab9
+         }
+         @media (max-width:767px)
+         {
+         .social-icons li.title
+         {
+         display:block;
+         margin-right:0;
+         font-weight:600
+         }
+         }
+      </style>
+   </body>
+   {% block footer %}{% endblock %}
+   {% block javascripts %}
+   {{ encore_entry_script_tags('app') }}
+   {% endblock %}
 </html>
-

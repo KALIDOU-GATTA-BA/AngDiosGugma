@@ -3,64 +3,91 @@
 {% block title %}Radio sponsorships{% endblock %}
 
 {% block body %}
-<div style="text-align:center;color:black">    
-		 <img src="{{asset('images/adg-international-amfmph.png')}}" style="border-top-left-radius: 50% 50%;border-top-right-radius: 50% 50%;border-bottom-right-radius: 50% 50%;border-bottom-left-radius: 50% 50%;border-radius: 50%;width: 60px;
-       height: 60px" /><br> 
-                <b>ANG DIOS GUGMA MEDIA PHILIPPINES, INC <br></b>
-                <b>ADG Formation Center<br></b>
-                <b>Brgy. Hibao-an Norte, Mandurriao, Iloilo City<br></b>
-                <b>Sec. Reg.  No. CN20115408<br></b>
-                <b>TIN: 405-894-624-000<br></b><br>
-                <h6 style="text-align:center">RADIO SPONSORSHIP PER GEOGRAPHICAL CATEGORY</h6>
-        </div><br><br><br><br>
+ 
+    <div style="text-align:center;color:black">    
+        <img src="{{asset('images/adg-international-amfmph.png')}}" style="border-top-left-radius: 50% 50%;border-top-right-radius: 50% 50%;border-bottom-right-radius: 50% 50%;border-bottom-left-radius: 50% 50%;border-radius: 50%;width: 60px;
+                       height: 60px" /><br> 
+        <b>ANG DIOS GUGMA MEDIA PHILIPPINES, INC <br></b>
+        <b>ADG Formation Center<br></b>
+        <b>Brgy. Hibao-an Norte, Mandurriao, Iloilo City<br></b>
+        <b>Sec. Reg.  No. CN20115408<br></b>
+        <b>TIN: 405-894-624-000<br></b><br>
+        <h6 style="text-align:center">RADIO SPONSORSHIP PER GEOGRAPHICAL CATEGORY</h6>
+    </div><br><br><br>
+       <a href="{{path('admin_home')}}"> <i class="fa fa-hand-o-left" style="color: blue; font-weight:bold; font-size:25px" aria-hidden="true"> back </i></a>
 
-<span style="font-size:15px">Number of sponsorship:</span> <span style="color:blue; background-color:none;font-weight:bold">{{spNum}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span style="font-size:15px">Sponsorships internationnal:</span> <span style="color:orange; background-color:none;font-weight:bold">{{spInt}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:15px">Total Amount:</span> <span style="color:green; background-color:none;font-weight:bold">{{totalAmount}}</span></p><br><br><br><br>
-<table class="table table-hover" style="width:100%">
-  <thead>
-    <tr class="table-success" style="font-size:10px">
-      <th scope="col" style="font-size:10px">No</th>
-      <th scope="col" style="font-size:10px">Solicitor</th>
-      <th scope="col" style="font-size:10px">No of weeks</th>
-      <th scope="col" style="font-size:10px">Category AI</th>
-      <th scope="col" style="font-size:10px">Category AII</th>
-      <th scope="col" style="font-size:10px">Category AIII</th>
-      <th scope="col" style="font-size:10px">RP1-20</th>
-      <th scope="col" style="font-size:10px; width:100px">AD NAME</th>
-      <th scope="col" style="font-size:10px">Amount</th>
-      <th scope="col" style="font-size:10px">AR#</th>
-      <th scope="col" style="font-size:10px">AR Date</th>
-      <th scope="col" style="font-size:10px">Date Received</th>
-      <th scope="col" style="font-size:10px; width:100px">AD Date from</th>
-      <th scope="col" style="font-size:10px; width:100px">AD Date to</th>
-      <th scope="col" style="font-size:10px">Renew Date</th>
-      <th scope="col" style="font-size:10px">Contact No.</th>
-      <th scope="col" style="font-size:10px">Area</th>
-    </tr>
-  </thead>
-{% for allSponsorship in allSponsorships %}
-  <tbody>
-    <tr class="table-primary">
-      <th scope="row" style="font-size:10px">{{allSponsorship.id}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.solicitor}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.numberOfWeek}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.a1}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.a2}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.a3}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.rp120}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.adName}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.amount}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.arDiese}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.ar}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.date}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.adDateFrom}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.adDateTo}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.renewDate}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.contactNumber}}</th>
-      <th scope="row" style="font-size:10px">{{allSponsorship.area}}</th>
-    </tr>
-  </tbody>
-{% endfor %}
-</table>
+      <br><br><br>
+    <div class="container-fluid" style="overflow-x:auto">
+        <div class="row" style="width:100%">
+        <span style="font-size:15px">Number of sponsorship:</span> <span style="color:blue; background-color:none;font-weight:bold">{{spNum}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size:15px">Sponsorships internationnal:</span> <span style="color:orange; background-color:none;font-weight:bold">{{spInt}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:15px">Total Amount:</span>
+
+        <span style="color:green; background-color:none;font-weight:bold">{{totalAmount}}</span><br><br>
+        
+        <p style="color:black">  Update a sponsor: <i class="fa fa-info-circle" onclick="info()" style="color:blue" aria-hidden="true"></i><sup>info</sup>
+          <script>
+              function info() {
+                alert("The number of the sponsor is located at the column name  No on the table bellow");
+              }
+          </script>
+          <form action="{{path('radio_sponsorship_update')}}" method="get">
+            <input type="number" name="sponsor_id"  placeholder="sponsor number (No)">
+            <button type="submit" style="color:green; background-color:transparent"><i class="fa fa-pencil-square-o" style="color:green; background-color:none" aria-hidden="true"></i></button>
+          </form> 
+        </p>
+         <p style="color:black"> Delete a sponsor: <i class="fa fa-info-circle" onclick="info()" style="color:blue" aria-hidden="true"></i><sup>info</sup>
+          <form action="{{path('radio_sponsorship_delete')}}" method="get">
+            <input type="text" name="sponsor_id" placeholder="sponsor number (No)">
+            <button type="submit" style="color:green; background-color:transparent"><i class="fa fa-trash-o" style="color:red" aria-hidden="true"></i></button>
+          </form> 
+        </p><br><br><br><br>
+        <table class="table table-hover" style="width:100%">
+          <thead>
+            <tr class="table-success" style="font-size:10px">
+              <th scope="col" style="font-size:10px">No</th>
+              <th scope="col" style="font-size:10px">Solicitor</th>
+              <th scope="col" style="font-size:10px">No of weeks</th>
+              <th scope="col" style="font-size:10px">Category AI</th>
+              <th scope="col" style="font-size:10px">Category AII</th>
+              <th scope="col" style="font-size:10px">Category AIII</th>
+              <th scope="col" style="font-size:10px">RP1-20</th>
+              <th scope="col" style="font-size:10px; width:100px">AD NAME</th>
+              <th scope="col" style="font-size:10px">Amount</th>
+              <th scope="col" style="font-size:10px">AR#</th>
+              <th scope="col" style="font-size:10px">AR Date</th>
+              <th scope="col" style="font-size:10px">Date Received</th>
+              <th scope="col" style="font-size:10px; width:100px">AD Date from</th>
+              <th scope="col" style="font-size:10px; width:100px">AD Date to</th>
+              <th scope="col" style="font-size:10px">Renew Date</th>
+              <th scope="col" style="font-size:10px">Contact No.</th>
+              <th scope="col" style="font-size:10px">Area</th>
+            </tr>
+          </thead>
+          {% for allSponsorship in allSponsorships %}
+            <tbody>
+              <tr class="table-primary">
+                <th scope="row" style="font-size:10px">{{allSponsorship.id}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.solicitor}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.numberOfWeek}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.a1}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.a2}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.a3}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.rp120}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.adName}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.amount}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.arDiese}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.ar}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.date}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.adDateFrom}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.adDateTo}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.renewDate}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.contactNumber}}</th>
+                <th scope="row" style="font-size:10px">{{allSponsorship.area}}</th>
+              </tr>
+            </tbody>
+          {% endfor %}
+        </table>
+</div>
+</div>
        
 {% endblock %}

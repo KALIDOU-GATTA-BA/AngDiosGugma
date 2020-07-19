@@ -33,10 +33,20 @@ class StudentAddController extends AbstractController
         }
         $form = $this->createForm(StudentAddType::class)->handleRequest($request);
         if ($this->formHandler->handle($form)) {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('student_suc');
         }
         return $this->render('student_add/index.html.twig', [
                            'student_add' => $form->createView(),
                       ]);
+    }
+
+    /**
+     * @Route("/student/suc", name="student_suc")
+     */
+    public function studentSuc(Request $request, CheckConnectionManager $cnm)
+    {
+        $cnm->CheckConnection();
+        
+        return $this->render('student_add/suc.html.twig');
     }
 }

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% form_theme sponsorPayment 'bootstrap_4_layout.html.twig'  %}
+{% block title %}sponsors payment{% endblock %}
+{% block body %}
+ 
+    <div style="text-align:center;color:black">    
+        <img src="{{asset('images/adg-international-amfmph.png')}}" style="border-top-left-radius: 50% 50%;border-top-right-radius: 50% 50%;border-bottom-right-radius: 50% 50%;border-bottom-left-radius: 50% 50%;border-radius: 50%;width: 60px;
+                       height: 60px" /><br> 
+        <b>ANG DIOS GUGMA MEDIA PHILIPPINES, INC <br></b>
+        <b>ADG Formation Center<br></b>
+        <b>Brgy. Hibao-an Norte, Mandurriao, Iloilo City<br></b>
+        <b>Sec. Reg.  No. CN20115408<br></b>
+        <b>TIN: 405-894-624-000<br></b><br>
+        <h6 style="text-align:center">RADIO SPONSORSHIP PER GEOGRAPHICAL CATEGORY</h6>
+    </div><br><br><br><br>
+
+       <h6 style="text-align:right"> <a href="{{path('radio_sponsorship_recap')}}"> <i class="fa fa-list" style="color:green; font-weight:bold; font-size:30px" aria-hidden="true"></i>
+ <b style="font-size:30px"> << all sponsors</b></a></h6>
+    {{ form_start(sponsorPayment, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        {{ form_row(sponsorPayment.name, {'label': 'Name'} ) }}
+        {{ form_row(sponsorPayment.paymentDate, {'label': 'Payment date '} ) }}
+        {{ form_row(sponsorPayment.amount, {'label': 'Amount'} ) }}
+
+    <button type="submit" class ="btn">Save</button><br><br>
+
+    {{form_end(sponsorPayment)}}
+
+       
+{% endblock %}

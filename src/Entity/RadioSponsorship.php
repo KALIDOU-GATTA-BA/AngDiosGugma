@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * RadioSponsorship
@@ -24,7 +26,7 @@ class RadioSponsorship
     /**
      * @var string|null
      *
-     * @ORM\Column(name="solicitor", type="string", length=255, nullable=true)
+     * @ORM\Column(name="solicitor", type="string", length=255, nullable=false)
      */
     private $solicitor;
 
@@ -38,21 +40,21 @@ class RadioSponsorship
     /**
      * @var int|null
      *
-     * @ORM\Column(name="a1", type="integer", nullable=true)
+     * @ORM\Column(name="a1", type="string", nullable=true)
      */
     private $a1;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="a2", type="integer", nullable=true)
+     * @ORM\Column(name="a2", type="string", nullable=true)
      */
     private $a2;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="a3", type="integer", nullable=true)
+     * @ORM\Column(name="a3", type="string", nullable=true)
      */
     private $a3;
 
@@ -80,7 +82,7 @@ class RadioSponsorship
     /**
      * @var int|null
      *
-     * @ORM\Column(name="ar_diese", type="integer", nullable=true)
+     * @ORM\Column(name="ar_diese", type="string", nullable=true)
      */
     private $arDiese;
 
@@ -162,36 +164,36 @@ class RadioSponsorship
         return $this;
     }
 
-    public function getA1(): ?int
+    public function getA1(): ?string
     {
         return $this->a1;
     }
 
-    public function setA1(?int $a1): self
+    public function setA1(?string $a1): self
     {
         $this->a1 = $a1;
 
         return $this;
     }
 
-    public function getA2(): ?int
+    public function getA2(): ?string
     {
         return $this->a2;
     }
 
-    public function setA2(?int $a2): self
+    public function setA2(?string $a2): self
     {
         $this->a2 = $a2;
 
         return $this;
     }
 
-    public function getA3(): ?int
+    public function getA3(): ?string
     {
         return $this->a3;
     }
 
-    public function setA3(?int $a3): self
+    public function setA3(?string $a3): self
     {
         $this->a3 = $a3;
 
@@ -234,12 +236,12 @@ class RadioSponsorship
         return $this;
     }
 
-    public function getArDiese(): ?int
+    public function getArDiese(): ?string
     {
         return $this->arDiese;
     }
 
-    public function setArDiese(?int $arDiese): self
+    public function setArDiese(?string $arDiese): self
     {
         $this->arDiese = $arDiese;
 
@@ -329,6 +331,17 @@ class RadioSponsorship
 
         return $this;
     }
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('solicitor', new Assert\NotNull());
+        $metadata->addPropertyConstraint('numberOfWeek', new Assert\NotNull());
 
+        $metadata->addPropertyConstraint('rp120', new Assert\NotNull());
 
+        $metadata->addPropertyConstraint('adName', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('amount', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('date', new Assert\NotNull());
+    }
 }
